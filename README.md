@@ -26,6 +26,7 @@ npm run build      # Produktions-Build
 | **Preise (TBD-Platzhalter)** | `src/lib/pricing.ts` — eine Datei, Rest zieht automatisch |
 | Gesamte Copy (DE/EN) | `src/lib/dictionaries.ts` |
 | Social Proof (Kennzahlen/Zitate/Logos) | `dictionaries.ts` → `socialProof` + `src/components/sections/SocialProof.tsx` (als Platzhalter markiert) |
+| **Produkt-Video** (erste Einblicke) | Datei einfach unter `public/videos/produkt-einblick.mp4` ablegen (optional Vorschaubild `public/videos/produkt-einblick-poster.jpg`) — die Sektion (`src/components/sections/ProductVideo.tsx`) erkennt die Datei automatisch und schaltet vom Platzhalter auf den echten Player um, keine Code-Änderung nötig |
 | Domain (Metadata/Sitemap/Robots) | `src/app/[locale]/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts` (`gentlebook.app` als Platzhalter) |
 | Rechtstexte | `src/components/layout/LegalPage.tsx` — Routen `/impressum`, `/datenschutz`, `/agb` sind leere Gerüste, Inhalte kommen vom Betreiber |
 | Brand-Farben/Schatten | `tailwind.config.ts` |

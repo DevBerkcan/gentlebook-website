@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import Pain from "@/components/sections/Pain";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Showcase from "@/components/sections/Showcase";
+import ProductVideo from "@/components/sections/ProductVideo";
 import BeforeAfter from "@/components/sections/BeforeAfter";
 import Features from "@/components/sections/Features";
 import Industries from "@/components/sections/Industries";
@@ -58,6 +59,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Pain dict={dict} />
       <HowItWorks dict={dict} locale={locale} />
       <Showcase dict={dict} />
+      <ProductVideo dict={dict} />
       <BeforeAfter dict={dict} />
       <Features dict={dict} />
       <Industries dict={dict} />

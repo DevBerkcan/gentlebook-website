@@ -90,6 +90,14 @@ const de = {
       team: "Team heute",
     },
   },
+  productVideo: {
+    eyebrow: "Erste Einblicke",
+    title: "Sieh dir GentleBook in Aktion an.",
+    text: "Ein kurzer Rundgang durch die echte Anwendung — von der Buchungsseite bis zum Dashboard.",
+    placeholderTitle: "Video folgt in Kürze",
+    placeholderText:
+      "Hier entsteht demnächst ein kurzer Einblick in die Anwendung. Bis dahin wirf gerne einen Blick auf die Beispielansichten weiter oben.",
+  },
   features: {
     eyebrow: "Alles drin, was dein Alltag braucht",
     title: "Funktionen, die dir Stunden zurückgeben.",
@@ -293,6 +301,7 @@ const de = {
     ],
     testimonialsHeading: "Was Kund:innen über GentleBook sagen",
     testimonialsPlaceholder: "Kundenstimme folgt nach dem Launch",
+    logosHeading: "Unternehmen, die auf GentleBook vertrauen",
     logosLabel: "Bald hier: Logos unserer Kunden",
   },
   pricingSection: {
@@ -712,6 +721,14 @@ const en: typeof de = {
       team: "Team today",
     },
   },
+  productVideo: {
+    eyebrow: "First look",
+    title: "See GentleBook in action.",
+    text: "A short walkthrough of the real application — from the booking page to the dashboard.",
+    placeholderTitle: "Video coming soon",
+    placeholderText:
+      "A short walkthrough of the application will be added here soon. Until then, take a look at the sample views above.",
+  },
   features: {
     eyebrow: "Everything your day-to-day needs",
     title: "Features that give you hours back.",
@@ -910,6 +927,7 @@ const en: typeof de = {
     ],
     testimonialsHeading: "What customers say about GentleBook",
     testimonialsPlaceholder: "Customer story coming after launch",
+    logosHeading: "Businesses that trust GentleBook",
     logosLabel: "Coming soon: our customers' logos",
   },
   pricingSection: {

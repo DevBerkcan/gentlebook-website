@@ -75,9 +75,12 @@ export default function SocialProof({ dict }: { dict: Dictionary }) {
           </div>
         </Reveal>
 
-        {/* Logo-Leiste (Platzhalter) */}
-        <Reveal delay={0.1} className="mt-6">
-          <div className="flex flex-wrap items-center justify-center gap-4 rounded-3xl border border-dashed border-white/15 p-6">
+        {/* Logo-Leiste: Unternehmen, die auf GentleBook vertrauen (Platzhalter) */}
+        <Reveal delay={0.1} className="mt-10">
+          <p className="text-center text-sm font-medium text-white/50">
+            {dict.socialProof.logosHeading}
+          </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-4 rounded-3xl border border-dashed border-white/15 p-6">
             {[1, 2, 3, 4, 5].map((n) => (
               <span key={n} aria-hidden="true" className="h-9 w-28 rounded-xl bg-white/[0.07]" />
             ))}
