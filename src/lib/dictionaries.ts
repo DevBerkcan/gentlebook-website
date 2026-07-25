@@ -298,6 +298,7 @@ const de = {
       { title: "Persönlicher Support", text: "Bei Fragen zur Einrichtung bekommst du direkte Unterstützung, kein anonymes Ticket-System." },
       { title: "Datenschutzbewusst entwickelt", text: "Kundendaten bleiben deine Daten. Details regelt unsere Datenschutzerklärung." },
       { title: "Einfache Erweiterbarkeit", text: "GentleBook wächst mit deinem Team — von einer Person bis zu mehreren Standorten." },
+      { title: "Keine Provision auf Buchungen", text: "Ein fester Plan-Preis, unabhängig davon, wie viele Termine über deine Seite gebucht werden." },
     ],
     testimonialsHeading: "Was Kund:innen über GentleBook sagen",
     testimonialsPlaceholder: "Kundenstimme folgt nach dem Launch",
@@ -335,7 +336,7 @@ const de = {
       },
       {
         title: "Immer inklusive",
-        text: "Das Online-Buchungssystem ist in jedem Plan enthalten. Die Pläne unterscheiden sich durch Limits und Zusatzfunktionen.",
+        text: "Das Online-Buchungssystem ist in jedem Plan enthalten — mit einem festen Preis, ohne Provision pro Buchung. Die Pläne unterscheiden sich durch Limits und Zusatzfunktionen.",
       },
     ],
     plans: [
@@ -443,6 +444,10 @@ const de = {
       {
         q: "Kann ich jederzeit kündigen?",
         a: "Ja, bezahlte Pläne sind monatlich kündbar, ohne versteckte Kosten. Die verbindlichen Details veröffentlichen wir vor Launch in den AGB.",
+      },
+      {
+        q: "Nimmt GentleBook eine Provision auf meine Buchungen?",
+        a: "Nein. Du zahlst einen festen monatlichen Preis für deinen Plan — unabhängig davon, wie viele Termine über deine Buchungsseite eingehen. Es gibt keine Provision pro Buchung.",
       },
       {
         q: "Was passiert nach der 14-tägigen Testphase?",
@@ -924,6 +929,7 @@ const en: typeof de = {
       { title: "Personal support", text: "Get real help with setup questions, not an anonymous ticket queue." },
       { title: "Privacy-conscious by design", text: "Your client data stays your data. Details are covered in our privacy policy." },
       { title: "Easy to grow with", text: "GentleBook grows with your team — from a single person to multiple locations." },
+      { title: "No commission on bookings", text: "A fixed plan price, no matter how many appointments come in through your page." },
     ],
     testimonialsHeading: "What customers say about GentleBook",
     testimonialsPlaceholder: "Customer story coming after launch",
@@ -961,7 +967,7 @@ const en: typeof de = {
       },
       {
         title: "Always included",
-        text: "Every plan includes the online booking system. Plans differ only by limits and additional features.",
+        text: "Every plan includes the online booking system — at a fixed price, with no commission per booking. Plans differ only by limits and additional features.",
       },
     ],
     plans: [
@@ -1069,6 +1075,10 @@ const en: typeof de = {
       {
         q: "Can I cancel any time?",
         a: "Yes, paid plans can be cancelled monthly with no hidden costs. We'll publish the binding details in our terms of service before launch.",
+      },
+      {
+        q: "Does GentleBook take a commission on my bookings?",
+        a: "No. You pay a fixed monthly price for your plan — no matter how many appointments come in through your booking page. There's no commission per booking.",
       },
       {
         q: "What happens after the 14-day trial?",

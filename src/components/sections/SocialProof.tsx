@@ -9,12 +9,12 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { Quote, Shield, HeartHandshake, Puzzle, Sparkles } from "lucide-react";
+import { Quote, Shield, HeartHandshake, Puzzle, Sparkles, BadgeEuro } from "lucide-react";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import type { Dictionary } from "@/lib/dictionaries";
 
-const icons = [Sparkles, HeartHandshake, Shield, Puzzle];
+const icons = [Sparkles, HeartHandshake, Shield, Puzzle, BadgeEuro];
 
 export default function SocialProof({ dict }: { dict: Dictionary }) {
   return (
@@ -35,7 +35,7 @@ export default function SocialProof({ dict }: { dict: Dictionary }) {
         </div>
 
         {/* Vertrauenspunkte (qualitativ, keine erfundenen Kennzahlen) */}
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {dict.socialProof.trustPoints.map((point, i) => {
             const Icon = icons[i % icons.length];
             return (
