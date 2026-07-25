@@ -7,6 +7,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileStickyCta from "@/components/layout/MobileStickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 // TODO vor Launch: finale Domain eintragen
@@ -79,7 +80,11 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale);
 
   return (
-    <html lang={locale} className={`${fontBody.variable} ${fontDisplay.variable}`}>
+    <html
+      lang={locale}
+      data-scroll-behavior="smooth"
+      className={`${fontBody.variable} ${fontDisplay.variable}`}
+    >
       <body className="grain">
         <JsonLd
           data={{
@@ -108,9 +113,12 @@ export default async function LocaleLayout({
         </a>
         <SmoothScroll>
           <Header locale={locale} dict={dict} />
-          <main id="main-content">{children}</main>
+          <main id="main-content" className="pb-20 lg:pb-0">
+            {children}
+          </main>
           <Footer locale={locale} dict={dict} />
         </SmoothScroll>
+        <MobileStickyCta locale={locale} label={dict.nav.cta} />
       </body>
     </html>
   );

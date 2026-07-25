@@ -4,9 +4,14 @@ import { pricing } from "@/lib/pricing";
 import { JsonLd } from "@/components/seo/JsonLd";
 import Hero from "@/components/sections/Hero";
 import Pain from "@/components/sections/Pain";
+import HowItWorks from "@/components/sections/HowItWorks";
 import Showcase from "@/components/sections/Showcase";
+import BeforeAfter from "@/components/sections/BeforeAfter";
 import Features from "@/components/sections/Features";
 import Industries from "@/components/sections/Industries";
+import ProductDemo from "@/components/sections/ProductDemo";
+import ObjectionSection from "@/components/sections/ObjectionSection";
+import ComparisonTable from "@/components/sections/ComparisonTable";
 import SocialProof from "@/components/sections/SocialProof";
 import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
@@ -31,9 +36,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "EUR",
-            lowPrice: pricing.starter.monthly,
+            lowPrice: pricing.trial.monthly,
             highPrice: pricing.business.monthly,
-            offerCount: 3,
+            offerCount: Object.keys(pricing).length,
           },
         }}
       />
@@ -51,9 +56,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <Hero dict={dict} locale={locale} />
       <Pain dict={dict} />
+      <HowItWorks dict={dict} locale={locale} />
       <Showcase dict={dict} />
+      <BeforeAfter dict={dict} />
       <Features dict={dict} />
       <Industries dict={dict} />
+      <ProductDemo dict={dict} locale={locale} />
+      <ObjectionSection dict={dict} />
+      <ComparisonTable dict={dict} />
       <SocialProof dict={dict} />
       <Pricing dict={dict} locale={locale} />
       <Faq dict={dict} />

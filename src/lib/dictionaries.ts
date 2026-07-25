@@ -142,6 +142,113 @@ const de = {
       { title: "Physiotherapie", text: "Serientermine und Rezept-Zeiträume ohne Zettelwirtschaft." },
     ],
   },
+  productDemo: {
+    eyebrow: "So einfach kann dein Kunde buchen",
+    title: "Der Buchungsablauf aus Sicht deiner Kund:innen.",
+    text: "Eine vereinfachte Vorschau des Buchungsablaufs — keine echten Daten werden gesendet.",
+    stepLabels: ["Leistung", "Mitarbeiter:in", "Datum", "Uhrzeit", "Bestätigung"],
+    services: [
+      { title: "Balayage & Schnitt", meta: "2 Std · ab 149 €" },
+      { title: "Herrenschnitt", meta: "45 Min · 38 €" },
+      { title: "Waschen & Föhnen", meta: "30 Min · 22 €" },
+    ],
+    employees: [
+      { name: "Mara", role: "Colorist" },
+      { name: "Alex", role: "Stylist" },
+      { name: "Lisa", role: "Stylist" },
+    ],
+    dates: ["Mo 10.", "Di 11.", "Mi 12.", "Do 13.", "Fr 14."],
+    times: ["09:00", "10:30", "13:00", "15:30", "17:00"],
+    back: "Zurück",
+    next: "Weiter",
+    confirmCta: "Termin bestätigen",
+    confirmedTitle: "Termin bestätigt",
+    confirmedText: "So einfach kommt eine Buchung bei dir an — inklusive automatischer Bestätigung.",
+    restart: "Ablauf erneut ansehen",
+    afterCtaLabel: "14 Tage kostenlos ausprobieren",
+  },
+  objections: {
+    eyebrow: "Ist GentleBook auch für mein Unternehmen geeignet?",
+    title: "Die ehrlichen Antworten auf typische Bedenken.",
+    items: [
+      {
+        q: "Ich bin technisch nicht besonders erfahren.",
+        a: "Die Einrichtung ist als geführter Ablauf gedacht — keine Installation, keine Programmierkenntnisse nötig. Bei Fragen hilft unser persönlicher Support.",
+      },
+      {
+        q: "Ich habe bereits einen Kalender.",
+        a: "Bestehende Termine trägst du einmalig in GentleBook nach. Ab dann läuft alles an einem zentralen Ort statt in mehreren Tools parallel.",
+      },
+      {
+        q: "Meine Kund:innen buchen bisher hauptsächlich telefonisch.",
+        a: "Das bleibt möglich: Telefonische Buchungen trägst du weiterhin manuell ein. Online-Buchungen kommen einfach als zusätzlicher Kanal dazu.",
+      },
+      {
+        q: "Die Einrichtung klingt aufwendig.",
+        a: "Du legst Leistungen, Arbeitszeiten und Mitarbeiter:innen in wenigen Schritten an — nicht mehr, als für den täglichen Betrieb ohnehin nötig ist.",
+      },
+      {
+        q: "Ich habe nur wenige Mitarbeiter — lohnt sich das?",
+        a: "Ja. Schon der Trial und der Starter-Plan sind auf kleine Teams zugeschnitten (2 Mitarbeiter-Konten) und wachsen bei Bedarf mit.",
+      },
+      {
+        q: "Ich arbeite allein.",
+        a: "Auch als Einzelunternehmer:in profitierst du von einer eigenen Buchungsseite und automatischen Erinnerungen — ganz ohne Team-Verwaltung nutzen zu müssen.",
+      },
+      {
+        q: "Ich möchte meine bestehende Website behalten.",
+        a: "Musst du auch nicht ändern: Deine GentleBook-Buchungsseite hat eine eigene URL, die du einfach von deiner bestehenden Website aus verlinkst.",
+      },
+      {
+        q: "Was passiert nach den 14 Testtagen?",
+        a: "Ohne aktiven Plan wird die Admin-Oberfläche danach gesperrt — deine Daten gehen dabei nicht verloren. Die Aktivierung eines Plans wird aktuell manuell innerhalb von 24 Stunden bearbeitet.",
+      },
+      {
+        q: "Sind meine Daten geschützt?",
+        a: "Deine Kundendaten gehören dir. Der Umgang mit Daten ist bei GentleBook bewusst datenschutzbewusst gestaltet — Details findest du in unserer Datenschutzerklärung.",
+      },
+      {
+        q: "Kann ich GentleBook auf dem Smartphone nutzen?",
+        a: "Deine Buchungsseite ist für Smartphone, Tablet und Desktop optimiert, damit Kund:innen bequem von unterwegs buchen können.",
+      },
+    ],
+  },
+  comparison: {
+    eyebrow: "Im Vergleich",
+    title: "Wie GentleBook sich von anderen Organisationsformen unterscheidet.",
+    text: "Ein fairer Vergleich zwischen klassischer Organisation, einem einfachen Kalender-Tool und GentleBook.",
+    columns: ["Telefon & Papier", "Einfacher Kalender", "GentleBook"],
+    rows: [
+      { feature: "Kund:innen buchen selbst", values: ["no", "partial", "yes"] as const },
+      { feature: "Rund um die Uhr buchbar", values: ["no", "partial", "yes"] as const },
+      { feature: "Leistungen individuell auswählbar", values: ["no", "partial", "yes"] as const },
+      { feature: "Mitarbeiterverwaltung", values: ["no", "partial", "yes"] as const },
+      { feature: "Automatische Bestätigung", values: ["no", "partial", "yes"] as const },
+      { feature: "Professionelle Buchungsseite", values: ["no", "partial", "yes"] as const },
+    ],
+    disclaimer:
+      "Der Vergleich bezieht sich auf typische Organisationsformen, nicht auf ein bestimmtes Konkurrenzprodukt.",
+  },
+  beforeAfter: {
+    eyebrow: "Der Unterschied",
+    title: "Termine sollten dein Geschäft voranbringen — nicht deinen Arbeitstag bestimmen.",
+    withoutHeading: "Ohne GentleBook",
+    withoutItems: [
+      "Buchungen per Telefon, WhatsApp, Instagram und E-Mail",
+      "Termine manuell in den Kalender übertragen",
+      "Rückfragen zu freien Zeiten unterbrechen die Arbeit am Kunden",
+      "Kundendaten über mehrere Kanäle verstreut",
+      "Nach Feierabend nicht erreichbar",
+    ],
+    withHeading: "Mit GentleBook",
+    withItems: [
+      "Online-Buchung rund um die Uhr, auch außerhalb der Öffnungszeiten",
+      "Eine zentrale Terminübersicht für das ganze Team",
+      "Automatische Bestätigungen und Erinnerungen",
+      "Leistungen und Mitarbeiter:innen klar organisiert",
+      "Professionelle, mobil optimierte Buchungserfahrung",
+    ],
+  },
   howItWorks: {
     eyebrow: "So funktioniert's",
     title: "In drei Schritten von Terminchaos zu Online-Buchung.",
@@ -658,6 +765,112 @@ const en: typeof de = {
       { title: "Massage practices", text: "Calm transitions between sessions thanks to buffer times." },
       { title: "Tattoo studios", text: "Long sessions, deposits in view, calendars per artist." },
       { title: "Physiotherapy", text: "Recurring appointments and prescription periods without paperwork." },
+    ],
+  },
+  productDemo: {
+    eyebrow: "This is how easy booking is for your clients",
+    title: "The booking flow from your clients' point of view.",
+    text: "A simplified preview of the booking flow — no real data is sent.",
+    stepLabels: ["Service", "Team member", "Date", "Time", "Confirmation"],
+    services: [
+      { title: "Balayage & cut", meta: "2 h · from €149" },
+      { title: "Men's haircut", meta: "45 min · €38" },
+      { title: "Wash & blow-dry", meta: "30 min · €22" },
+    ],
+    employees: [
+      { name: "Mara", role: "Colorist" },
+      { name: "Alex", role: "Stylist" },
+      { name: "Lisa", role: "Stylist" },
+    ],
+    dates: ["Mon 10", "Tue 11", "Wed 12", "Thu 13", "Fri 14"],
+    times: ["09:00", "10:30", "13:00", "15:30", "17:00"],
+    back: "Back",
+    next: "Next",
+    confirmCta: "Confirm appointment",
+    confirmedTitle: "Appointment confirmed",
+    confirmedText: "This is how a booking reaches you — including an automatic confirmation.",
+    restart: "Watch the flow again",
+    afterCtaLabel: "Try it free for 14 days",
+  },
+  objections: {
+    eyebrow: "Is GentleBook right for my business?",
+    title: "Honest answers to common concerns.",
+    items: [
+      {
+        q: "I'm not very tech-savvy.",
+        a: "Setup is designed as a guided process — no installation, no coding required. Our personal support is there if you have questions.",
+      },
+      {
+        q: "I already have a calendar.",
+        a: "You add existing appointments to GentleBook once. From then on, everything runs in one central place instead of several tools in parallel.",
+      },
+      {
+        q: "My clients mostly book by phone so far.",
+        a: "That's fine: you can keep entering phone bookings manually. Online booking simply becomes an additional channel.",
+      },
+      {
+        q: "Setup sounds like a lot of work.",
+        a: "You add services, working hours and staff in a few steps — no more than you'd need for day-to-day operations anyway.",
+      },
+      {
+        q: "I only have a few staff members — is it worth it?",
+        a: "Yes. Both the trial and the Starter plan are sized for small teams (2 staff accounts) and grow with you as needed.",
+      },
+      {
+        q: "I work alone.",
+        a: "Even as a solo business you benefit from your own booking page and automatic reminders — no team management required.",
+      },
+      {
+        q: "I want to keep my existing website.",
+        a: "You don't have to change it: your GentleBook booking page has its own URL you simply link from your existing website.",
+      },
+      {
+        q: "What happens after the 14 trial days?",
+        a: "Without an active plan, admin access is locked afterwards — your data isn't lost. Plan activation is currently handled manually within 24 hours.",
+      },
+      {
+        q: "Is my data protected?",
+        a: "Your client data belongs to you. Data handling at GentleBook is designed with privacy in mind — details are covered in our privacy policy.",
+      },
+      {
+        q: "Can I use GentleBook on my phone?",
+        a: "Your booking page is optimized for phone, tablet and desktop, so clients can book comfortably on the go.",
+      },
+    ],
+  },
+  comparison: {
+    eyebrow: "How it compares",
+    title: "How GentleBook differs from other ways of organizing appointments.",
+    text: "A fair comparison between classic organization, a simple calendar tool, and GentleBook.",
+    columns: ["Phone & paper", "Simple calendar", "GentleBook"],
+    rows: [
+      { feature: "Clients book themselves", values: ["no", "partial", "yes"] as const },
+      { feature: "Bookable around the clock", values: ["no", "partial", "yes"] as const },
+      { feature: "Services individually selectable", values: ["no", "partial", "yes"] as const },
+      { feature: "Staff management", values: ["no", "partial", "yes"] as const },
+      { feature: "Automatic confirmation", values: ["no", "partial", "yes"] as const },
+      { feature: "Professional booking page", values: ["no", "partial", "yes"] as const },
+    ],
+    disclaimer: "This comparison refers to typical ways of organizing appointments, not a specific competitor product.",
+  },
+  beforeAfter: {
+    eyebrow: "The difference",
+    title: "Appointments should grow your business — not run your day.",
+    withoutHeading: "Without GentleBook",
+    withoutItems: [
+      "Bookings via phone, WhatsApp, Instagram and email",
+      "Appointments transferred into the calendar by hand",
+      "Questions about free slots interrupt work with clients",
+      "Client data scattered across multiple channels",
+      "Unreachable after closing time",
+    ],
+    withHeading: "With GentleBook",
+    withItems: [
+      "Online booking around the clock, even outside business hours",
+      "One central appointment overview for the whole team",
+      "Automatic confirmations and reminders",
+      "Services and staff clearly organized",
+      "A professional, mobile-optimized booking experience",
     ],
   },
   howItWorks: {
