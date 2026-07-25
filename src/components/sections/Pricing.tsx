@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Check } from "lucide-react";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
@@ -13,6 +16,7 @@ import { localizedPath, type Locale } from "@/lib/locales";
  * hier wird nur gerendert.
  */
 export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const [yearly, setYearly] = useState(false);
   const t = dict.pricingSection;
 
   return (
@@ -34,12 +38,45 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
             <p className="mt-5 text-lg text-mist">{t.text}</p>
           </Reveal>
 
+          <Reveal delay={0.22} className="mt-8 flex justify-center">
+            <div
+              className="inline-flex items-center rounded-full border border-ink/10 bg-white p-1.5 shadow-soft"
+              role="group"
+              aria-label="Abrechnungszeitraum"
+            >
+              <button
+                type="button"
+                onClick={() => setYearly(false)}
+                aria-pressed={!yearly}
+                className={cn(
+                  "rounded-full px-5 py-2 text-sm font-semibold transition-all",
+                  !yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
+                )}
+              >
+                {t.monthly}
+              </button>
+              <button
+                type="button"
+                onClick={() => setYearly(true)}
+                aria-pressed={yearly}
+                className={cn(
+                  "flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all",
+                  yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
+                )}
+              >
+                {t.yearly}
+                <span className="rounded-full bg-brand-gradient px-2 py-0.5 text-[11px] font-bold text-white">
+                  {t.yearlyBadge}
+                </span>
+              </button>
+            </div>
+          </Reveal>
         </div>
 
         <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
           {t.plans.map((plan, i) => {
             const highlighted = plan.id === "professional";
-            const price = getPlanPrice(plan.id);
+            const price = getPlanPrice(plan.id, yearly);
             return (
               <Reveal
                 key={plan.id}
@@ -71,6 +108,15 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
                   <span className={cn("text-sm", highlighted ? "text-white/60" : "text-mist")}>
                     {plan.id === "trial" ? t.trialDuration : t.perMonth}
                   </span>
+                </p>
+                <p
+                  className={cn(
+                    "mt-1 h-5 text-xs",
+                    highlighted ? "text-white/50" : "text-mist",
+                    (!yearly || plan.id === "trial") && "invisible"
+                  )}
+                >
+                  {t.billedYearly}
                 </p>
 
                 <ul className="mt-6 flex-1 space-y-3">

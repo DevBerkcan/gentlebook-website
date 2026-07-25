@@ -1,5 +1,5 @@
 import type { Locale } from "./locales";
-import { pricing } from "./pricing";
+import { pricing, yearlyPerMonth } from "./pricing";
 
 /**
  * Gesamte Website-Copy, zweisprachig. Deutsch ist die Referenz.
@@ -299,7 +299,11 @@ const de = {
     eyebrow: "Preise",
     title: "Der passende Plan für dein Unternehmen.",
     text: "14 Tage kostenlos testen. Danach wählst du den Plan, der zu deinem Team passt. Alle Preise zzgl. USt.",
+    monthly: "Monatlich",
+    yearly: "Jährlich",
+    yearlyBadge: "−20 %",
     perMonth: "/ Monat",
+    billedYearly: "bei jährlicher Zahlung",
     trialDuration: "/ 14 Tage",
     popular: "Empfohlen",
     ctaTrial: "14 Tage kostenlos testen",
@@ -622,13 +626,6 @@ const de = {
       successText: "Wir melden uns so schnell wie möglich bei dir zurück.",
     },
   },
-  loginPage: {
-    eyebrow: "Login",
-    title: "Anmeldung folgt in Kürze an dieser Stelle.",
-    text: "Der Login-Bereich für bestehende GentleBook-Kund:innen wird hier verlinkt, sobald er final ist. Du hast schon einen Zugang? Melde dich bei unserem Support.",
-    backHome: "Zurück zur Startseite",
-    contactCta: "Support kontaktieren",
-  },
 };
 
 const en: typeof de = {
@@ -919,7 +916,11 @@ const en: typeof de = {
     eyebrow: "Pricing",
     title: "The right plan for your business.",
     text: "Try it free for 14 days, then choose the plan that fits your team. All prices excl. VAT.",
+    monthly: "Monthly",
+    yearly: "Yearly",
+    yearlyBadge: "−20%",
     perMonth: "/ month",
+    billedYearly: "billed yearly",
     trialDuration: "/ 14 days",
     popular: "Recommended",
     ctaTrial: "Start 14-day free trial",
@@ -1240,13 +1241,6 @@ const en: typeof de = {
       successText: "We'll get back to you as soon as possible.",
     },
   },
-  loginPage: {
-    eyebrow: "Login",
-    title: "Sign-in is coming soon.",
-    text: "The login area for existing GentleBook customers will be linked here once it's finalized. Already have access? Reach out to our support.",
-    backHome: "Back to homepage",
-    contactCta: "Contact support",
-  },
 };
 
 export type Dictionary = typeof de;
@@ -1258,6 +1252,7 @@ export function getDictionary(locale: Locale): Dictionary {
 }
 
 /** Für die Pricing-Section: Werte aus lib/pricing.ts injizieren */
-export function getPlanPrice(id: keyof typeof pricing) {
-  return pricing[id].monthly;
+export function getPlanPrice(id: keyof typeof pricing, yearly: boolean) {
+  if (id === "trial") return pricing.trial.monthly;
+  return yearly ? yearlyPerMonth(id) : pricing[id].monthly;
 }

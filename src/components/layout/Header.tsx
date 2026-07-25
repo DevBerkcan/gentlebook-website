@@ -90,12 +90,13 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
               <Globe className="h-4 w-4" aria-hidden="true" />
               {otherLocale.toUpperCase()}
             </Link>
-            <Link
-              href={localizedPath(locale, siteConfig.routes.login)}
+            <a
+              href={siteConfig.externalLoginUrl}
+              rel="noopener noreferrer"
               className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
             >
               {dict.nav.login}
-            </Link>
+            </a>
             <Button href={localizedPath(locale, siteConfig.routes.register)}>{dict.nav.cta}</Button>
           </div>
 
@@ -135,13 +136,14 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={localizedPath(locale, siteConfig.routes.login)}
+            <a
+              href={siteConfig.externalLoginUrl}
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="rounded-xl px-4 py-3 text-base font-medium text-ink/80 transition-colors hover:bg-lavender/60 hover:text-ink"
             >
               {dict.nav.login}
-            </Link>
+            </a>
           </nav>
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-ink/10 pt-4">
             <Link

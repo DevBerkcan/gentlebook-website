@@ -21,7 +21,6 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
     { href: p(siteConfig.routes.faq), label: dict.nav.faq },
     { href: p(siteConfig.routes.blog), label: dict.nav.blog },
     { href: p(siteConfig.routes.contact), label: dict.footer.contact },
-    { href: p(siteConfig.routes.login), label: dict.nav.login },
   ];
 
   const legalLinks = [
@@ -67,6 +66,15 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={siteConfig.externalLoginUrl}
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink/60 transition-colors hover:text-ink"
+                >
+                  {dict.nav.login}
+                </a>
+              </li>
             </ul>
           </nav>
 

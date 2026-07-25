@@ -14,6 +14,10 @@ export const siteConfig = {
   // Ohne aktiven (angefragten) Plan wird die Admin-Oberfläche nach 14 Tagen
   // gesperrt statt automatisch in ein bezahltes Abo zu wechseln.
   trialAutoConverts: false,
+  // Die eigentliche GentleBook-Anwendung (Admin/Tenant-Login). Marketing-Site
+  // verlinkt "Anmelden" direkt dorthin statt auf eine eigene Login-Seite.
+  externalAppUrl: "https://gentle-book-ui.vercel.app",
+  externalLoginUrl: "https://gentle-book-ui.vercel.app/admin/login",
   routes: {
     home: "/",
     features: "/features",
