@@ -1,0 +1,155 @@
+"use client";
+
+import { useState } from "react";
+import { Check } from "lucide-react";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Reveal from "@/components/ui/Reveal";
+import Button from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+import { getPlanPrice } from "@/lib/dictionaries";
+import type { Dictionary } from "@/lib/dictionaries";
+
+/**
+ * Preise kommen zentral aus lib/pricing.ts (Platzhalter/TBD) —
+ * hier wird nur gerendert.
+ */
+export default function Pricing({ dict }: { dict: Dictionary }) {
+  const [yearly, setYearly] = useState(false);
+  const t = dict.pricingSection;
+
+  return (
+    <section id="pricing" className="bg-lavender/40 py-20 sm:py-28" aria-labelledby="pricing-title">
+      <div className="u-container">
+        <div className="mx-auto max-w-2xl text-center">
+          <Reveal>
+            <Eyebrow>{t.eyebrow}</Eyebrow>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2
+              id="pricing-title"
+              className="mt-5 font-display text-[clamp(1.9rem,4.5vw,3rem)] font-semibold leading-tight text-ink"
+            >
+              {t.title}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className="mt-5 text-lg text-mist">{t.text}</p>
+          </Reveal>
+
+          {/* Monats-/Jahres-Toggle */}
+          <Reveal delay={0.22} className="mt-8 flex justify-center">
+            <div
+              className="inline-flex items-center rounded-full border border-ink/10 bg-white p-1.5 shadow-soft"
+              role="group"
+              aria-label="Abrechnungszeitraum"
+            >
+              <button
+                type="button"
+                onClick={() => setYearly(false)}
+                aria-pressed={!yearly}
+                className={cn(
+                  "rounded-full px-5 py-2 text-sm font-semibold transition-all",
+                  !yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
+                )}
+              >
+                {t.monthly}
+              </button>
+              <button
+                type="button"
+                onClick={() => setYearly(true)}
+                aria-pressed={yearly}
+                className={cn(
+                  "flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all",
+                  yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
+                )}
+              >
+                {t.yearly}
+                <span className="rounded-full bg-brand-gradient px-2 py-0.5 text-[11px] font-bold text-white">
+                  {t.yearlyBadge}
+                </span>
+              </button>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
+          {t.plans.map((plan, i) => {
+            const highlighted = plan.id === "professional";
+            const price = getPlanPrice(plan.id, yearly);
+            return (
+              <Reveal
+                key={plan.id}
+                delay={i * 0.1}
+                variant="scale"
+                as="article"
+                className={cn(
+                  "relative flex flex-col rounded-4xl p-8",
+                  highlighted
+                    ? "bg-ink text-white shadow-lifted lg:-my-4 lg:py-12"
+                    : "border border-ink/5 bg-white text-ink shadow-soft"
+                )}
+              >
+                {highlighted && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-brand-gradient px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-cta">
+                    {t.popular}
+                  </span>
+                )}
+
+                <h3 className="font-display text-xl font-semibold">{plan.name}</h3>
+                <p className={cn("mt-2 text-sm leading-relaxed", highlighted ? "text-white/60" : "text-mist")}>
+                  {plan.description}
+                </p>
+
+                <p className="mt-6 flex items-baseline gap-1.5">
+                  <span className="font-display text-5xl font-semibold tracking-tight">
+                    {price} €
+                  </span>
+                  <span className={cn("text-sm", highlighted ? "text-white/60" : "text-mist")}>
+                    {t.perMonth}
+                  </span>
+                </p>
+                <p
+                  className={cn(
+                    "mt-1 h-5 text-xs",
+                    highlighted ? "text-white/50" : "text-mist",
+                    !yearly && "invisible"
+                  )}
+                >
+                  {t.billedYearly}
+                </p>
+
+                <ul className="mt-6 flex-1 space-y-3">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm">
+                      <span
+                        className={cn(
+                          "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
+                          highlighted ? "bg-brand-gradient text-white" : "bg-brand-gradient-soft text-violet"
+                        )}
+                      >
+                        <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
+                      </span>
+                      <span className={highlighted ? "text-white/85" : "text-ink/80"}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  href="#"
+                  size="lg"
+                  variant={highlighted ? "primary" : "outline"}
+                  className="mt-8 w-full"
+                >
+                  {plan.id === "business" ? t.ctaContact : t.ctaTrial}
+                </Button>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* TBD-Hinweis, bis die Preise final sind */}
+        <p className="mt-8 text-center text-xs text-mist">{t.disclaimer}</p>
+      </div>
+    </section>
+  );
+}
