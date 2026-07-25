@@ -3,31 +3,40 @@ import { Instagram, Linkedin, Globe } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import { localizedPath, type Locale } from "@/lib/locales";
 import type { Dictionary } from "@/lib/dictionaries";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
   const otherLocale: Locale = locale === "de" ? "en" : "de";
-
-  const legalLinks = [
-    { href: localizedPath(locale, "/logo"), label: dict.footer.brand },
-    { href: localizedPath(locale, "/impressum"), label: dict.footer.imprint },
-    { href: localizedPath(locale, "/datenschutz"), label: dict.footer.privacy },
-    { href: localizedPath(locale, "/agb"), label: dict.footer.terms },
-  ];
+  const p = (path: string) => localizedPath(locale, path);
 
   const productLinks = [
-    { href: "#features", label: dict.nav.features },
-    { href: "#industries", label: dict.nav.industries },
-    { href: "#pricing", label: dict.nav.pricing },
-    { href: "#faq", label: dict.nav.faq },
+    { href: p(siteConfig.routes.features), label: dict.nav.features },
+    { href: p(siteConfig.routes.pricing), label: dict.nav.pricing },
+    { href: p(siteConfig.routes.industries), label: dict.nav.industries },
+    { href: p(siteConfig.routes.howItWorks), label: dict.nav.howItWorks },
+  ];
+
+  const helpLinks = [
+    { href: p(siteConfig.routes.faq), label: dict.nav.faq },
+    { href: p(siteConfig.routes.blog), label: dict.nav.blog },
+    { href: p(siteConfig.routes.contact), label: dict.footer.contact },
+    { href: p(siteConfig.routes.login), label: dict.nav.login },
+  ];
+
+  const legalLinks = [
+    { href: p(siteConfig.routes.logo), label: dict.footer.brand },
+    { href: p(siteConfig.routes.imprint), label: dict.footer.imprint },
+    { href: p(siteConfig.routes.privacy), label: dict.footer.privacy },
+    { href: p(siteConfig.routes.terms), label: dict.footer.terms },
   ];
 
   return (
     <footer className="border-t border-ink/5 bg-lavender/50">
       <div className="u-container py-14 sm:py-16">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
-            <Link href={localizedPath(locale, "/")} aria-label="GentleBook — Startseite">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href={p("/")} aria-label="GentleBook — Startseite">
               <Logo />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-mist">
@@ -40,12 +49,22 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
             <ul className="mt-4 space-y-2.5">
               {productLinks.map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="text-sm text-ink/60 transition-colors hover:text-ink"
-                  >
+                  <Link href={l.href} className="text-sm text-ink/60 transition-colors hover:text-ink">
                     {l.label}
-                  </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label={dict.footer.help}>
+            <h2 className="text-sm font-semibold text-ink">{dict.footer.help}</h2>
+            <ul className="mt-4 space-y-2.5">
+              {helpLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-ink/60 transition-colors hover:text-ink">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -56,14 +75,28 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
             <ul className="mt-4 space-y-2.5">
               {legalLinks.map((l) => (
                 <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-sm text-ink/60 transition-colors hover:text-ink"
-                  >
+                  <Link href={l.href} className="text-sm text-ink/60 transition-colors hover:text-ink">
                     {l.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                {/* Cookie-Einstellungen: TODO — sobald eine Consent-Lösung eingebunden ist,
+                    hier den echten Öffner-Button für das Consent-Banner verlinken. */}
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title={
+                    locale === "de"
+                      ? "Noch keine Cookie-/Tracking-Skripte im Einsatz"
+                      : "No cookie/tracking scripts in use yet"
+                  }
+                  className="cursor-not-allowed text-sm text-ink/35"
+                >
+                  {dict.footer.cookieSettings}
+                </button>
+              </li>
             </ul>
           </nav>
 

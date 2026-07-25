@@ -6,7 +6,7 @@ import type { Config } from "tailwindcss";
  * ─ lavender #ECEBF2  helles Lavendel (Akzent-/Hintergrundflächen)
  * ─ violet   #6355E4  Gradient-Start (Primär-CTA)
  * ─ teal     #17A398  Gradient-Ende
- * ─ mist     #8A8A8A  gedämpftes Grau (Fließtext)
+ * ─ mist     #64748B  gedämpftes Grau (Fließtext, WCAG-AA-Kontrast auf Weiß)
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
@@ -17,7 +17,7 @@ const config: Config = {
         lavender: "#ECEBF2",
         violet: "#6355E4",
         teal: "#17A398",
-        mist: "#8A8A8A",
+        mist: "#64748B",
       },
       fontFamily: {
         display: ["var(--font-display)", "serif"],

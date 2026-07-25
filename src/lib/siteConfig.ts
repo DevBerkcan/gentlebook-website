@@ -8,10 +8,12 @@ export const siteConfig = {
   name: "GentleBook",
   parentCompany: "Gentle Suite",
   trialDays: 14,
-  // TODO (Produktentscheidung, vor Launch bestätigen): Kreditkarte für Testphase nötig?
-  trialRequiresCreditCard: null as boolean | null,
-  // TODO (Produktentscheidung): verlängert sich der Test automatisch in ein bezahltes Abo?
-  trialAutoConverts: null as boolean | null,
+  // Laut Preise-Sektion: Aktivierung eines Plans erfolgt aktuell manuell (~24h),
+  // keine automatisierte Kartenabfrage vorgesehen. Vor Launch final bestätigen.
+  trialRequiresCreditCard: false,
+  // Ohne aktiven (angefragten) Plan wird die Admin-Oberfläche nach 14 Tagen
+  // gesperrt statt automatisch in ein bezahltes Abo zu wechseln.
+  trialAutoConverts: false,
   routes: {
     home: "/",
     features: "/features",

@@ -9,6 +9,7 @@ import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { localizedPath, type Locale } from "@/lib/locales";
 import type { Dictionary } from "@/lib/dictionaries";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false);
@@ -41,10 +42,11 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
   const switchHref = localizedPath(otherLocale, pathWithoutLocale);
 
   const nav = [
-    { href: "#features", label: dict.nav.features },
-    { href: "#industries", label: dict.nav.industries },
-    { href: "#pricing", label: dict.nav.pricing },
-    { href: "#faq", label: dict.nav.faq },
+    { href: localizedPath(locale, siteConfig.routes.features), label: dict.nav.features },
+    { href: localizedPath(locale, siteConfig.routes.industries), label: dict.nav.industries },
+    { href: localizedPath(locale, siteConfig.routes.howItWorks), label: dict.nav.howItWorks },
+    { href: localizedPath(locale, siteConfig.routes.pricing), label: dict.nav.pricing },
+    { href: localizedPath(locale, siteConfig.routes.faq), label: dict.nav.faq },
   ];
 
   return (
@@ -69,13 +71,13 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Hauptnavigation">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -89,12 +91,12 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
               {otherLocale.toUpperCase()}
             </Link>
             <Link
-              href="#"
+              href={localizedPath(locale, siteConfig.routes.login)}
               className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
             >
               {dict.nav.login}
             </Link>
-            <Button href="#pricing">{dict.nav.cta}</Button>
+            <Button href={localizedPath(locale, siteConfig.routes.register)}>{dict.nav.cta}</Button>
           </div>
 
           <button
@@ -124,15 +126,22 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile Navigation">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="rounded-xl px-4 py-3 text-base font-medium text-ink/80 transition-colors hover:bg-lavender/60 hover:text-ink"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
+            <Link
+              href={localizedPath(locale, siteConfig.routes.login)}
+              onClick={() => setOpen(false)}
+              className="rounded-xl px-4 py-3 text-base font-medium text-ink/80 transition-colors hover:bg-lavender/60 hover:text-ink"
+            >
+              {dict.nav.login}
+            </Link>
           </nav>
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-ink/10 pt-4">
             <Link
@@ -142,7 +151,10 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
               <Globe className="h-4 w-4" aria-hidden="true" />
               {otherLocale === "de" ? "Deutsch" : "English"}
             </Link>
-            <Button href="#pricing" className="flex-1 text-center">
+            <Button
+              href={localizedPath(locale, siteConfig.routes.register)}
+              className="flex-1 text-center"
+            >
               {dict.nav.cta}
             </Button>
           </div>

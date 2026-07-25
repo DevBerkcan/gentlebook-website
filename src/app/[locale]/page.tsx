@@ -49,15 +49,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }}
       />
 
-      <Hero dict={dict} />
+      <Hero dict={dict} locale={locale} />
       <Pain dict={dict} />
       <Showcase dict={dict} />
       <Features dict={dict} />
       <Industries dict={dict} />
-      <SocialProof dict={dict} locale={locale} />
-      <Pricing dict={dict} />
+      <SocialProof dict={dict} />
+      <Pricing dict={dict} locale={locale} />
       <Faq dict={dict} />
-      <FinalCta dict={dict} />
+      <FinalCta dict={dict} locale={locale} />
     </>
   );
 }

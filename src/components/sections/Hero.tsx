@@ -7,8 +7,11 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import HeroVisual from "@/components/three/HeroVisual";
 import { gsap, MOTION_OK } from "@/lib/gsap";
 import type { Dictionary } from "@/lib/dictionaries";
+import { siteConfig } from "@/lib/siteConfig";
+import { localizedPath, type Locale } from "@/lib/locales";
+import { CheckCircle2 } from "lucide-react";
 
-export default function Hero({ dict }: { dict: Dictionary }) {
+export default function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -106,11 +109,11 @@ export default function Hero({ dict }: { dict: Dictionary }) {
               data-hero-fade
               className="mt-8 flex flex-wrap items-center gap-4 motion-safe:opacity-0"
             >
-              <Button href="#pricing" size="lg">
+              <Button href={localizedPath(locale, siteConfig.routes.register)} size="lg">
                 {dict.hero.ctaPrimary}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button href="#showcase" variant="outline" size="lg">
+              <Button href="#product-demo" variant="outline" size="lg">
                 <Play className="h-4 w-4" />
                 {dict.hero.ctaSecondary}
               </Button>
@@ -119,6 +122,18 @@ export default function Hero({ dict }: { dict: Dictionary }) {
             <p data-hero-fade className="mt-6 text-sm text-mist motion-safe:opacity-0">
               {dict.hero.trust}
             </p>
+
+            <ul
+              data-hero-fade
+              className="mt-5 grid max-w-lg grid-cols-1 gap-x-6 gap-y-2 text-sm text-ink/70 motion-safe:opacity-0 sm:grid-cols-2"
+            >
+              {dict.hero.benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" aria-hidden="true" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Visual */}

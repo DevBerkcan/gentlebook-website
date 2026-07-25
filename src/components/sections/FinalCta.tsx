@@ -2,8 +2,10 @@ import { ArrowRight, Play } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import type { Dictionary } from "@/lib/dictionaries";
+import { siteConfig } from "@/lib/siteConfig";
+import { localizedPath, type Locale } from "@/lib/locales";
 
-export default function FinalCta({ dict }: { dict: Dictionary }) {
+export default function FinalCta({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <section className="pb-20 pt-4 sm:pb-28" aria-labelledby="final-cta-title">
       <div className="u-container">
@@ -30,7 +32,7 @@ export default function FinalCta({ dict }: { dict: Dictionary }) {
 
               <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
                 <Button
-                  href="#"
+                  href={localizedPath(locale, siteConfig.routes.register)}
                   size="lg"
                   className="bg-white !text-ink shadow-lifted hover:bg-lavender"
                   variant="ghost"
@@ -39,7 +41,7 @@ export default function FinalCta({ dict }: { dict: Dictionary }) {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button
-                  href="#showcase"
+                  href={localizedPath(locale, siteConfig.routes.demo)}
                   size="lg"
                   variant="ghost"
                   className="border border-white/40 text-white hover:border-white hover:!text-white"

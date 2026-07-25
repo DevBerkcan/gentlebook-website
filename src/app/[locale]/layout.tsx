@@ -7,6 +7,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 // TODO vor Launch: finale Domain eintragen
 const SITE_URL = "https://gentlebook.app";
@@ -80,9 +81,34 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${fontBody.variable} ${fontDisplay.variable}`}>
       <body className="grain">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "GentleBook",
+            url: SITE_URL,
+            logo: `${SITE_URL}/brand/svg/gentlebook-logo-horizontal.svg`,
+            // TODO vor Launch: echte Kontakt-/Support-Adresse ergänzen, sobald final.
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "GentleBook",
+            url: SITE_URL,
+            inLanguage: locale === "de" ? "de-DE" : "en-US",
+          }}
+        />
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          {locale === "de" ? "Zum Inhalt springen" : "Skip to content"}
+        </a>
         <SmoothScroll>
           <Header locale={locale} dict={dict} />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer locale={locale} dict={dict} />
         </SmoothScroll>
       </body>

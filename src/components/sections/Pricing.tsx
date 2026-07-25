@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Check } from "lucide-react";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
@@ -8,13 +5,14 @@ import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { getPlanPrice } from "@/lib/dictionaries";
 import type { Dictionary } from "@/lib/dictionaries";
+import { siteConfig } from "@/lib/siteConfig";
+import { localizedPath, type Locale } from "@/lib/locales";
 
 /**
  * Preise kommen zentral aus lib/pricing.ts (Platzhalter/TBD) —
  * hier wird nur gerendert.
  */
-export default function Pricing({ dict }: { dict: Dictionary }) {
-  const [yearly, setYearly] = useState(false);
+export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.pricingSection;
 
   return (
@@ -36,46 +34,12 @@ export default function Pricing({ dict }: { dict: Dictionary }) {
             <p className="mt-5 text-lg text-mist">{t.text}</p>
           </Reveal>
 
-          {/* Monats-/Jahres-Toggle */}
-          <Reveal delay={0.22} className="mt-8 flex justify-center">
-            <div
-              className="inline-flex items-center rounded-full border border-ink/10 bg-white p-1.5 shadow-soft"
-              role="group"
-              aria-label="Abrechnungszeitraum"
-            >
-              <button
-                type="button"
-                onClick={() => setYearly(false)}
-                aria-pressed={!yearly}
-                className={cn(
-                  "rounded-full px-5 py-2 text-sm font-semibold transition-all",
-                  !yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
-                )}
-              >
-                {t.monthly}
-              </button>
-              <button
-                type="button"
-                onClick={() => setYearly(true)}
-                aria-pressed={yearly}
-                className={cn(
-                  "flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all",
-                  yearly ? "bg-ink text-white shadow-soft" : "text-ink/60 hover:text-ink"
-                )}
-              >
-                {t.yearly}
-                <span className="rounded-full bg-brand-gradient px-2 py-0.5 text-[11px] font-bold text-white">
-                  {t.yearlyBadge}
-                </span>
-              </button>
-            </div>
-          </Reveal>
         </div>
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
+        <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
           {t.plans.map((plan, i) => {
             const highlighted = plan.id === "professional";
-            const price = getPlanPrice(plan.id, yearly);
+            const price = getPlanPrice(plan.id);
             return (
               <Reveal
                 key={plan.id}
@@ -83,9 +47,9 @@ export default function Pricing({ dict }: { dict: Dictionary }) {
                 variant="scale"
                 as="article"
                 className={cn(
-                  "relative flex flex-col rounded-4xl p-8",
+                  "relative flex flex-col rounded-4xl p-7",
                   highlighted
-                    ? "bg-ink text-white shadow-lifted lg:-my-4 lg:py-12"
+                    ? "bg-ink text-white shadow-lifted xl:-my-4 xl:py-11"
                     : "border border-ink/5 bg-white text-ink shadow-soft"
                 )}
               >
@@ -105,17 +69,8 @@ export default function Pricing({ dict }: { dict: Dictionary }) {
                     {price} €
                   </span>
                   <span className={cn("text-sm", highlighted ? "text-white/60" : "text-mist")}>
-                    {t.perMonth}
+                    {plan.id === "trial" ? t.trialDuration : t.perMonth}
                   </span>
-                </p>
-                <p
-                  className={cn(
-                    "mt-1 h-5 text-xs",
-                    highlighted ? "text-white/50" : "text-mist",
-                    !yearly && "invisible"
-                  )}
-                >
-                  {t.billedYearly}
                 </p>
 
                 <ul className="mt-6 flex-1 space-y-3">
@@ -135,20 +90,35 @@ export default function Pricing({ dict }: { dict: Dictionary }) {
                 </ul>
 
                 <Button
-                  href="#"
+                  href={localizedPath(
+                    locale,
+                    plan.id === "business" ? siteConfig.routes.contact : siteConfig.routes.register
+                  )}
                   size="lg"
                   variant={highlighted ? "primary" : "outline"}
                   className="mt-8 w-full"
                 >
-                  {plan.id === "business" ? t.ctaContact : t.ctaTrial}
+                  {plan.id === "trial"
+                    ? t.ctaTrial
+                    : plan.id === "business"
+                      ? t.ctaContact
+                      : t.ctaActivate}
                 </Button>
               </Reveal>
             );
           })}
         </div>
 
-        {/* TBD-Hinweis, bis die Preise final sind */}
-        <p className="mt-8 text-center text-xs text-mist">{t.disclaimer}</p>
+        <div className="mt-12 grid gap-4 rounded-4xl border border-ink/5 bg-white/75 p-6 shadow-soft sm:grid-cols-2 lg:grid-cols-4">
+          {t.conditions.map((condition) => (
+            <div key={condition.title}>
+              <h3 className="text-sm font-semibold text-ink">{condition.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-mist">{condition.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 text-center text-xs leading-relaxed text-mist">{t.disclaimer}</p>
       </div>
     </section>
   );
