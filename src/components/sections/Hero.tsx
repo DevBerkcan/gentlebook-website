@@ -21,10 +21,13 @@ export default function Hero({ dict, locale }: { dict: Dictionary; locale: Local
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       // Headline-Zeilen steigen aus der Maske
-      tl.fromTo(
+      tl.to(
         "[data-hero-line] > span",
-        { yPercent: 115 },
-        { yPercent: 0, duration: 1.1, stagger: 0.12 },
+        {
+          "--hero-line-offset": "0%",
+          duration: 1.1,
+          stagger: 0.12,
+        },
         0.15
       )
         .fromTo(

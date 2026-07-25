@@ -51,6 +51,7 @@
   }
   .line-mask > span {
     display: block;
+    transform: translateY(var(--hero-line-offset, 0%));
     will-change: transform;
   }
 }
@@ -78,7 +79,7 @@
     transform: scale(0.95) translateY(20px);
   }
   [data-hero-line] > span {
-    transform: translateY(115%);
+    --hero-line-offset: 115%;
   }
 }
 
