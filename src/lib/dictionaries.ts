@@ -10,16 +10,19 @@ const de = {
   meta: {
     title: "GentleBook — Online-Terminbuchung für Salons & Studios",
     description:
-      "Weniger Telefon-Chaos, weniger No-Shows: GentleBook ist die Online-Terminbuchung für Friseure, Barbershops, Beauty- & Nagelstudios, Massage- und Physio-Praxen. In 5 Minuten startklar.",
+      "Weniger Telefon-Chaos, weniger No-Shows: GentleBook ist die Online-Terminbuchung für Friseure, Barbershops, Beauty- & Nagelstudios, Massage- und Physio-Praxen. In wenigen Schritten eingerichtet — 14 Tage kostenlos testen.",
     ogAlt: "GentleBook — Online-Terminbuchung für Salons & Studios",
   },
   nav: {
     features: "Funktionen",
-    industries: "Branchen",
+    industries: "Für wen?",
+    howItWorks: "So funktioniert's",
     pricing: "Preise",
     faq: "FAQ",
+    blog: "Ratgeber",
     login: "Anmelden",
-    cta: "Kostenlos starten",
+    cta: "14 Tage kostenlos testen",
+    ctaSecondary: "Demo ansehen",
     menuLabel: "Menü",
     languageLabel: "Sprache",
   },
@@ -28,10 +31,16 @@ const de = {
     titleLine1: "Dein Kalender",
     titleLine2: "füllt sich von selbst.",
     subline:
-      "GentleBook nimmt Termine an, während du deine Kund:innen verwöhnst — rund um die Uhr, ohne Telefonklingeln, mit automatischen Erinnerungen gegen No-Shows.",
-    ctaPrimary: "Kostenlos starten",
-    ctaSecondary: "Demo ansehen",
-    trust: "In 5 Minuten startklar · Keine Kreditkarte nötig",
+      "Mit GentleBook buchen deine Kund:innen rund um die Uhr online – während du dich auf dein Geschäft konzentrierst. Ohne Telefonklingeln, mit automatischen Erinnerungen gegen No-Shows.",
+    ctaPrimary: "GentleBook 14 Tage kostenlos testen",
+    ctaSecondary: "Live-Demo ansehen",
+    trust: "Unverbindlich testen · In wenigen Schritten eingerichtet · Persönlicher Support",
+    benefits: [
+      "14 Tage kostenlos testen",
+      "In wenigen Schritten eingerichtet",
+      "Für Smartphone, Tablet & Desktop",
+      "Persönliche Unterstützung bei der Einrichtung",
+    ],
     cardBooking: "Neue Buchung",
     cardBookingDetail: "Balayage · Sa 10:30",
     cardReminder: "Erinnerung gesendet",
@@ -134,36 +143,20 @@ const de = {
     ],
   },
   socialProof: {
-    eyebrow: "Zahlen, die für sich sprechen",
-    title: "Salons, die umgestiegen sind, bleiben.",
-    // ── PLATZHALTER-KOMPONENTE ──
-    // Kennzahlen & Testimonials sind Beispieldaten und werden vor Launch
-    // durch echte Werte/Zitate ersetzt (siehe Kommentar in SocialProof.tsx).
-    stats: [
-      { value: 128000, suffix: "+", label: "Buchungen verarbeitet" },
-      { value: 42, suffix: " %", label: "weniger No-Shows im Schnitt" },
-      { value: 5, suffix: " Min", label: "bis zur ersten Buchungsseite" },
+    eyebrow: "Vertrauen",
+    title: "Entwickelt für moderne Dienstleistungsunternehmen.",
+    // ── ECHTE INHALTE VOR LAUNCH ERGÄNZEN ──
+    // Keine erfundenen Kennzahlen oder Zitate: trustPoints sind bewusst
+    // qualitativ statt mit erfundenen Zahlen. testimonialSlots bleiben leer,
+    // bis echte Kundenstimmen vorliegen (siehe Kommentar in SocialProof.tsx).
+    trustPoints: [
+      { title: "Für lokale Dienstleister entwickelt", text: "Gebaut für Salons, Studios, Praxen & Co. — nicht als Universal-Kalender." },
+      { title: "Persönlicher Support", text: "Bei Fragen zur Einrichtung bekommst du direkte Unterstützung, kein anonymes Ticket-System." },
+      { title: "Datenschutzbewusst entwickelt", text: "Kundendaten bleiben deine Daten. Details regelt unsere Datenschutzerklärung." },
+      { title: "Einfache Erweiterbarkeit", text: "GentleBook wächst mit deinem Team — von einer Person bis zu mehreren Standorten." },
     ],
-    testimonials: [
-      {
-        quote:
-          "Seit GentleBook klingelt das Telefon vielleicht noch zweimal am Tag. Vorher waren es zwanzig Anrufe — mitten im Färben.",
-        name: "Platzhalter · Inhaberin",
-        business: "Friseursalon, Düsseldorf",
-      },
-      {
-        quote:
-          "Die Erinnerungs-Mails haben unsere No-Shows fast halbiert. Das ist bares Geld am Ende des Monats.",
-        name: "Platzhalter · Inhaber",
-        business: "Barbershop, Köln",
-      },
-      {
-        quote:
-          "Ich habe die Buchungsseite an einem Abend eingerichtet. Meine Kundinnen sagen, sie sieht besser aus als meine alte Website.",
-        name: "Platzhalter · Inhaberin",
-        business: "Nagelstudio, Essen",
-      },
-    ],
+    testimonialsHeading: "Was Kund:innen über GentleBook sagen",
+    testimonialsPlaceholder: "Kundenstimme folgt nach dem Launch",
     logosLabel: "Bald hier: Logos unserer Kunden",
   },
   pricingSection: {
@@ -225,37 +218,65 @@ const de = {
     title: "Die häufigsten Fragen — ehrlich beantwortet.",
     items: [
       {
+        q: "Was ist ein Online-Buchungssystem?",
+        a: "Ein Online-Buchungssystem ist eine Software, über die Kund:innen Termine selbstständig über eine Webseite buchen — ohne Anruf. Das Unternehmen verwaltet dabei Leistungen, Mitarbeiter:innen und Verfügbarkeiten zentral an einem Ort, GentleBook bestätigt und erinnert automatisch per E-Mail.",
+      },
+      {
+        q: "Für welche Unternehmen eignet sich GentleBook?",
+        a: "GentleBook eignet sich für Dienstleistungsunternehmen, die Termine vergeben — zum Beispiel Friseure, Barbershops, Kosmetik- und Nagelstudios, Hundefriseure, Coaches, Fotograf:innen, Physiotherapie- und Wellnessanbieter, Werkstätten oder andere lokale Dienstleister.",
+      },
+      {
         q: "Wie aufwendig ist der Umstieg von Terminbuch oder Excel?",
-        a: "Überschaubar: Services anlegen, Arbeitszeiten eintragen, Buchungslink teilen — fertig. Die meisten Studios sind in unter 30 Minuten startklar, die erste Version der Buchungsseite steht in etwa 5 Minuten. Bestehende Termine trägst du einmalig nach, danach läuft alles an einem Ort.",
+        a: "In wenigen Schritten eingerichtet: Leistungen anlegen, Arbeitszeiten eintragen, Buchungslink teilen. Bestehende Termine trägst du einmalig nach, danach läuft alles an einem Ort.",
+      },
+      {
+        q: "Benötige ich technische Kenntnisse für die Einrichtung?",
+        a: "Nein. Die Einrichtung ist als geführter Ablauf gedacht, keine Installation oder Programmierung nötig. Bei Fragen unterstützt dich unser persönlicher Support.",
       },
       {
         q: "Was passiert mit den Daten meiner Kund:innen?",
-        a: "Deine Kundendaten gehören dir. GentleBook wird DSGVO-konform betrieben, die Daten werden verschlüsselt übertragen und in der EU gehostet. Details regelt der Auftragsverarbeitungsvertrag (AVV), den du im Account abschließen kannst.",
+        a: "Deine Kundendaten gehören dir. Der Umgang mit Daten ist bei GentleBook bewusst datenschutzbewusst gestaltet. Die verbindlichen Details dazu findest du in unserer Datenschutzerklärung. TODO (Rechtsprüfung vor Launch): Hosting-Standort, Auftragsverarbeitung und Datenschutzerklärung final bestätigen und hier verlinken.",
       },
       {
         q: "Brauchen meine Kund:innen eine App?",
-        a: "Nein. Deine Buchungsseite läuft im Browser — auf dem Handy genauso wie am Laptop. Kund:innen klicken deinen Link, wählen Service, Zeit und Teammitglied und bekommen sofort eine Bestätigung per E-Mail.",
+        a: "Nein. Deine Buchungsseite läuft im Browser — auf dem Handy genauso wie am Laptop oder Tablet. Kund:innen klicken deinen Link, wählen Leistung, Zeit und Teammitglied und bekommen eine automatische Bestätigung per E-Mail.",
+      },
+      {
+        q: "Kann ich mehrere Mitarbeiter:innen verwalten?",
+        a: "Ja. Jede:r Mitarbeiter:in bekommt eigene Arbeitszeiten, Pausen und Zuständigkeiten. Kund:innen können bei der Buchung ein bestimmtes Teammitglied auswählen.",
+      },
+      {
+        q: "Kann ich meine Leistungen individuell anlegen?",
+        a: "Ja. Du legst Leistungen mit eigener Dauer, eigenem Preis und eigener Beschreibung an — passend zu deinem Angebot.",
+      },
+      {
+        q: "Kann ich GentleBook mit meiner bestehenden Website verwenden?",
+        a: "Ja. Deine GentleBook-Buchungsseite hat eine eigene URL, die du auf deiner Website, im Google-Unternehmensprofil oder in Social-Media-Profilen verlinken kannst.",
+      },
+      {
+        q: "Wie werden Kund:innen über Termine informiert?",
+        a: "GentleBook verschickt automatische Bestätigungen direkt nach der Buchung sowie Erinnerungen im Vorfeld des Termins, um Terminausfälle zu reduzieren.",
       },
       {
         q: "Kann ich jederzeit kündigen?",
-        a: "Ja. Monatliche Tarife sind zum Monatsende kündbar, ohne Mindestlaufzeit. Beim Jahrestarif endet der Vertrag zum Ende des bezahlten Jahres. Deine Daten kannst du vorher exportieren.",
+        a: "Die genauen Kündigungsbedingungen legen wir vor dem Launch verbindlich fest und veröffentlichen sie in den AGB. TODO (Produktentscheidung vor Launch): Mindestlaufzeit, Kündigungsfrist und automatische Verlängerung bestätigen.",
       },
       {
-        q: "Was, wenn ich mal keine Online-Buchungen möchte?",
-        a: "Du behältst die Kontrolle: Zeiten blocken, Services pausieren oder die Online-Buchung komplett deaktivieren — dein Kalender bleibt trotzdem dein zentrales Werkzeug für manuell eingetragene Termine.",
+        q: "Was passiert nach der 14-tägigen Testphase?",
+        a: "In der Testphase kannst du GentleBook in deinem eigenen Betrieb ausprobieren. TODO (Produktentscheidung vor Launch): Ob eine Kreditkarte für den Test nötig ist und was nach Ablauf der 14 Tage konkret passiert, wird vor Launch final festgelegt und hier ergänzt.",
       },
       {
         q: "Funktioniert GentleBook auch mit Walk-ins?",
-        a: "Ja. Spontane Kund:innen trägst du in Sekunden manuell ein. Der Kalender zeigt Online-Buchungen und Walk-ins gemeinsam, damit nichts kollidiert.",
+        a: "Ja. Spontane Kund:innen trägst du manuell ein. Der Kalender zeigt Online-Buchungen und manuell eingetragene Termine gemeinsam, damit nichts kollidiert.",
       },
     ],
   },
   finalCta: {
-    title: "Der nächste freie Termin gehört dir.",
-    text: "Richte deine Buchungsseite heute ein — und lass das Telefon morgen einfach mal stumm.",
-    ctaPrimary: "Kostenlos starten",
-    ctaSecondary: "Demo ansehen",
-    trust: "Keine Kreditkarte · Monatlich kündbar · DSGVO-konform",
+    title: "Deine Kunden möchten buchen. Mach es ihnen einfach.",
+    text: "Starte jetzt deinen kostenlosen 14-Tage-Test und bringe deine Terminorganisation an einen zentralen Ort.",
+    ctaPrimary: "GentleBook kostenlos testen",
+    ctaSecondary: "Persönliche Demo buchen",
+    trust: "14 Tage kostenlos testen · Persönlicher Support · Einfache Einrichtung",
   },
   footer: {
     claim: "Online-Terminbuchung für Salons, Barbershops, Beauty-Studios und Praxen.",
@@ -323,16 +344,19 @@ const en: typeof de = {
   meta: {
     title: "GentleBook — Online booking for salons & studios",
     description:
-      "Less phone chaos, fewer no-shows: GentleBook is online appointment booking for hair salons, barbershops, beauty & nail studios, massage and physio practices. Ready in 5 minutes.",
+      "Less phone chaos, fewer no-shows: GentleBook is online appointment booking for hair salons, barbershops, beauty & nail studios, massage and physio practices. Set up in a few steps — try free for 14 days.",
     ogAlt: "GentleBook — Online booking for salons & studios",
   },
   nav: {
     features: "Features",
-    industries: "Industries",
+    industries: "Who it's for",
+    howItWorks: "How it works",
     pricing: "Pricing",
     faq: "FAQ",
+    blog: "Guides",
     login: "Log in",
-    cta: "Start for free",
+    cta: "Try free for 14 days",
+    ctaSecondary: "Watch demo",
     menuLabel: "Menu",
     languageLabel: "Language",
   },
@@ -341,10 +365,16 @@ const en: typeof de = {
     titleLine1: "Your calendar",
     titleLine2: "fills itself.",
     subline:
-      "GentleBook takes bookings while you take care of your clients — around the clock, no ringing phone, with automatic reminders that fight no-shows.",
-    ctaPrimary: "Start for free",
-    ctaSecondary: "Watch demo",
-    trust: "Ready in 5 minutes · No credit card required",
+      "With GentleBook your customers book online around the clock – while you focus on your business. No ringing phone, with automatic reminders that fight no-shows.",
+    ctaPrimary: "Try GentleBook free for 14 days",
+    ctaSecondary: "Watch the live demo",
+    trust: "Try it risk-free · Set up in a few steps · Personal support",
+    benefits: [
+      "Free for 14 days",
+      "Set up in a few steps",
+      "Works on phone, tablet & desktop",
+      "Personal support during setup",
+    ],
     cardBooking: "New booking",
     cardBookingDetail: "Balayage · Sat 10:30",
     cardReminder: "Reminder sent",
@@ -447,33 +477,16 @@ const en: typeof de = {
     ],
   },
   socialProof: {
-    eyebrow: "Numbers that speak for themselves",
-    title: "Salons that switch, stay.",
-    stats: [
-      { value: 128000, suffix: "+", label: "bookings processed" },
-      { value: 42, suffix: " %", label: "fewer no-shows on average" },
-      { value: 5, suffix: " min", label: "to your first booking page" },
+    eyebrow: "Trust",
+    title: "Built for modern service businesses.",
+    trustPoints: [
+      { title: "Built for local service businesses", text: "Made for salons, studios, practices & co. — not a generic universal calendar." },
+      { title: "Personal support", text: "Get real help with setup questions, not an anonymous ticket queue." },
+      { title: "Privacy-conscious by design", text: "Your client data stays your data. Details are covered in our privacy policy." },
+      { title: "Easy to grow with", text: "GentleBook grows with your team — from a single person to multiple locations." },
     ],
-    testimonials: [
-      {
-        quote:
-          "Since GentleBook, the phone rings maybe twice a day. It used to be twenty calls — right in the middle of coloring.",
-        name: "Placeholder · Owner",
-        business: "Hair salon, Düsseldorf",
-      },
-      {
-        quote:
-          "The reminder emails nearly halved our no-shows. That's real money at the end of the month.",
-        name: "Placeholder · Owner",
-        business: "Barbershop, Cologne",
-      },
-      {
-        quote:
-          "I set up the booking page in one evening. My clients say it looks better than my old website.",
-        name: "Placeholder · Owner",
-        business: "Nail studio, Essen",
-      },
-    ],
+    testimonialsHeading: "What customers say about GentleBook",
+    testimonialsPlaceholder: "Customer story coming after launch",
     logosLabel: "Coming soon: our customers' logos",
   },
   pricingSection: {
@@ -535,37 +548,65 @@ const en: typeof de = {
     title: "The most common questions — answered honestly.",
     items: [
       {
-        q: "How much effort is switching from a paper book or Excel?",
-        a: "Manageable: create your services, set working hours, share your booking link — done. Most studios are ready in under 30 minutes, and a first version of your booking page takes about 5. Existing appointments are added once, then everything lives in one place.",
+        q: "What is an online booking system?",
+        a: "An online booking system is software that lets clients schedule appointments themselves through a website — no phone call needed. The business manages services, staff and availability in one place, and GentleBook confirms and reminds automatically by email.",
+      },
+      {
+        q: "Which businesses is GentleBook suitable for?",
+        a: "GentleBook suits service businesses that schedule appointments — for example hair salons, barbershops, beauty and nail studios, dog groomers, coaches, photographers, physiotherapy and wellness providers, workshops, or other local service providers.",
+      },
+      {
+        q: "How much effort is switching from a paper book or spreadsheet?",
+        a: "Set up in a few steps: create your services, set working hours, share your booking link. Existing appointments are added once, then everything lives in one place.",
+      },
+      {
+        q: "Do I need technical knowledge to set it up?",
+        a: "No. Setup is designed as a guided process, no installation or coding required. Our personal support is there if you have questions.",
       },
       {
         q: "What happens to my clients' data?",
-        a: "Your client data belongs to you. GentleBook operates in compliance with the GDPR, data is transferred encrypted and hosted in the EU. Details are covered by the data processing agreement (DPA) you can conclude in your account.",
+        a: "Your client data belongs to you. Data handling at GentleBook is designed with privacy in mind. The binding details are covered in our privacy policy. TODO (legal review before launch): confirm hosting location, data processing terms, and link the finalized privacy policy here.",
       },
       {
         q: "Do my clients need an app?",
-        a: "No. Your booking page runs in the browser — on a phone just as well as on a laptop. Clients open your link, pick a service, time and team member, and instantly receive a confirmation email.",
+        a: "No. Your booking page runs in the browser — on a phone just as well as on a laptop or tablet. Clients open your link, pick a service, time and team member, and receive an automatic confirmation email.",
+      },
+      {
+        q: "Can I manage multiple staff members?",
+        a: "Yes. Each staff member gets their own working hours, breaks and responsibilities. Clients can pick a specific team member when booking.",
+      },
+      {
+        q: "Can I set up my own services?",
+        a: "Yes. You create services with their own duration, price and description, matching what you offer.",
+      },
+      {
+        q: "Can I use GentleBook alongside my existing website?",
+        a: "Yes. Your GentleBook booking page has its own URL you can link from your website, your Google Business Profile, or your social media profiles.",
+      },
+      {
+        q: "How are clients notified about appointments?",
+        a: "GentleBook sends automatic confirmations right after booking and reminders ahead of the appointment to help reduce no-shows.",
       },
       {
         q: "Can I cancel any time?",
-        a: "Yes. Monthly plans can be cancelled at the end of any month, no minimum term. Yearly plans end with the paid year. You can export your data beforehand.",
+        a: "We'll finalize the exact cancellation terms before launch and publish them in our terms of service. TODO (product decision before launch): confirm minimum term, notice period, and auto-renewal.",
       },
       {
-        q: "What if I don't want online bookings for a while?",
-        a: "You stay in control: block time, pause services or turn off online booking entirely — your calendar remains your central tool for manually entered appointments.",
+        q: "What happens after the 14-day trial?",
+        a: "During the trial you can try GentleBook in your own business. TODO (product decision before launch): whether a credit card is required for the trial and what exactly happens after the 14 days will be finalized before launch and added here.",
       },
       {
         q: "Does GentleBook work with walk-ins?",
-        a: "Yes. Add spontaneous clients manually in seconds. The calendar shows online bookings and walk-ins together so nothing collides.",
+        a: "Yes. Add spontaneous clients manually. The calendar shows online bookings and manually entered appointments together so nothing collides.",
       },
     ],
   },
   finalCta: {
-    title: "The next open slot belongs to you.",
-    text: "Set up your booking page today — and let the phone stay silent tomorrow.",
-    ctaPrimary: "Start for free",
-    ctaSecondary: "Watch demo",
-    trust: "No credit card · Cancel monthly · GDPR-compliant",
+    title: "Your customers want to book. Make it easy for them.",
+    text: "Start your free 14-day trial now and bring your appointment organization into one central place.",
+    ctaPrimary: "Try GentleBook for free",
+    ctaSecondary: "Book a personal demo",
+    trust: "14 days free · Personal support · Easy setup",
   },
   footer: {
     claim: "Online appointment booking for salons, barbershops, beauty studios and practices.",
