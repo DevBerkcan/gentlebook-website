@@ -6,7 +6,7 @@
 
 export const siteConfig = {
   name: "GentleBook",
-  parentCompany: "Gentle Suite",
+  parentCompany: "GentleGroup",
   trialDays: 14,
   // Laut Preise-Sektion: Aktivierung eines Plans erfolgt aktuell manuell (~24h),
   // keine automatisierte Kartenabfrage vorgesehen. Vor Launch final bestätigen.

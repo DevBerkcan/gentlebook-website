@@ -41,6 +41,9 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-mist">
               {dict.footer.claim}
             </p>
+            <p className="mt-2 max-w-xs text-xs font-medium text-ink/60">
+              {dict.footer.companyNotice}
+            </p>
           </div>
 
           <nav aria-label={dict.footer.product}>

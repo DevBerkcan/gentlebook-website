@@ -480,6 +480,7 @@ const de = {
   },
   footer: {
     claim: "Online-Terminbuchung für Salons, Barbershops, Beauty-Studios und Praxen.",
+    companyNotice: "GentleBook ist eine Software der GentleGroup.",
     product: "Produkt",
     help: "Hilfe",
     legal: "Rechtliches",
@@ -1147,6 +1148,7 @@ const en: typeof de = {
   },
   footer: {
     claim: "Online appointment booking for salons, barbershops, beauty studios and practices.",
+    companyNotice: "GentleBook is software by GentleGroup.",
     product: "Product",
     help: "Help",
     legal: "Legal",
