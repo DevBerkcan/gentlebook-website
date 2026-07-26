@@ -18,6 +18,23 @@ export const siteConfig = {
   // verlinkt "Anmelden" direkt dorthin statt auf eine eigene Login-Seite.
   externalAppUrl: "https://gentle-book-ui.vercel.app",
   externalLoginUrl: "https://gentle-book-ui.vercel.app/admin/login",
+  whatsappNumber: "491754701892",
+  team: [
+    {
+      name: "Berk-Can",
+      roleDe: "Gründer & Lead Developer",
+      roleEn: "Founder & Lead Developer",
+      image: "/berkcan.webp",
+      calendarUrl: "https://calendar.app.google/NKTDowEPMRFjvDWV9",
+    },
+    {
+      name: "Medin",
+      roleDe: "Backend-Spezialist",
+      roleEn: "Backend Specialist",
+      image: "/medin.webp",
+      calendarUrl: "https://calendar.app.google/zwXoTnXiZbopiSva7",
+    },
+  ],
   routes: {
     home: "/",
     features: "/features",

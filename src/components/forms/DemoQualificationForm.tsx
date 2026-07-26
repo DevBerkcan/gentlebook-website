@@ -61,14 +61,16 @@ function OptionGroup({
   options,
   value,
   onChange,
+  label,
 }: {
   name: string;
   options: string[];
   value: string;
   onChange: (v: string) => void;
+  label: string;
 }) {
   return (
-    <div role="radiogroup" className="grid gap-3 sm:grid-cols-2">
+    <div role="radiogroup" aria-label={label} className="grid gap-3 sm:grid-cols-2">
       {options.map((option) => {
         const active = value === option;
         return (
@@ -118,6 +120,7 @@ export default function DemoQualificationForm({
               options={dict.businessTypeOptions}
               value={answers.businessType}
               onChange={(v) => setAnswers((a) => ({ ...a, businessType: v }))}
+              label={dict.businessTypeQuestion}
             />
           ),
           valid: () => Boolean(answers.businessType),
@@ -131,6 +134,7 @@ export default function DemoQualificationForm({
               options={dict.teamSizeOptions}
               value={answers.teamSize}
               onChange={(v) => setAnswers((a) => ({ ...a, teamSize: v }))}
+              label={dict.teamSizeQuestion}
             />
           ),
           valid: () => Boolean(answers.teamSize),
@@ -144,6 +148,7 @@ export default function DemoQualificationForm({
               options={dict.currentBookingOptions}
               value={answers.currentBooking}
               onChange={(v) => setAnswers((a) => ({ ...a, currentBooking: v }))}
+              label={dict.currentBookingQuestion}
             />
           ),
           valid: () => Boolean(answers.currentBooking),
@@ -171,6 +176,7 @@ export default function DemoQualificationForm({
               options={dict.weeklyAppointmentsOptions}
               value={answers.weeklyAppointments}
               onChange={(v) => setAnswers((a) => ({ ...a, weeklyAppointments: v }))}
+              label={dict.weeklyAppointmentsQuestion}
             />
           ),
           valid: () => Boolean(answers.weeklyAppointments),
@@ -184,6 +190,7 @@ export default function DemoQualificationForm({
               options={dict.goalOptions}
               value={answers.goal}
               onChange={(v) => setAnswers((a) => ({ ...a, goal: v }))}
+              label={dict.goalQuestion}
             />
           ),
           valid: () => Boolean(answers.goal),

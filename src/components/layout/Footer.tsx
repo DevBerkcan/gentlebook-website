@@ -89,18 +89,10 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
                 </li>
               ))}
               <li>
-                {/* Cookie-Einstellungen: TODO — sobald eine Consent-Lösung eingebunden ist,
-                    hier den echten Öffner-Button für das Consent-Banner verlinken. */}
                 <button
                   type="button"
-                  disabled
-                  aria-disabled="true"
-                  title={
-                    locale === "de"
-                      ? "Noch keine Cookie-/Tracking-Skripte im Einsatz"
-                      : "No cookie/tracking scripts in use yet"
-                  }
-                  className="cursor-not-allowed text-sm text-ink/35"
+                  data-cc="c-settings"
+                  className="text-sm text-ink/60 transition-colors hover:text-ink"
                 >
                   {dict.footer.cookieSettings}
                 </button>

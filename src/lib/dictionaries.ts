@@ -134,6 +134,14 @@ const de = {
         title: "Auslastungs-Statistiken",
         text: "Sieh auf einen Blick, welche Zeiten, Services und Teammitglieder am besten laufen.",
       },
+      {
+        title: "Eigene Link-Seite",
+        text: "Buchungslink, Social-Profile und Kontaktinfos auf einer persönlichen Seite — perfekt für die Instagram- oder TikTok-Bio.",
+      },
+      {
+        title: "Kundenportal",
+        text: "Kund:innen sehen und verwalten ihre Termine über einen persönlichen Link aus der Bestätigungsmail — ganz ohne Account oder Passwort.",
+      },
     ],
   },
   industries: {
@@ -457,6 +465,10 @@ const de = {
         q: "Funktioniert GentleBook auch mit Walk-ins?",
         a: "Ja. Spontane Kund:innen trägst du manuell ein. Der Kalender zeigt Online-Buchungen und manuell eingetragene Termine gemeinsam, damit nichts kollidiert.",
       },
+      {
+        q: "Können meine Kund:innen ihre eigenen Termine einsehen oder ändern?",
+        a: "Ja. Über einen persönlichen Link in der Bestätigungsmail sehen Kund:innen ihre Termine und können sie stornieren — ganz ohne Account oder Passwort.",
+      },
     ],
   },
   finalCta: {
@@ -640,6 +652,30 @@ const de = {
       successText: "Wir melden uns so schnell wie möglich bei dir zurück.",
     },
   },
+  contactModal: {
+    triggerLabel: "Termin vereinbaren",
+    closeLabel: "Schließen",
+    backLabel: "Zurück",
+    choice: {
+      eyebrow: "Kontakt aufnehmen",
+      title: "Wie möchtest du mit uns sprechen?",
+      calendarTitle: "Termin per Kalender buchen",
+      calendarText: "Wähle ein Teammitglied und einen freien Slot direkt im Kalender.",
+      whatsappTitle: "Direkt per WhatsApp schreiben",
+      whatsappText: "Wir antworten dir so schnell wie möglich im Chat.",
+    },
+    team: {
+      title: "Teammitglied auswählen",
+      subtitle: "Wähle die richtige Ansprechperson für dein Erstgespräch.",
+      availability: "Verfügbare Termine anzeigen",
+    },
+    confirm: {
+      subtitle: "Buche jetzt ein Erstgespräch.",
+      cta: "Termin mit {name} buchen",
+      hint: "Nach dem Klick wirst du zum Google Kalender weitergeleitet.",
+    },
+    whatsappPrefill: "Ich habe Interesse an dem Buchungssystem",
+  },
 };
 
 const en: typeof de = {
@@ -769,6 +805,14 @@ const en: typeof de = {
       {
         title: "Utilization analytics",
         text: "See at a glance which times, services and team members perform best.",
+      },
+      {
+        title: "Your link page",
+        text: "Booking link, social profiles and contact info on one personal page — perfect for your Instagram or TikTok bio.",
+      },
+      {
+        title: "Client self-service",
+        text: "Clients view and manage their appointments via a personal link from the confirmation email — no account or password needed.",
       },
     ],
   },
@@ -1088,6 +1132,10 @@ const en: typeof de = {
         q: "Does GentleBook work with walk-ins?",
         a: "Yes. Add spontaneous clients manually. The calendar shows online bookings and manually entered appointments together so nothing collides.",
       },
+      {
+        q: "Can my clients view or change their own appointments?",
+        a: "Yes. A personal link in the confirmation email lets clients view their appointments and cancel them — no account or password required.",
+      },
     ],
   },
   finalCta: {
@@ -1268,6 +1316,30 @@ const en: typeof de = {
       successTitle: "Thanks for your message!",
       successText: "We'll get back to you as soon as possible.",
     },
+  },
+  contactModal: {
+    triggerLabel: "Book an appointment",
+    closeLabel: "Close",
+    backLabel: "Back",
+    choice: {
+      eyebrow: "Get in touch",
+      title: "How would you like to talk to us?",
+      calendarTitle: "Book a call via calendar",
+      calendarText: "Pick a team member and an open slot directly in the calendar.",
+      whatsappTitle: "Message us on WhatsApp",
+      whatsappText: "We'll reply in chat as soon as possible.",
+    },
+    team: {
+      title: "Choose a team member",
+      subtitle: "Pick the right contact for your first conversation.",
+      availability: "View available times",
+    },
+    confirm: {
+      subtitle: "Book your first conversation now.",
+      cta: "Book with {name}",
+      hint: "You'll be redirected to Google Calendar after clicking.",
+    },
+    whatsappPrefill: "I'm interested in the booking system",
   },
 };
 

@@ -8,6 +8,9 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileStickyCta from "@/components/layout/MobileStickyCta";
+import CookieConsent from "@/components/layout/CookieConsent";
+import ContactModal from "@/components/layout/ContactModal";
+import AccessibilityTool from "@/components/layout/AccessibilityTool";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 // TODO vor Launch: finale Domain eintragen
@@ -113,11 +116,14 @@ export default async function LocaleLayout({
         </a>
         <SmoothScroll>
           <Header locale={locale} dict={dict} />
-          <main id="main-content" className="pb-20 lg:pb-0">
+          <main id="main-content" tabIndex={-1} className="pb-20 lg:pb-0">
             {children}
           </main>
           <Footer locale={locale} dict={dict} />
         </SmoothScroll>
+        <CookieConsent />
+        <ContactModal locale={locale} dict={dict} />
+        <AccessibilityTool />
         <MobileStickyCta locale={locale} label={dict.nav.cta} />
       </body>
     </html>

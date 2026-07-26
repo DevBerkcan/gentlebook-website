@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
+import { hasCookieConsentDecision, hasCookieConsent } from "@/lib/cookieConsent";
 import { siteConfig } from "@/lib/siteConfig";
 import { localizedPath, type Locale } from "@/lib/locales";
 
@@ -31,6 +32,7 @@ const inputClass =
 export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [consentNotice, setConsentNotice] = useState<string>("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -49,6 +51,17 @@ export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    if (!hasCookieConsentDecision()) {
+      setConsentNotice(dict.privacyHint);
+      return;
+    }
+
+    if (!hasCookieConsent("analytics") && !hasCookieConsent("marketing")) {
+      setConsentNotice(locale === "de" ? "Bitte erlauben Sie mindestens eine zusätzliche Cookie-Kategorie, um den Test zu starten." : "Please allow at least one optional cookie category to start the trial.");
+      return;
+    }
+
+    setConsentNotice("");
     setStatus("submitting");
     trackEvent("signup_started");
     try {
@@ -170,6 +183,12 @@ export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale
           {dict.privacyLink}
         </a>
       </p>
+
+      {consentNotice && (
+        <p role="alert" className="text-center text-xs text-amber-600">
+          {consentNotice}
+        </p>
+      )}
 
       {status === "error" && (
         <p role="alert" className="text-center text-xs text-red-600">

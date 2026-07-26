@@ -35,6 +35,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
 
   const home = localizedPath(locale, "/");
   const otherLocale: Locale = locale === "de" ? "en" : "de";
+  const mobileMenuId = "mobile-navigation";
 
   // Aktuellen Pfad in die andere Sprache übersetzen
   const pathWithoutLocale =
@@ -105,6 +106,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             onClick={() => setOpen((v) => !v)}
             className="flex h-11 w-11 items-center justify-center rounded-xl text-ink lg:hidden"
             aria-expanded={open}
+            aria-controls={mobileMenuId}
             aria-label={dict.nav.menuLabel}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -120,6 +122,8 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
         )}
       >
         <div
+          id={mobileMenuId}
+          aria-hidden={!open}
           className={cn(
             "mt-2 origin-top rounded-2xl border border-white/60 bg-white/95 p-5 shadow-lifted backdrop-blur-xl transition-all duration-300",
             open ? "scale-100 opacity-100" : "scale-95 opacity-0"

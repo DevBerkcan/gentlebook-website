@@ -8,6 +8,12 @@ type ButtonProps = {
   variant?: "primary" | "ghost" | "outline";
   size?: "md" | "lg";
   className?: string;
+  ariaLabel?: string;
+  title?: string;
+  target?: string;
+  rel?: string;
+  id?: string;
+  onClick?: () => void;
 };
 
 /**
@@ -20,10 +26,22 @@ export default function Button({
   variant = "primary",
   size = "md",
   className,
+  ariaLabel,
+  title,
+  target,
+  rel,
+  id,
+  onClick,
 }: ButtonProps) {
   return (
     <Link
       href={href}
+      aria-label={ariaLabel}
+      title={title}
+      target={target}
+      rel={rel}
+      id={id}
+      onClick={onClick}
       className={cn(
         "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
         size === "lg" ? "px-8 py-4 text-base" : "px-6 py-3 text-sm",
