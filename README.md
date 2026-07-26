@@ -14,10 +14,16 @@ Zielgruppe: Geschäftsinhaber:innen (B2B) → Trial-Registrierung.
 ## Starten
 
 ```bash
+copy .env.example .env.local
 npm install
 npm run dev        # http://localhost:3000
 npm run build      # Produktions-Build
 ```
+
+In Vercel muss `NEXT_PUBLIC_GENTLEBOOK_APP_URL` pro Umgebung gesetzt werden:
+Staging verweist auf die Staging-App, Production auf die Live-App. Dadurch
+führen Login- und CTA-Links aus einem Website-Preview nicht versehentlich nach
+Production.
 
 ## Wichtige Stellen zum Anpassen
 

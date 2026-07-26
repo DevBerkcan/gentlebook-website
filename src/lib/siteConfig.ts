@@ -4,6 +4,11 @@
  * hier ändern, überall zieht es nach.
  */
 
+const externalAppUrl = (
+  process.env.NEXT_PUBLIC_GENTLEBOOK_APP_URL ??
+  "https://gentle-book-ui.vercel.app"
+).replace(/\/$/, "");
+
 export const siteConfig = {
   name: "GentleBook",
   parentCompany: "GentleGroup",
@@ -16,8 +21,8 @@ export const siteConfig = {
   trialAutoConverts: false,
   // Die eigentliche GentleBook-Anwendung (Admin/Tenant-Login). Marketing-Site
   // verlinkt "Anmelden" direkt dorthin statt auf eine eigene Login-Seite.
-  externalAppUrl: "https://gentle-book-ui.vercel.app",
-  externalLoginUrl: "https://gentle-book-ui.vercel.app/admin/login",
+  externalAppUrl,
+  externalLoginUrl: `${externalAppUrl}/admin/login`,
   whatsappNumber: "491754701892",
   team: [
     {
