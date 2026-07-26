@@ -140,7 +140,7 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
           <p>
             © {year} GentleBook. {dict.footer.rights}
           </p>
-          <p className="text-xs">Made in Düsseldorf</p>
+          <p className="text-xs">Made in Wuppertal</p>
         </div>
       </div>
     </footer>
