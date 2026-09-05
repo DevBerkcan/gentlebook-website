@@ -6,10 +6,15 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { getPlanPrice } from "@/lib/dictionaries";
+import { getAnnualPrice, getPlanPrice } from "@/lib/dictionaries";
 import type { Dictionary } from "@/lib/dictionaries";
 import { siteConfig } from "@/lib/siteConfig";
 import { localizedPath, type Locale } from "@/lib/locales";
+
+const PRICE_FORMATTERS: Record<Locale, Intl.NumberFormat> = {
+  de: new Intl.NumberFormat("de-DE", { maximumFractionDigits: 2 }),
+  en: new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }),
+};
 
 /**
  * Preise kommen zentral aus lib/pricing.ts (Platzhalter/TBD) —
@@ -18,6 +23,7 @@ import { localizedPath, type Locale } from "@/lib/locales";
 export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const [yearly, setYearly] = useState(false);
   const t = dict.pricingSection;
+  const priceFormatter = PRICE_FORMATTERS[locale];
 
   return (
     <section id="pricing" className="bg-lavender/40 py-20 sm:py-28" aria-labelledby="pricing-title">
@@ -42,7 +48,7 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
             <div
               className="inline-flex items-center rounded-full border border-ink/10 bg-white p-1.5 shadow-soft"
               role="group"
-              aria-label="Abrechnungszeitraum"
+              aria-label={locale === "de" ? "Abrechnungszeitraum" : "Billing period"}
             >
               <button
                 type="button"
@@ -77,6 +83,7 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
           {t.plans.map((plan, i) => {
             const highlighted = plan.id === "professional";
             const price = getPlanPrice(plan.id, yearly);
+            const annualPrice = getAnnualPrice(plan.id);
             return (
               <Reveal
                 key={plan.id}
@@ -101,23 +108,38 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
                   {plan.description}
                 </p>
 
-                <p className="mt-6 flex items-baseline gap-1.5">
-                  <span className="font-display text-5xl font-semibold tracking-tight">
-                    {price} €
-                  </span>
-                  <span className={cn("text-sm", highlighted ? "text-white/60" : "text-mist")}>
-                    {plan.id === "trial" ? t.trialDuration : t.perMonth}
-                  </span>
+                {plan.id === "business" ? (
+                  <p className="mt-6 flex items-baseline gap-1.5">
+                    <span className="font-display text-3xl font-semibold tracking-tight">
+                      {locale === "de" ? "Preis auf Anfrage" : "Custom pricing"}
+                    </span>
+                  </p>
+                ) : (
+                  <p className="mt-6 flex items-baseline gap-1.5">
+                    <span className="font-display text-5xl font-semibold tracking-tight">
+                      {priceFormatter.format(price)} €
+                    </span>
+                    <span className={cn("text-sm", highlighted ? "text-white/60" : "text-mist")}>
+                      {plan.id === "trial" ? t.trialDuration : t.perMonth}
+                    </span>
+                  </p>
+                )}
+                <p className={cn("mt-1 h-5 text-xs", highlighted ? "text-white/50" : "text-mist")}>
+                  {plan.id === "trial"
+                    ? locale === "de" ? "Ohne Zahlungsmethode" : "No payment method"
+                    : plan.id === "business"
+                      ? locale === "de" ? "Individuell nach Teamgröße & Anforderungen" : "Custom, based on team size & needs"
+                      : yearly
+                        ? `${t.billedYearly} · ${priceFormatter.format(annualPrice)} €/${locale === "de" ? "Jahr" : "year"}`
+                        : locale === "de" ? "Monatlich im Voraus" : "Billed monthly in advance"}
                 </p>
-                <p
-                  className={cn(
-                    "mt-1 h-5 text-xs",
-                    highlighted ? "text-white/50" : "text-mist",
-                    (!yearly || plan.id === "trial") && "invisible"
-                  )}
-                >
-                  {t.billedYearly}
-                </p>
+                {plan.id !== "trial" && (
+                  <p className={cn("mt-2 text-xs leading-relaxed", highlighted ? "text-white/60" : "text-mist")}>
+                    {locale === "de"
+                      ? `${yearly ? "Jährlich" : "Monatlich"} zum Periodenende kündbar · Keine Einrichtungsgebühr · Keine Provision pro Buchung · Gemäß § 19 UStG kein Umsatzsteuerausweis`
+                      : `Cancel at the end of the ${yearly ? "annual" : "monthly"} period · No setup fee · No booking commission · No VAT charged under § 19 UStG`}
+                  </p>
+                )}
 
                 <ul className="mt-6 flex-1 space-y-3">
                   {plan.features.map((f) => (

@@ -1,17 +1,9 @@
-/** Zentrale monatliche Listenpreise in Euro. */
+/** Zentrale Listenpreise in Euro. Jahrespreise werden einmal jährlich abgerechnet. */
 export const pricing = {
-  trial: { monthly: 0 },
-  starter: { monthly: 29 },
-  professional: { monthly: 59 },
-  business: { monthly: 99 },
+  trial: { monthly: 0, annual: 0 },
+  starter: { monthly: 29, annual: 278 },
+  professional: { monthly: 59, annual: 566 },
+  business: { monthly: 99, annual: 950 },
 } as const;
 
 export type PlanId = keyof typeof pricing;
-
-/** Rabatt bei jährlicher statt monatlicher Zahlung. */
-export const YEARLY_DISCOUNT = 0.2;
-
-/** Effektiver Monatspreis bei jährlicher Zahlung (0 € bleibt 0 €, z. B. Trial). */
-export function yearlyPerMonth(id: PlanId) {
-  return Math.round(pricing[id].monthly * (1 - YEARLY_DISCOUNT));
-}

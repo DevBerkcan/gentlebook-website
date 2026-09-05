@@ -1,5 +1,5 @@
 import type { Locale } from "./locales";
-import { pricing, yearlyPerMonth } from "./pricing";
+import { pricing } from "./pricing";
 
 /**
  * Gesamte Website-Copy, zweisprachig. Deutsch ist die Referenz.
@@ -21,7 +21,7 @@ const de = {
     faq: "FAQ",
     blog: "Ratgeber",
     login: "Anmelden",
-    cta: "14 Tage kostenlos testen",
+    cta: "Testzugang anfragen",
     ctaSecondary: "Demo ansehen",
     menuLabel: "Menü",
     languageLabel: "Sprache",
@@ -32,7 +32,7 @@ const de = {
     titleLine2: "füllt sich von selbst.",
     subline:
       "Mit GentleBook buchen deine Kund:innen rund um die Uhr online – während du dich auf dein Geschäft konzentrierst. Ohne Telefonklingeln, mit automatischen Erinnerungen gegen No-Shows.",
-    ctaPrimary: "GentleBook 14 Tage kostenlos testen",
+    ctaPrimary: "Persönliches Gespräch anfragen",
     ctaSecondary: "Live-Demo ansehen",
     trust: "Unverbindlich testen · In wenigen Schritten eingerichtet · Persönlicher Support",
     benefits: [
@@ -316,19 +316,19 @@ const de = {
   pricingSection: {
     eyebrow: "Preise",
     title: "Der passende Plan für dein Unternehmen.",
-    text: "14 Tage kostenlos testen. Danach wählst du den Plan, der zu deinem Team passt. Alle Preise zzgl. USt.",
+    text: "14 Tage kostenlos testen. Danach wählst du den Plan, der zu deinem Team passt. Alle Preise sind Endpreise; gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.",
     monthly: "Monatlich",
     yearly: "Jährlich",
-    yearlyBadge: "−20 %",
+    yearlyBadge: "Bis zu 20 % sparen",
     perMonth: "/ Monat",
     billedYearly: "bei jährlicher Zahlung",
     trialDuration: "/ 14 Tage",
     popular: "Empfohlen",
-    ctaTrial: "14 Tage kostenlos testen",
+    ctaTrial: "Testzugang anfragen",
     ctaActivate: "Plan anfragen",
-    ctaContact: "Business anfragen",
+    ctaContact: "Agency anfragen",
     disclaimer:
-      "Monatlich kündbar · Keine versteckten Kosten · Alle Pläne enthalten das Online-Buchungssystem. API-Zugang und White-Label sind noch nicht verfügbar.",
+      "Monatlich oder jährlich im Voraus · Jederzeit zum Periodenende kündbar · Keine Provision pro Buchung. API-Zugang und White-Label sind noch nicht verfügbar.",
     conditions: [
       {
         title: "14 Tage Trial",
@@ -340,7 +340,7 @@ const de = {
       },
       {
         title: "Flexibel bleiben",
-        text: "Monatlich kündbar und ohne versteckte Kosten. Upgrades sind jederzeit per WhatsApp oder E-Mail möglich.",
+        text: "Monats- und Jahresabos sind jeweils zum Ende des laufenden Abrechnungszeitraums kündbar. Upgrades sind jederzeit per WhatsApp oder E-Mail möglich.",
       },
       {
         title: "Immer inklusive",
@@ -391,7 +391,7 @@ const de = {
       },
       {
         id: "business" as const,
-        name: "Business",
+        name: "Agency",
         description: "Für Unternehmen ohne Limits und mit persönlicher Betreuung.",
         features: [
           "Unbegrenzte Mitarbeiter",
@@ -451,11 +451,11 @@ const de = {
       },
       {
         q: "Kann ich jederzeit kündigen?",
-        a: "Ja, bezahlte Pläne sind monatlich kündbar, ohne versteckte Kosten. Die verbindlichen Details veröffentlichen wir vor Launch in den AGB.",
+        a: "Ja. Monats- und Jahresabos können jederzeit zum Ende des laufenden Abrechnungszeitraums gekündigt werden. Die verbindlichen Details stehen in den AGB.",
       },
       {
         q: "Nimmt GentleBook eine Provision auf meine Buchungen?",
-        a: "Nein. Du zahlst einen festen monatlichen Preis für deinen Plan — unabhängig davon, wie viele Termine über deine Buchungsseite eingehen. Es gibt keine Provision pro Buchung.",
+        a: "Nein. Du zahlst den festen Preis deines gewählten Monats- oder Jahresabos — unabhängig davon, wie viele Termine über deine Buchungsseite eingehen. Es gibt keine Provision pro Buchung.",
       },
       {
         q: "Was passiert nach der 14-tägigen Testphase?",
@@ -473,8 +473,8 @@ const de = {
   },
   finalCta: {
     title: "Deine Kunden möchten buchen. Mach es ihnen einfach.",
-    text: "Starte jetzt deinen kostenlosen 14-Tage-Test und bringe deine Terminorganisation an einen zentralen Ort.",
-    ctaPrimary: "GentleBook kostenlos testen",
+    text: "Sprich mit uns über deinen Betrieb. Anschließend richten wir GentleBook ein und schalten den kostenlosen 14-Tage-Test nach deiner Bestätigung frei.",
+    ctaPrimary: "Testzugang anfragen",
     ctaSecondary: "Persönliche Demo buchen",
     trust: "14 Tage kostenlos testen · Persönlicher Support · Einfache Einrichtung",
   },
@@ -488,6 +488,7 @@ const de = {
     imprint: "Impressum",
     privacy: "Datenschutz",
     terms: "AGB",
+    withdrawal: "Widerrufsbelehrung",
     brand: "Markenmaterial",
     contact: "Kontakt",
     cookieSettings: "Cookie-Einstellungen",
@@ -502,6 +503,7 @@ const de = {
       impressum: "Impressum",
       datenschutz: "Datenschutzerklärung",
       agb: "Allgemeine Geschäftsbedingungen",
+      widerruf: "Widerrufsbelehrung",
     },
   },
   logoPage: {
@@ -555,14 +557,14 @@ const de = {
     "Andere Dienstleistung",
   ],
   registerPage: {
-    eyebrow: "14 Tage kostenlos testen",
-    title: "Starte deinen kostenlosen GentleBook-Test.",
+    eyebrow: "Testzugang anfragen",
+    title: "Lass uns deinen GentleBook-Test vorbereiten.",
     subtitle:
-      "Trag dich kurz ein — wir richten deinen 14-tägigen Test ein und melden uns bei dir, sobald es losgehen kann.",
+      "Sende uns deine Anfrage. Nach einem persönlichen Gespräch richten wir deinen Mandanten ein und senden dir die Unterlagen zur Testfreischaltung.",
     sideHeading: "Was dich erwartet",
     sideBullets: [
-      "14 Tage kostenlos, unverbindlich testen",
-      "In wenigen Schritten eingerichtet",
+      "Persönliches Gespräch vor der Einrichtung",
+      "14 Tage ab deiner ausdrücklichen Freischaltung",
       "Persönliche Unterstützung bei Fragen",
       "Für Smartphone, Tablet & Desktop",
     ],
@@ -574,16 +576,16 @@ const de = {
       companyLabel: "Unternehmen / Studio",
       industryLabel: "Branche",
       industryPlaceholder: "Branche auswählen",
-      submit: "Kostenlosen Test starten",
+      submit: "Persönliches Gespräch anfragen",
       submitting: "Wird gesendet …",
-      privacyHint: "Mit dem Absenden stimmst du unserer",
-      privacyLink: "Datenschutzerklärung zu.",
+      privacyHint: "Informationen zur Verarbeitung deiner Anfrage findest du in unserer",
+      privacyLink: "Datenschutzerklärung.",
       errorRequired: "Bitte ausfüllen.",
       errorEmail: "Bitte eine gültige E-Mail-Adresse angeben.",
       errorGeneric: "Etwas ist schiefgelaufen. Bitte versuch es später erneut.",
       successTitle: "Danke! Deine Anfrage ist da.",
       successText:
-        "Wir melden uns zeitnah bei dir, um deinen kostenlosen 14-Tage-Test einzurichten.",
+        "Wir melden uns für ein persönliches Gespräch. Der Test beginnt erst nach Einrichtung und deiner gesonderten Bestätigung von AGB und AVV.",
     },
   },
   demoPage: {
@@ -644,7 +646,7 @@ const de = {
       messageLabel: "Nachricht",
       submit: "Nachricht senden",
       submitting: "Wird gesendet …",
-      privacyHint: "Mit dem Absenden stimmst du unserer",
+      privacyHint: "Weitere Informationen zur Verarbeitung deiner Anfrage findest du in unserer",
       privacyLink: "Datenschutzerklärung zu.",
       errorRequired: "Bitte ausfüllen.",
       errorEmail: "Bitte eine gültige E-Mail-Adresse angeben.",
@@ -694,7 +696,7 @@ const en: typeof de = {
     faq: "FAQ",
     blog: "Guides",
     login: "Log in",
-    cta: "Try free for 14 days",
+    cta: "Request trial access",
     ctaSecondary: "Watch demo",
     menuLabel: "Menu",
     languageLabel: "Language",
@@ -705,7 +707,7 @@ const en: typeof de = {
     titleLine2: "fills itself.",
     subline:
       "With GentleBook your customers book online around the clock – while you focus on your business. No ringing phone, with automatic reminders that fight no-shows.",
-    ctaPrimary: "Try GentleBook free for 14 days",
+    ctaPrimary: "Request a personal conversation",
     ctaSecondary: "Watch the live demo",
     trust: "Try it risk-free · Set up in a few steps · Personal support",
     benefits: [
@@ -854,7 +856,7 @@ const en: typeof de = {
     confirmedTitle: "Appointment confirmed",
     confirmedText: "This is how a booking reaches you — including an automatic confirmation.",
     restart: "Watch the flow again",
-    afterCtaLabel: "Try it free for 14 days",
+    afterCtaLabel: "Request trial access",
   },
   objections: {
     eyebrow: "Is GentleBook right for my business?",
@@ -984,19 +986,19 @@ const en: typeof de = {
   pricingSection: {
     eyebrow: "Pricing",
     title: "The right plan for your business.",
-    text: "Try it free for 14 days, then choose the plan that fits your team. All prices excl. VAT.",
+    text: "Try it free for 14 days, then choose the plan that fits your team. Final prices are shown without VAT under the German small-business rule (§ 19 UStG).",
     monthly: "Monthly",
     yearly: "Yearly",
-    yearlyBadge: "−20%",
+    yearlyBadge: "Save up to 20%",
     perMonth: "/ month",
-    billedYearly: "billed yearly",
+    billedYearly: "with annual billing",
     trialDuration: "/ 14 days",
     popular: "Recommended",
-    ctaTrial: "Start 14-day free trial",
+    ctaTrial: "Request trial access",
     ctaActivate: "Request plan",
-    ctaContact: "Request Business",
+    ctaContact: "Request Agency",
     disclaimer:
-      "Cancel monthly · No hidden costs · Every plan includes online booking. API access and white-labeling are not available yet.",
+      "Monthly or annual billing in advance · Cancel at the end of the billing period · No booking commission. API access and white-labeling are not available yet.",
     conditions: [
       {
         title: "14-day trial",
@@ -1008,7 +1010,7 @@ const en: typeof de = {
       },
       {
         title: "Stay flexible",
-        text: "Cancel monthly with no hidden costs. Upgrade at any time via WhatsApp or email.",
+        text: "Monthly and annual subscriptions can be cancelled at the end of their current billing period. Upgrade at any time via WhatsApp or email.",
       },
       {
         title: "Always included",
@@ -1059,7 +1061,7 @@ const en: typeof de = {
       },
       {
         id: "business" as const,
-        name: "Business",
+        name: "Agency",
         description: "For businesses that need no limits and dedicated support.",
         features: [
           "Unlimited team members",
@@ -1119,11 +1121,11 @@ const en: typeof de = {
       },
       {
         q: "Can I cancel any time?",
-        a: "Yes, paid plans can be cancelled monthly with no hidden costs. We'll publish the binding details in our terms of service before launch.",
+        a: "Yes. Monthly and annual subscriptions can be cancelled at the end of the current billing period. The binding details are set out in our terms of service.",
       },
       {
         q: "Does GentleBook take a commission on my bookings?",
-        a: "No. You pay a fixed monthly price for your plan — no matter how many appointments come in through your booking page. There's no commission per booking.",
+        a: "No. You pay the fixed price of your selected monthly or annual subscription — no matter how many appointments come in through your booking page. There's no commission per booking.",
       },
       {
         q: "What happens after the 14-day trial?",
@@ -1141,8 +1143,8 @@ const en: typeof de = {
   },
   finalCta: {
     title: "Your customers want to book. Make it easy for them.",
-    text: "Start your free 14-day trial now and bring your appointment organization into one central place.",
-    ctaPrimary: "Try GentleBook for free",
+    text: "Talk to us about your business. We then prepare GentleBook and activate the free 14-day trial after your confirmation.",
+    ctaPrimary: "Request trial access",
     ctaSecondary: "Book a personal demo",
     trust: "14 days free · Personal support · Easy setup",
   },
@@ -1156,6 +1158,7 @@ const en: typeof de = {
     imprint: "Imprint",
     privacy: "Privacy",
     terms: "Terms",
+    withdrawal: "Right of Withdrawal",
     brand: "Brand assets",
     contact: "Contact",
     cookieSettings: "Cookie settings",
@@ -1170,6 +1173,7 @@ const en: typeof de = {
       impressum: "Imprint",
       datenschutz: "Privacy Policy",
       agb: "Terms & Conditions",
+      widerruf: "Right of Withdrawal",
     },
   },
   logoPage: {
@@ -1223,14 +1227,14 @@ const en: typeof de = {
     "Other service business",
   ],
   registerPage: {
-    eyebrow: "Free for 14 days",
-    title: "Start your free GentleBook trial.",
+    eyebrow: "Request trial access",
+    title: "Let us prepare your GentleBook trial.",
     subtitle:
-      "Leave your details — we'll set up your 14-day trial and get back to you to get you started.",
+      "Send us your request. After a personal conversation, we prepare your workspace and send you the documents for trial activation.",
     sideHeading: "What to expect",
     sideBullets: [
-      "Try it free for 14 days, no commitment",
-      "Set up in a few steps",
+      "Personal conversation before setup",
+      "14 days from your explicit activation",
       "Personal support if you have questions",
       "Works on phone, tablet & desktop",
     ],
@@ -1241,15 +1245,15 @@ const en: typeof de = {
       companyLabel: "Company / studio",
       industryLabel: "Industry",
       industryPlaceholder: "Select industry",
-      submit: "Start free trial",
+      submit: "Request a personal conversation",
       submitting: "Sending …",
-      privacyHint: "By submitting, you agree to our",
+      privacyHint: "Information about how we process your request is available in our",
       privacyLink: "privacy policy.",
       errorRequired: "Please fill this in.",
       errorEmail: "Please enter a valid email address.",
       errorGeneric: "Something went wrong. Please try again later.",
       successTitle: "Thanks! We've got your request.",
-      successText: "We'll get back to you shortly to set up your free 14-day trial.",
+      successText: "We'll contact you for a personal conversation. The trial begins only after setup and your separate acceptance of the terms and DPA.",
     },
   },
   demoPage: {
@@ -1310,7 +1314,7 @@ const en: typeof de = {
       messageLabel: "Message",
       submit: "Send message",
       submitting: "Sending …",
-      privacyHint: "By submitting, you agree to our",
+      privacyHint: "More information about how we process your request is available in our",
       privacyLink: "privacy policy.",
       errorRequired: "Please fill this in.",
       errorEmail: "Please enter a valid email address.",
@@ -1355,6 +1359,9 @@ export function getDictionary(locale: Locale): Dictionary {
 
 /** Für die Pricing-Section: Werte aus lib/pricing.ts injizieren */
 export function getPlanPrice(id: keyof typeof pricing, yearly: boolean) {
-  if (id === "trial") return pricing.trial.monthly;
-  return yearly ? yearlyPerMonth(id) : pricing[id].monthly;
+  return yearly ? pricing[id].annual / 12 : pricing[id].monthly;
+}
+
+export function getAnnualPrice(id: keyof typeof pricing) {
+  return pricing[id].annual;
 }

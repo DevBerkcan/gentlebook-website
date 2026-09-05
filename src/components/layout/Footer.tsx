@@ -28,6 +28,9 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
     { href: p(siteConfig.routes.imprint), label: dict.footer.imprint },
     { href: p(siteConfig.routes.privacy), label: dict.footer.privacy },
     { href: p(siteConfig.routes.terms), label: dict.footer.terms },
+    { href: p(siteConfig.routes.b2b), label: locale === "de" ? "B2B-Hinweis" : "B2B notice" },
+    { href: p(siteConfig.routes.processing), label: locale === "de" ? "Auftragsverarbeitung" : "Data processing" },
+    { href: p(siteConfig.routes.subprocessors), label: locale === "de" ? "Unterauftragsverarbeiter" : "Subprocessors" },
   ];
 
   return (

@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
-import { hasCookieConsentDecision, hasCookieConsent } from "@/lib/cookieConsent";
 import { siteConfig } from "@/lib/siteConfig";
 import { localizedPath, type Locale } from "@/lib/locales";
 
@@ -32,7 +31,6 @@ const inputClass =
 export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [consentNotice, setConsentNotice] = useState<string>("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,34 +39,25 @@ export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale
     const email = String(form.get("email") ?? "").trim();
     const company = String(form.get("company") ?? "").trim();
     const industry = String(form.get("industry") ?? "").trim();
+    const privacyAcknowledged = form.get("privacyAcknowledged") === "on";
 
     const nextErrors: Record<string, string> = {};
     if (!name) nextErrors.name = dict.errorRequired;
     if (!email) nextErrors.email = dict.errorRequired;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = dict.errorEmail;
     if (!company) nextErrors.company = dict.errorRequired;
+    if (!privacyAcknowledged) nextErrors.privacyAcknowledged = dict.errorRequired;
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    if (!hasCookieConsentDecision()) {
-      setConsentNotice(dict.privacyHint);
-      return;
-    }
-
-    if (!hasCookieConsent("analytics") && !hasCookieConsent("marketing")) {
-      setConsentNotice(locale === "de" ? "Bitte erlauben Sie mindestens eine zusätzliche Cookie-Kategorie, um den Test zu starten." : "Please allow at least one optional cookie category to start the trial.");
-      return;
-    }
-
-    setConsentNotice("");
     setStatus("submitting");
     trackEvent("signup_started");
     try {
       const res = await fetch("/api/trial", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company, industry, locale }),
+        body: JSON.stringify({ name, email, company, industry, locale, privacyAcknowledged }),
       });
       if (!res.ok) throw new Error("request_failed");
       setStatus("success");
@@ -166,6 +155,24 @@ export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale
         </select>
       </div>
 
+      <div className="space-y-3 rounded-2xl border border-ink/10 bg-white p-4 text-sm text-ink/80">
+        <label className="flex items-start gap-3">
+          <input name="privacyAcknowledged" type="checkbox" className="mt-1 h-4 w-4 accent-violet" />
+          <span>
+            {locale === "de"
+              ? "Ich habe die Datenschutzerklärung zur Kenntnis genommen."
+              : "I have read and acknowledged the privacy policy."}
+          </span>
+        </label>
+        {errors.privacyAcknowledged && <p className="text-xs text-red-600">{errors.privacyAcknowledged}</p>}
+      </div>
+
+      <p className="rounded-xl bg-teal/10 px-4 py-3 text-xs leading-relaxed text-ink/70">
+        {locale === "de"
+          ? "Mit dem Absenden stellst du eine unverbindliche Anfrage. Es entstehen noch kein Konto, keine Testphase, kein Abonnement und kein Anspruch auf Freischaltung. Nach einem persönlichen Gespräch und deiner gesonderten rechtlichen Bestätigung entscheidet GentleBook über die manuelle Freigabe."
+          : "Submitting this form is a non-binding request. It does not create an account, start a trial or subscription, or establish a right to activation. After a personal conversation and separate legal confirmation, GentleBook decides whether to activate access manually."}
+      </p>
+
       <button
         type="submit"
         disabled={status === "submitting"}
@@ -178,17 +185,12 @@ export default function TrialForm({ dict, locale }: { dict: Copy; locale: Locale
       </button>
 
       <p id="trial-form-status" className="text-center text-xs leading-relaxed text-mist">
+        {locale === "de" ? "Wir verwenden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage, zur Terminvereinbarung und zur Vorbereitung eines möglichen Testzugangs. " : "We use your details solely to process your request, arrange a meeting and prepare a possible trial account. "}
         {dict.privacyHint}{" "}
         <a href={localizedPath(locale, siteConfig.routes.privacy)} className="underline hover:text-ink">
           {dict.privacyLink}
         </a>
       </p>
-
-      {consentNotice && (
-        <p role="alert" className="text-center text-xs text-amber-600">
-          {consentNotice}
-        </p>
-      )}
 
       {status === "error" && (
         <p role="alert" className="text-center text-xs text-red-600">

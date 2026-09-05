@@ -4,7 +4,8 @@ import { useMemo, useState, type FormEvent } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
-import type { Locale } from "@/lib/locales";
+import { localizedPath, type Locale } from "@/lib/locales";
+import { siteConfig } from "@/lib/siteConfig";
 
 export type QualificationCopy = {
   step: string;
@@ -43,6 +44,7 @@ type Answers = {
   goal: string;
   name: string;
   email: string;
+  privacyAcknowledged: boolean;
 };
 
 const emptyAnswers: Answers = {
@@ -54,6 +56,7 @@ const emptyAnswers: Answers = {
   goal: "",
   name: "",
   email: "",
+  privacyAcknowledged: false,
 };
 
 function OptionGroup({
@@ -224,6 +227,7 @@ export default function DemoQualificationForm({
     if (!answers.name.trim()) nextErrors.name = dict.errorRequired;
     if (!answers.email.trim()) nextErrors.email = dict.errorRequired;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(answers.email)) nextErrors.email = dict.errorEmail;
+    if (!answers.privacyAcknowledged) nextErrors.privacyAcknowledged = dict.errorRequired;
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -349,6 +353,29 @@ export default function DemoQualificationForm({
                 </p>
               )}
             </div>
+            <div className="rounded-2xl border border-ink/10 bg-white p-4 text-sm text-ink/80">
+              <label className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={answers.privacyAcknowledged}
+                  onChange={(event) => setAnswers((current) => ({ ...current, privacyAcknowledged: event.target.checked }))}
+                  className="mt-1 h-4 w-4 accent-violet"
+                />
+                <span>
+                  {locale === "de" ? "Ich habe die " : "I have read and acknowledged the "}
+                  <a href={localizedPath(locale, siteConfig.routes.privacy)} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink">
+                    {locale === "de" ? "Datenschutzerklärung" : "privacy policy"}
+                  </a>
+                  {locale === "de" ? " zur Kenntnis genommen." : "."}
+                </span>
+              </label>
+              {errors.privacyAcknowledged && <p className="mt-2 text-xs text-red-600">{errors.privacyAcknowledged}</p>}
+            </div>
+            <p className="rounded-xl bg-teal/10 px-4 py-3 text-xs leading-relaxed text-ink/70">
+              {locale === "de"
+                ? "Die Demo-Anfrage ist unverbindlich. Sie richtet noch kein Konto ein, startet keine Testphase und begründet keinen Anspruch auf Freischaltung."
+                : "The demo request is non-binding. It does not create an account, start a trial or establish a right to activation."}
+            </p>
           </div>
 
           <div className="mt-7 flex items-center justify-between gap-3">

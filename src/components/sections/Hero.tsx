@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { SplitText } from "gsap/SplitText";
 import { CalendarCheck, BellRing, Play, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -15,22 +16,21 @@ export default function Hero({ dict, locale }: { dict: Dictionary; locale: Local
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(SplitText);
     const mm = gsap.matchMedia();
 
     mm.add(MOTION_OK, () => {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      // Headline-Zeilen steigen aus der Maske
-      tl.to(
-        "[data-hero-line] > span",
-        {
-          "--hero-line-offset": "0%",
-          duration: 1.1,
-          stagger: 0.12,
+      const splits = gsap.utils.toArray<HTMLElement>("[data-hero-line] > span", root.current).map((line, index) => SplitText.create(line, {
+        type: "lines",
+        autoSplit: true,
+        mask: "lines",
+        onSplit(self) {
+          return gsap.from(self.lines, { yPercent: 110, opacity: 0, duration: 0.9, delay: 0.15 + index * 0.15, stagger: 0.15, ease: "power3.out" });
         },
-        0.15
-      )
-        .fromTo(
+      }));
+      tl.fromTo(
           "[data-hero-fade]",
           { opacity: 0, y: 22 },
           { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 },
@@ -38,15 +38,15 @@ export default function Hero({ dict, locale }: { dict: Dictionary; locale: Local
         )
         .fromTo(
           "[data-hero-visual]",
-          { opacity: 0, scale: 0.92 },
-          { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" },
-          0.4
+          { opacity: 0, y: 20, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" },
+          0.65
         )
         .fromTo(
           "[data-hero-chip]",
-          { opacity: 0, y: 26, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.18, ease: "back.out(1.6)" },
-          1
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.65, stagger: 0.15, ease: "power2.out" },
+          1.2
         );
 
       // Sanfter Parallax des Visuals beim Weiterscrollen
@@ -60,6 +60,7 @@ export default function Hero({ dict, locale }: { dict: Dictionary; locale: Local
           scrub: true,
         },
       });
+      return () => splits.forEach((split) => split.revert());
     }, root);
 
     return () => mm.revert();

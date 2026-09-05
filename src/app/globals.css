@@ -319,9 +319,11 @@
     opacity: 0;
     transform: scale(0.95) translateY(20px);
   }
-  [data-hero-line] > span {
-    --hero-line-offset: 115%;
-  }
+}
+
+@media (min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .booking-story-step { min-height: 36vh; }
+  .booking-story-preview { position: sticky; top: 7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { localizedPath, type Locale } from "@/lib/locales";
-import { hasCookieConsentDecision, hasCookieConsent } from "@/lib/cookieConsent";
 import { siteConfig } from "@/lib/siteConfig";
 
 type Copy = {
@@ -28,7 +27,6 @@ const inputClass =
 export default function ContactForm({ dict, locale }: { dict: Copy; locale: Locale }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [consentNotice, setConsentNotice] = useState<string>("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,33 +34,24 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
     const name = String(form.get("name") ?? "").trim();
     const email = String(form.get("email") ?? "").trim();
     const message = String(form.get("message") ?? "").trim();
+    const privacyAcknowledged = form.get("privacyAcknowledged") === "on";
 
     const nextErrors: Record<string, string> = {};
     if (!name) nextErrors.name = dict.errorRequired;
     if (!email) nextErrors.email = dict.errorRequired;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = dict.errorEmail;
     if (!message) nextErrors.message = dict.errorRequired;
+    if (!privacyAcknowledged) nextErrors.privacyAcknowledged = dict.errorRequired;
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    if (!hasCookieConsentDecision()) {
-      setConsentNotice(dict.privacyHint);
-      return;
-    }
-
-    if (!hasCookieConsent("analytics") && !hasCookieConsent("marketing")) {
-      setConsentNotice(locale === "de" ? "Bitte erlauben Sie mindestens die notwendigen Cookie-Kategorien, um Anfragen zu senden." : "Please allow at least the necessary cookie categories to submit requests.");
-      return;
-    }
-
-    setConsentNotice("");
     setStatus("submitting");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, locale }),
+        body: JSON.stringify({ name, email, message, locale, privacyAcknowledged }),
       });
       if (!res.ok) throw new Error("request_failed");
       setStatus("success");
@@ -142,6 +131,14 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
         )}
       </div>
 
+      <div className="rounded-2xl border border-ink/10 bg-white p-4 text-sm text-ink/80">
+        <label className="flex items-start gap-3">
+          <input name="privacyAcknowledged" type="checkbox" className="mt-1 h-4 w-4 accent-violet" />
+          <span>{locale === "de" ? "Ich habe die Datenschutzerklärung zur Kenntnis genommen." : "I have read and acknowledged the privacy policy."}</span>
+        </label>
+        {errors.privacyAcknowledged && <p className="mt-2 text-xs text-red-600">{errors.privacyAcknowledged}</p>}
+      </div>
+
       <button
         type="submit"
         disabled={status === "submitting"}
@@ -157,12 +154,6 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
           {dict.privacyLink}
         </a>
       </p>
-
-      {consentNotice && (
-        <p role="alert" className="text-center text-xs text-amber-600">
-          {consentNotice}
-        </p>
-      )}
 
       {status === "error" && (
         <p role="alert" className="text-center text-xs text-red-600">

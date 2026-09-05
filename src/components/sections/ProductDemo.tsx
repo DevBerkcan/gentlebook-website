@@ -10,6 +10,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import type { Dictionary } from "@/lib/dictionaries";
+import BookingStory from "./BookingStory";
 
 export default function ProductDemo({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.productDemo;
@@ -67,7 +68,9 @@ export default function ProductDemo({ dict, locale }: { dict: Dictionary; locale
           </Reveal>
         </div>
 
-        <Reveal delay={0.1} className="mx-auto mt-12 max-w-lg">
+        <BookingStory dict={dict} locale={locale} />
+
+        <Reveal delay={0.1} className="mx-auto mt-8 max-w-lg">
           <div className="overflow-hidden rounded-3xl border border-ink/5 bg-white shadow-lifted">
             {/* Browser-Chrome */}
             <div className="flex items-center gap-2 border-b border-ink/5 bg-lavender/60 px-5 py-3">

@@ -6,7 +6,7 @@
 
 const externalAppUrl = (
   process.env.NEXT_PUBLIC_GENTLEBOOK_APP_URL ??
-  "https://gentle-book-ui.vercel.app"
+  "https://app.gentlebook.app"
 ).replace(/\/$/, "");
 
 export const siteConfig = {
@@ -55,6 +55,9 @@ export const siteConfig = {
     privacy: "/datenschutz",
     imprint: "/impressum",
     terms: "/agb",
+    b2b: "/b2b",
+    processing: "/auftragsverarbeitung",
+    subprocessors: "/unterauftragsverarbeiter",
     logo: "/logo",
   },
 } as const;
