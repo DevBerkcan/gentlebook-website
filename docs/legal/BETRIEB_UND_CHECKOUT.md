@@ -10,7 +10,7 @@ Rechtstexte werden ausschließlich in `src/content/legal/documents.ts` gepflegt.
 
 Öffentliche deutsche URLs sind `/impressum`, `/datenschutz`, `/agb`, `/auftragsverarbeitung`, `/unterauftragsverarbeiter`, `/b2b`, `/cookies`, `/nutzungsrichtlinien`, `/tom`, `/loeschkonzept`; `/en/…` zeigt vorerst ausdrücklich den deutschen Entwurf. Die bestehenden `/widerruf`-Routen verweisen nur auf B2B.
 
-Die App verwendet bereits `NEXT_PUBLIC_LEGAL_SITE_URL` (aktuell Fallback `https://gentlebook.app`). Für die endgültige Domain diesen Wert setzen und die App neu bauen. Auch Website-SEO-/Site-URL und Mailvorlagen abgleichen. Ziel darf nicht auf dieselbe App-Redirectroute zeigen. Vor Veröffentlichung öffentliche Erreichbarkeit über alle Domains und Login-/Einladungs-/Recovery-Flows testen.
+Die App verwendet `NEXT_PUBLIC_LEGAL_SITE_URL` (Fallback für den aktuellen Rollout: `https://gentlebook-website.vercel.app`, da `gentlebook.app` bei der Deploymentprüfung nicht auflösbar war). Für die endgültige Domain diesen Wert setzen und die App neu bauen. Auch Website-SEO-/Site-URL und Mailvorlagen abgleichen. Ziel darf nicht auf dieselbe App-Redirectroute zeigen. Vor Veröffentlichung öffentliche Erreichbarkeit über alle Domains und Login-/Einladungs-/Recovery-Flows testen.
 
 Keine Backend-Versionskonstante wurde auf die neue Entwurfsfassung gesetzt. Bestehende Zustimmung `2026-08-01` ist nicht Zustimmung zu `2026-09-06-entwurf-1`. Vor Verwendung historische Texte sichern, Freigabefassung archivieren und Bestellungen serverseitig an diese binden. Nicht deployen, solange Platzhalter/Blocker offen sind.
 
