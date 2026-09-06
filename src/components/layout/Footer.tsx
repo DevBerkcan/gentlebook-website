@@ -24,6 +24,13 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
   ];
 
   const legalLinks = [
+    { href: p("/sepa"), label: locale === "de" ? "SEPA-Hinweise" : "SEPA information" },
+    { href: p("/testphase"), label: locale === "de" ? "Testphase" : "Free trial" },
+    { href: p("/kuendigung"), label: locale === "de" ? "Kündigung" : "Cancellation" },
+    { href: p("/cookies"), label: "Cookies" },
+    { href: p("/nutzungsrichtlinien"), label: locale === "de" ? "Nutzungsrichtlinien" : "Acceptable use" },
+    { href: p("/tom"), label: "TOM" },
+    { href: p("/loeschkonzept"), label: locale === "de" ? "Löschkonzept" : "Data deletion" },
     { href: p(siteConfig.routes.logo), label: dict.footer.brand },
     { href: p(siteConfig.routes.imprint), label: dict.footer.imprint },
     { href: p(siteConfig.routes.privacy), label: dict.footer.privacy },

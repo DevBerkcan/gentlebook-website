@@ -1,0 +1,464 @@
+# GentleBook – Rechtstextpaket
+
+Entwurf zur anwaltlichen Prüfung – keine Rechtsberatung.
+
+Version: 2026-09-06-entwurf-1. Nicht freigegeben.
+
+
+## SEPA- und Zahlungshinweise
+
+Website: /sepa
+
+### Zahlungsabwicklung
+
+Kostenpflichtige GentleBook-Abonnements werden über Mollie abgewickelt. Die verfügbaren Zahlungsarten, der Gesamtbetrag und das Zahlungsintervall werden vor Bestellung angezeigt. Eine wiederkehrende Belastung setzt die entsprechende Zahlungsautorisierung voraus. Für die kostenlose Testphase ist kein Mandat erforderlich.
+
+### Mandat – Textmuster zur Prüfung
+
+Ich ermächtige [ANBIETERNAME_EINTRAGEN], wiederkehrende Zahlungen für mein GentleBook-Abonnement mittels SEPA-Basislastschrift von dem angegebenen Konto einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von [ANBIETERNAME_EINTRAGEN] auf mein Konto gezogenen Lastschriften einzulösen. Ich kann innerhalb von acht Wochen ab Belastungsdatum die Erstattung des belasteten Betrags verlangen. Es gelten die mit meinem Kreditinstitut vereinbarten Bedingungen.
+
+Gläubiger-Identifikationsnummer: [GLÄUBIGER_ID_EINTRAGEN]. Mandatsreferenz: [MOLLIE_MANDATSREFERENZ_EINTRAGEN]. Dieses Muster ist vor Verwendung mit dem tatsächlichen Mollie-Verfahren und Gläubiger abzugleichen. Der Aufruf dieser Seite erteilt kein Mandat; eine zweite lokale Mandatserteilung wird nicht eingerichtet.
+
+### Vorabinformation und Nachweise
+
+Betrag, Fälligkeit, Gläubiger und Mandatsreferenz sind im vereinbarten Verfahren mitzuteilen. Vorabankündigungsfrist, tatsächlicher Mandatstext und abrufbarer Provider-Nachweis: [SEPA_VERFAHREN_FREIGEBEN]. Änderungen von Betrag oder Fälligkeit müssen berücksichtigt werden. Es wird durch diesen Entwurf keine verkürzte Vorabankündigungsfrist vereinbart.
+
+### Widerruf und Rücklastschrift
+
+Fragen oder ein Mandatswiderruf können an [E_MAIL_EINTRAGEN] gerichtet werden; der tatsächliche Widerrufsprozess ist mit dem Zahlungsdienstleister abzustimmen. Ein Mandatswiderruf ist keine Vertragskündigung und beseitigt bestehende Zahlungspflichten nicht automatisch. Bei fehlgeschlagenen Zahlungen ist eine Klärung erforderlich; pauschale Strafgebühren werden hier nicht vereinbart.
+
+## Hinweise zur kostenlosen Testphase
+
+Website: /testphase
+
+### 14 Tage ab Freischaltung
+
+Nach persönlicher Abstimmung und ausdrücklicher Freischaltung kannst du GentleBook 14 Tage kostenlos testen. Die Vorbereitung des Kontos und die Abgabe rechtlicher Bestätigungen starten die Testphase noch nicht. Beginn und Ende werden dir mitgeteilt. Eine Zahlungsmethode oder ein SEPA-Mandat ist nicht erforderlich.
+
+### Kein automatisches kostenpflichtiges Abonnement
+
+Der Test endet ohne automatische Umwandlung in ein kostenpflichtiges Abonnement und ohne automatische Abbuchung. Danach kannst du aktiv einen bestehenden Monats- oder Jahrestarif beziehungsweise ein individuelles Agency-Angebot bestellen. Tarif, Gesamtbetrag und Vertragsbedingungen müssen vor der Bestellung angezeigt werden.
+
+### Daten im Test und nach Ablauf
+
+Vor Nutzung mit echten Kunden- oder Mitarbeiterdaten ist der AV-Vertrag abzuschließen. Nach Testende kann der produktive Zugang einschließlich neuer Buchungen beschränkt werden. Export und Löschanfragen: [E_MAIL_EINTRAGEN]. Der bestehende Ablauf sieht eine 30-Tage-Übergangsphase vor; Einzelheiten und Ausnahmen stehen im Löschkonzept. Diese Produktregel ist keine allgemeine gesetzliche Aufbewahrungsfrist.
+
+## Kündigungshinweise
+
+Website: /kuendigung
+
+### Abonnement kündigen
+
+Nach dem bestehenden Tarifmodell kannst du dein Abonnement jederzeit zum Ende des laufenden monatlichen oder jährlichen Abrechnungszeitraums im Benutzerkonto unter Vertrag/Tarif oder in Textform an [E_MAIL_EINTRAGEN] kündigen. Gib eine eindeutige Zuordnung zum Unternehmenskonto an, aber keine Passwörter oder vollständigen Bankdaten. Diese Informationsseite selbst löst keine Kündigung aus.
+
+### Wirksamkeit und Verlängerung
+
+Maßgeblich sind die bei Abschluss vereinbarte Laufzeit und Kündigungsregel. Nach dem vorgesehenen Modell verlängert sich das Abonnement um denselben Zeitraum, sofern es nicht spätestens zum Ende des laufenden Zeitraums gekündigt wird. Der Zugang bleibt bis zum vereinbarten Ende bestehen. Gesetzliche Rechte zur außerordentlichen Kündigung und zwingende Erstattungsansprüche bleiben unberührt. Laufzeit und Verlängerung sind anwaltlich zu prüfen.
+
+### Kündigung und Datenlöschung sind getrennt
+
+Die Kündigung beendet künftige Vertragsperioden. Eine Löschanfrage betrifft Konto und Daten und muss gesondert bearbeitet werden. Sichere benötigte Daten vor Vertragsende durch einen Export. Gesetzlich erforderliche Abrechnungsunterlagen und Backups können nach den im Löschkonzept zu konkretisierenden Regeln weiterbestehen. Kontakt für Export und Löschung: [E_MAIL_EINTRAGEN].
+
+## Impressum
+
+Website: /impressum
+
+### Anbieter nach § 5 DDG
+
+[ANBIETERNAME_EINTRAGEN], [RECHTSFORM_EINTRAGEN]
+
+Ladungsfähige Anschrift: [ANSCHRIFT_EINTRAGEN]
+
+E-Mail: [E_MAIL_EINTRAGEN]. Unmittelbare Kontaktmöglichkeit: [TELEFON_ODER_KONTAKTWEG_EINTRAGEN].
+
+### Angaben nach tatsächlicher Anwendbarkeit
+
+Vertretungsberechtigte Person: [VERTRETUNGSBERECHTIGTER_EINTRAGEN]. Bei Einzelunternehmen ist die natürliche Person als Anbieter zu nennen.
+
+Register und Registernummer, sofern eingetragen: [HANDELSREGISTER_EINTRAGEN]. Umsatzsteuer-Identifikationsnummer oder Wirtschafts-Identifikationsnummer, soweit vorhanden und anzugeben: [UST_ID_ODER_WIRTSCHAFTS_ID_EINTRAGEN]. Keine persönliche Steuernummer veröffentlichen.
+
+Zulassungsbehörde und berufsrechtliche Angaben, sofern erforderlich: [BERUFSRECHT_PRÜFEN]. Redaktionell Verantwortlicher, sofern erforderlich: [REDAKTIONELLE_VERANTWORTUNG_PRÜFEN].
+
+### Freigabe der Angaben
+
+Die bisher im Repository genannten Unternehmensdaten sind vor Veröffentlichung zu bestätigen. Der Kleinunternehmerstatus ist nicht unabhängig belegt: [STEUERSTATUS_BESTÄTIGEN]. Nicht einschlägige Platzhalter nach Prüfung entfernen.
+
+## B2B-AGB
+
+Website: /agb
+
+### 1. Anbieter und Geltungsbereich
+
+Diese Bedingungen gelten zwischen [ANBIETERNAME_EINTRAGEN], [ANSCHRIFT_EINTRAGEN] (Anbieter), und dem gewerblichen Kunden für GentleBook. Das Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB, die in Ausübung ihrer gewerblichen oder selbstständigen beruflichen Tätigkeit handeln. Abweichende Bedingungen bedürfen einer ausdrücklichen Vereinbarung; individuelle Vereinbarungen haben Vorrang.
+
+### 2. Vertragsgegenstand
+
+GentleBook stellt eine browserbasierte Buchungs- und Kundenverwaltungssoftware bereit. Der bestellte Tarif bestimmt Funktionen und Nutzungsgrenzen, insbesondere Mitarbeiter, Standorte, Leistungen, Termine, Gestaltung und Auswertungen. Die beim Abschluss bereitgestellte Leistungsbeschreibung wird Vertragsbestandteil. Vorschaufunktionen und Roadmaps begründen ohne ausdrückliche Vereinbarung keine Leistungspflicht.
+
+### 3. Einladung und kostenlose Testphase
+
+Ein Testzugang wird nach persönlicher Abstimmung und ausdrücklicher Freischaltung durch den Anbieter für 14 Tage bereitgestellt. Die technische Vorbereitung und die Abgabe rechtlicher Bestätigungen starten den Test noch nicht. Beginn und Ende werden mitgeteilt. Eine Zahlungsmethode oder ein SEPA-Mandat ist für den kostenlosen Test nicht erforderlich.
+
+Die Testphase endet ohne automatische Umwandlung in ein kostenpflichtiges Abonnement. Ohne aktive Bestellung erfolgen keine Abbuchungen. Anschließend kann der produktive Zugang einschließlich neuer Buchungen beschränkt werden. Export und Löschanfragen können über [E_MAIL_EINTRAGEN] gestellt werden. Vor Verarbeitung echter Kunden- oder Mitarbeiterdaten ist der AV-Vertrag abzuschließen.
+
+### 4. Kostenpflichtiger Vertragsschluss
+
+Vor der Bestellung werden Tarif, Funktionen, Gesamtpreis, Zahlungsintervall, Beginn, Laufzeit, Verlängerung und Kündigung angezeigt. Eingaben müssen vor Abgabe korrigiert werden können. Der Kunde bestätigt seine Unternehmereigenschaft und die AGB gesondert durch nicht vorausgewählte Erklärungen. Die Datenschutzerklärung informiert über Verarbeitung und ist keine pauschale Einwilligung.
+
+Mit der Schaltfläche „Kostenpflichtiges Abonnement abschließen“ gibt der Kunde eine verbindliche Bestellung ab. Der Anbieter nimmt diese durch eine ausdrückliche Vertragsbestätigung an. Individuelle Agency-Angebote benennen ihre Annahmefrist und den vereinbarten Beginn. Eine bloße Anfrage ist keine Bestellung. Dieser Vertragsschlussmechanismus ist vor Freigabe mit dem tatsächlichen Zahlungsablauf abzugleichen.
+
+Der Kunde erhält Vertragsdaten und die vereinbarte Fassung der AGB auf einem dauerhaften Datenträger. Technischer Freigabepunkt: unveränderlicher Bestellsnapshot und automatisierter Versand müssen noch nachgewiesen werden.
+
+### 5. Tarife und Funktionsgrenzen
+
+Das bestehende Modell umfasst Starter, Pro und Agency sowie monatliche und jährliche Abrechnung. Die konkrete Funktionsliste und Limits ergeben sich aus dem vor Abschluss angezeigten Angebot. Bei Erreichen eines Limits darf die betroffene Funktion begrenzt werden; ein kostenpflichtiges Upgrade erfolgt nur nach aktiver Bestellung.
+
+### 6. Preise und Steuern
+
+Nach dem derzeitigen Homepage-Modell: Starter 29,00 € monatlich oder 278,00 € jährlich; Pro 59,00 € monatlich oder 566,00 € jährlich. Agency wird individuell angeboten. Bei jährlicher Abrechnung ist der vollständige Jahresbetrag geschuldet, nicht nur ein rechnerischer Monatswert.
+
+[STEUERSTATUS_BESTÄTIGEN]: Die Homepage behandelt die Beträge derzeit als Gesamtpreise ohne Umsatzsteuerausweis nach § 19 UStG. Diese steuerliche Behandlung muss vor Veröffentlichung bestätigt werden. Vor Bestellung muss der tatsächlich zu zahlende Gesamtbetrag einschließlich sämtlicher anwendbarer Preisbestandteile feststehen. Keine nachträglichen Steueraufschläge allein aufgrund dieses Entwurfs.
+
+### 7. Zahlung und SEPA
+
+Die Vergütung wird für den gewählten Abrechnungszeitraum im Voraus fällig. Die tatsächlich verfügbaren Zahlungsarten werden im Checkout angezeigt; die Abwicklung erfolgt über Mollie. Eine wiederkehrende Belastung setzt eine gültige Autorisierung der jeweiligen Zahlungsart voraus.
+
+Bei SEPA-Basislastschrift werden Mandatsinformationen und eine Vorabinformation über Betrag und Fälligkeit bereitgestellt. Gläubiger, Mandatsreferenz, Nachweis und Vorabankündigungsfrist sind mit dem eingesetzten Mollie-Verfahren abzugleichen: [SEPA_VERFAHREN_FREIGEBEN]. Dieser AGB-Text selbst erteilt kein Mandat.
+
+### 8. Rücklastschriften
+
+Bei fehlgeschlagener Zahlung wird der Kunde informiert und erhält Gelegenheit zur Klärung. Rücklastschriftkosten können nur nach den gesetzlichen Voraussetzungen und in nachgewiesener ersatzfähiger Höhe verlangt werden. Gesetzliche Erstattungs- und Einwendungsrechte bleiben unberührt. Es wird keine pauschale Strafgebühr vereinbart.
+
+### 9. Beginn, Laufzeit, Verlängerung und Kündigung
+
+Der kostenpflichtige Beginn wird vor der Bestellung konkret angegeben. Das Abonnement läuft mit dem gewählten Abrechnungszeitraum von einem oder zwölf Monaten und verlängert sich um denselben Zeitraum, wenn es nicht spätestens bis zum Ende des laufenden Zeitraums gekündigt wird. Kündigung ist jederzeit zum Periodenende im Konto oder in Textform an [E_MAIL_EINTRAGEN] möglich. Zugang und Vergütung bestehen bis dahin fort.
+
+Das Recht zur außerordentlichen Kündigung und zwingende Erstattungsansprüche bleiben unberührt. Kündigung beendet künftige Vertragsperioden; eine Kontolöschanfrage ist ein gesonderter Vorgang. Laufzeitklausel einschließlich Jahresverlängerung: ausdrücklich zur anwaltlichen Prüfung.
+
+### 10. Sperrung
+
+Bei erheblichem Zahlungsverzug oder rechtswidriger Nutzung kann nach angemessener Ankündigung und Abhilfefrist der erforderliche Teil des Zugangs gesperrt werden. Bei einer konkreten akuten Sicherheitsgefahr kann eine sofortige vorläufige Beschränkung notwendig sein. Gründe und Abhilfe werden mitgeteilt, soweit dies rechtlich und sicherheitstechnisch möglich ist. Die Maßnahme muss verhältnismäßig sein.
+
+### 11. Verfügbarkeit, Wartung und Support
+
+Der Anbieter betreibt und wartet die vereinbarte Software. Geplante wesentliche Unterbrechungen werden nach Möglichkeit vorab angekündigt. Ein bestimmter Verfügbarkeitsprozentsatz oder eine feste Reaktionszeit ist nur bei ausdrücklicher Vereinbarung zugesagt. Supportkontakt und tatsächliche Servicezeiten: [SUPPORTZEITEN_EINTRAGEN]. Gesetzliche Mängelrechte bleiben unberührt.
+
+### 12. Pflichten des Kunden
+
+Der Kunde schützt Zugangsdaten, vergibt bedarfsgerechte Berechtigungen, hält Kontaktdaten aktuell und meldet Sicherheitsvorfälle unverzüglich. Er prüft vor Veröffentlichung Leistungen, Preise, Mitarbeiter, Öffnungszeiten und Buchungsbedingungen auf Richtigkeit.
+
+### 13. Zulässige Nutzung
+
+Unzulässig sind rechtswidrige Inhalte, unbefugter Zugriff, Schadsoftware, unerlaubte Massenwerbung und vorsätzliche Überlastung. Eigene Inhalte dürfen nur mit ausreichenden Rechten eingestellt oder importiert werden. Gesundheitsdaten und andere besondere Datenkategorien dürfen erst nach gesonderter rechtlicher und technischer Freigabe verarbeitet werden. Die Nutzungsrichtlinien konkretisieren diese Pflichten ohne zusätzliche pauschale Haftung.
+
+### 14. Endkunden und Datenverantwortung
+
+Vertragspartner für die gebuchte Studioleistung ist das jeweilige Studio. GentleBook wird durch die technische Terminvermittlung nicht Vertragspartner dieser Leistung. Der Kunde verantwortet seine Informationspflichten, Buchungsbedingungen und Rechtsgrundlagen für Kunden- und Mitarbeiterdaten. Auf Buchungsseiten sind seine eigenen Anbieter- und Datenschutzhinweise bereitzustellen.
+
+### 15. Datenschutz und Auftragsverarbeitung
+
+Für Datenverarbeitung im Auftrag gilt der gesonderte AV-Vertrag einschließlich Anlagen, bereits im Test mit Echtdaten. Für eigene Vertragsverwaltung, Abrechnung und berechtigte Sicherheitszwecke verarbeitet der Anbieter Daten in eigener Verantwortung entsprechend den Datenschutzhinweisen. Die Verantwortung ist nach dem tatsächlichen Zweck abzugrenzen.
+
+### 16. Unterauftragsverarbeiter
+
+Einbindung, Änderungen und Widerspruchsverfahren richten sich nach dem AV-Vertrag. Die freigegebene Liste dokumentiert Leistung, Datenarten, Verarbeitungsorte und etwaige Transfergrundlagen. Eine bloße Nennung eines Dienstleisters ersetzt weder Prüfung noch Vertrag.
+
+### 17. Datensicherung
+
+Der Anbieter setzt die in der freigegebenen TOM-Anlage beschriebenen Sicherungsmaßnahmen um. Backupintervall, Wiederherstellungsziele und Aufbewahrung sind vor Vertragsschluss festzulegen. Eigene Exporte des Kunden ergänzen Sicherungen; gesetzliche Pflichten des Anbieters werden dadurch nicht abbedungen.
+
+### 18. Datenexport
+
+Der Kunde kann vor Vertragsende und während der vereinbarten Übergangsphase einen maschinenlesbaren Export seiner operativen Daten anfordern. Verfahren, Umfang und etwaige Einschränkungen müssen vor Freigabe konkret beschrieben und getestet werden: [EXPORTUMFANG_FREIGEBEN]. Betroffenenrechte bleiben unberührt.
+
+### 19. Löschung und Aufbewahrung
+
+Nach Test- oder Vertragsende ist im vorhandenen System eine Übergangsphase von 30 Tagen vorgesehen, danach eine Löschung operativer Daten oder irreversible Anonymisierung. Dies ist eine Produktregel, keine allgemeine gesetzliche Aufbewahrungsfrist. Gesetzlich aufzubewahrende Abrechnungsunterlagen werden zweckgebunden und zugriffsbeschränkt aufbewahrt. Weisungen und berechtigte Aufbewahrungssperren sowie Backups sind nach dem AV-Vertrag und Löschkonzept zu behandeln.
+
+### 20. Nutzungsrechte
+
+Für die Vertragsdauer erhält der Kunde ein einfaches, auf den vereinbarten Geschäftsbetrieb beschränktes Nutzungsrecht an der Software. Rechte an Kundeninhalten verbleiben beim Kunden; der Anbieter erhält nur die für die Vertragserfüllung erforderlichen Verarbeitungs- und Darstellungsrechte. Gesetzlich zwingend erlaubte Handlungen bleiben zulässig.
+
+### 21. Mängelrechte
+
+Es gelten die gesetzlichen Mängelrechte. Der Kunde beschreibt Störungen so, dass eine Untersuchung möglich ist, und wirkt im zumutbaren Umfang an der Fehlerklärung mit. Dieser Entwurf verkürzt keine gesetzlichen Verjährungsfristen.
+
+### 22. Haftung – ausdrücklich zur anwaltlichen Prüfung
+
+Es gelten die gesetzlichen Haftungsregelungen. Insbesondere werden Haftung für Vorsatz, grobe Fahrlässigkeit, Verletzung von Leben, Körper oder Gesundheit, Garantien und zwingende gesetzliche Haftung nicht ausgeschlossen oder beschränkt. Eine darüber hinausgehende Haftungsbegrenzung wird in diesem Entwurf nicht vereinbart.
+
+### 23. Änderungen – ausdrücklich zur anwaltlichen Prüfung
+
+Wesentliche Leistungs-, Preis- oder Vertragsänderungen bedürfen einer wirksamen Vereinbarung. Schweigen wird durch diese AGB nicht als Zustimmung behandelt. Technische Aktualisierungen dürfen den vereinbarten Leistungsumfang nicht ohne Rechtsgrundlage wesentlich beeinträchtigen. Bereits akzeptierte Fassungen werden archiviert; eine neue Websitefassung ändert bestehende Verträge nicht automatisch.
+
+### 24. Vertraulichkeit
+
+Beide Parteien schützen nicht öffentliche vertrauliche Informationen und verwenden sie nur zur Vertragsdurchführung. Ausgenommen sind nachweislich öffentliche oder rechtmäßig unabhängig erlangte Informationen und gesetzlich gebotene Offenlegungen. Die Pflicht gilt nach Vertragsende fort, solange ein berechtigtes Geheimhaltungsinteresse besteht.
+
+### 25. Abtretung
+
+Für Abtretungen gelten die gesetzlichen Vorschriften. Dieser Entwurf enthält kein zusätzliches pauschales Abtretungsverbot.
+
+### 26. Textform
+
+Vertragliche Mitteilungen einschließlich Kündigungen können in Textform erfolgen, sofern nicht gesetzlich eine andere Form vorgeschrieben ist. Individuelle Vereinbarungen bleiben unabhängig davon vorrangig.
+
+### 27. Recht und Gerichtsstand – ausdrücklich zur anwaltlichen Prüfung
+
+Es gilt deutsches Recht unter Wahrung zwingender Schutzvorschriften. Für den Gerichtsstand gelten die gesetzlichen Regeln; dieser Entwurf legt keinen pauschalen ausschließlichen Anbietergerichtsstand für alle Unternehmer fest.
+
+### 28. Schlussbestimmungen
+
+Sollte eine Bestimmung unwirksam sein, gelten an ihrer Stelle die gesetzlichen Vorschriften. Die übrigen Bestimmungen bleiben nach Maßgabe des Gesetzes bestehen. Anlagen und individuelle Vereinbarungen sind in der bei Vertragsschluss vereinbarten Fassung maßgeblich.
+
+## Datenschutzerklärung
+
+Website: /datenschutz
+
+### 1. Verantwortlicher und Kontakt
+
+Für eigene Verarbeitung verantwortlich: [ANBIETERNAME_EINTRAGEN], [ANSCHRIFT_EINTRAGEN], [E_MAIL_EINTRAGEN]. Datenschutzkontakt: [DATENSCHUTZKONTAKT_EINTRAGEN]. Bestellungspflicht und gegebenenfalls Kontaktdaten eines Datenschutzbeauftragten: [DSB_STATUS_PRÜFEN].
+
+### 2. Geltungsbereich und Rollen
+
+Diese Hinweise betreffen die öffentliche Website und eigene Verarbeitung beim Betrieb von GentleBook. Termin-, Endkunden- und Mitarbeiterdaten verarbeitet GentleBook regelmäßig im Auftrag des jeweiligen Studios. Für diese Daten ist das Studio verantwortlich; dessen eigene Hinweise sind maßgeblich. Anfragen hierzu werden dem Studio zur Bearbeitung zugeordnet. Die nachfolgenden Rechtsgrundlagen sind Entwurfszuordnungen, die anhand des tatsächlichen Ablaufs zu bestätigen sind.
+
+### 3. Website und technische Auslieferung
+
+Betroffene: Websitebesucher. Daten: IP-Adresse, Abrufzeit, angefragte Ressource, Browser-/Geräteinformationen, Statuscodes und gegebenenfalls Referrer. Zweck: Auslieferung, Fehleranalyse und Sicherheit. Vorgeschlagene Grundlage: Art. 6 Abs. 1 lit. f DSGVO, Interesse an sicherem Betrieb; Interessenabwägung dokumentieren. Empfänger: eingesetzter Hosting-/CDN-Anbieter, laut Projekt Vercel. Regionen, Drittlandzugriffe und Garantien: [HOSTING_TRANSFER_BELEGEN]. Löschung: [LOG_LÖSCHFRIST_EINTRAGEN] nach dokumentiertem Sicherheitsbedarf. Technische Verbindungsdaten sind für den Abruf erforderlich; ohne sie ist die Nutzung nicht möglich.
+
+### 4. Interessenten und Einladungen
+
+Betroffene: Interessenten und geschäftliche Kontaktpersonen. Daten: Name, Unternehmen, E-Mail, Telefon und Anfrageinhalt; Herkunft direkt aus der Anfrage oder vom benennenden Unternehmen. Zweck: Anfragebearbeitung, persönliche Abstimmung und Einladung. Grundlage: Art. 6 Abs. 1 lit. b bei eigenen vorvertraglichen Anfragen; bei Unternehmensansprechpartnern regelmäßig lit. f mit dokumentiertem Interesse an Geschäftskommunikation. Empfänger: berechtigte Beschäftigte, E-Mail-Dienst laut Projekt netcup; CRM-Anbindung gesondert prüfen. Löschkriterium: Abschluss der Anfrage und Wegfall erforderlicher Nachweiszwecke; [INTERESSENTEN_LÖSCHFRIST_EINTRAGEN]. Kontaktangaben sind zur Beantwortung erforderlich, Telefon nur soweit im konkreten Verfahren notwendig. Für aus anderen Quellen erhaltene Daten sind Art.-14-Informationen und Herkunft rechtzeitig mitzuteilen.
+
+### 5. Konten, Verträge und Abrechnung
+
+Betroffene: Inhaber, Administratoren und Unternehmensansprechpartner. Daten: Identität, Zugangsdaten in technisch verarbeiteter Form, Rollen, Rechnungsanschrift, Tarif, Preis, Bestätigungen, Zahlungs-/Mandatsreferenzen und Rechnungen. Zweck: Kontobetrieb, Vertragsdurchführung, Zahlung und Nachweise. Grundlagen: Art. 6 Abs. 1 lit. b bei eigenem Vertrag, lit. f für Ansprechpartner juristischer Personen und lit. c für konkret einschlägige Aufbewahrungspflichten. Empfänger: Hosting, E-Mail, Mollie sowie ggf. berechtigte Buchhaltung/Steuerberatung und CRM. Erforderliche Vertrags-/Zahlungsangaben müssen bereitgestellt werden, sonst ist kein kostenpflichtiger Betrieb möglich. Operative Daten folgen dem Löschkonzept; einzelne Belegarten und Fristbeginn: [ABRECHNUNG_AUFBEWAHRUNG_FESTLEGEN]. Transferangaben je Empfänger sind vor Freigabe zu belegen.
+
+### 6. Support
+
+Betroffene: Anfragende und in Supportfällen genannte Personen. Daten: Kontakt, Problembeschreibung, notwendige Auszüge und Korrespondenz. Zweck: Fehlerbehebung und Unterstützung; Grundlage Art. 6 Abs. 1 lit. b oder bei geschäftlichen Ansprechpartnern lit. f. Soweit Studioinhalte eingesehen werden, erfolgt dies weisungsgebunden im Rahmen des AVV. Empfänger: berechtigter Support, Hosting und E-Mail; optionale WhatsApp-Kommunikation erfordert eine zusätzliche Dienstleister-/Transferprüfung. Keine Gesundheitsdaten oder vollständigen Kundendatenbanken in Supportnachrichten senden. Löschkriterium: Bearbeitung abgeschlossen, erforderliche Nachweise separat; [SUPPORT_LÖSCHFRIST_EINTRAGEN]. Erforderlich sind nur Angaben zur Bearbeitung, zusätzliche Inhalte sind freiwillig.
+
+### 7. Sicherheits- und Auditprotokolle
+
+Betroffene: Nutzer und gegebenenfalls Besucher. Daten: Account-/Mandantenreferenz, Aktion, Zeitpunkt, technische Fehler-/Zugriffsdaten. Zweck: Missbrauchsabwehr, Berechtigungsprüfung und Nachweis von Bestellungen. Grundlage je Zweck Art. 6 Abs. 1 lit. f, bei konkreter gesetzlicher Nachweispflicht lit. c. Empfänger: berechtigte Administratoren und Infrastrukturbetreiber. Zugriff und Speicherdauer sind nach Zweck zu begrenzen: [AUDIT_LÖSCHFRIST_EINTRAGEN]. Vertragsevidenz ist von allgemeinen Diagnoseprotokollen zu trennen. Keine vollständigen Zahlungs- oder Freitextinhalte ins Log aufnehmen. Sicherheitsverarbeitung kann für die Nutzung erforderlich sein.
+
+### 8. Cookies, Analyse und Marketing
+
+Notwendige Endgerätezugriffe sind gesondert auf § 25 Abs. 2 TDDDG zu prüfen; personenbezogene Folgeprozesse brauchen zusätzlich eine DSGVO-Grundlage. Optionale Analyse-/Marketingtechnologien dürfen nur nach wirksamer Auswahl aktiviert werden (§ 25 Abs. 1 TDDDG und regelmäßig Art. 6 Abs. 1 lit. a DSGVO). In der App existieren Integrationen für Google Analytics und Microsoft Clarity sowie eigene Trackingfunktionen. Ob und welche produktiv aktiv sind, ist zu bestätigen: [TRACKING_KONFIGURATION_PRÜFEN]. Empfänger, konkrete Identifier, Transfergrundlage und Laufzeiten müssen für jede aktivierte Integration ergänzt werden. Ablehnung darf den vertraglichen Kernzugang nicht verhindern. Widerruf ist über Cookie-Einstellungen möglich.
+
+Werbung wird nicht aus einer Testregistrierung abgeleitet. Newsletter benötigen ein gesondertes zulässiges Verfahren, grundsätzlich mit getrennter Einwilligung und Double-Opt-in. Grundlage, Empfänger, Nachweis-/Sperrlistendauer: [MARKETING_VERFAHREN_PRÜFEN]. Keine Aussage, dass ein Newsletter bereits betrieben wird.
+
+### 9. Studioinhalte, Import und KI
+
+Im Auftrag können Namen, Kontakte, Termine, Leistungen, Arbeitszeiten, Notizen, Formularantworten, Wartelisten, Bewertungen, Gutscheine, Treuepunkte und KI-Konversationen verarbeitet werden. Rechtsgrundlagen, Informationspflichten und gegebenenfalls Art. 9 DSGVO liegen in der Verantwortung des Studios; GentleBook unterstützt nach AVV. Website-/Markenimport verarbeitet auf Auftrag öffentlich erreichbare Inhalte und Metadaten; Herkunft ist die angegebene Website. Es dürfen nur berechtigt verwendbare Inhalte übernommen werden.
+
+Der Backendcode kann bei konfiguriertem Schlüssel einen OpenAI-Anbieter verwenden. Produktive Aktivierung, Datenumfang, Vertragsgesellschaft, Speicherung und Transfers sind nicht verifiziert: [KI_DIENSTLEISTER_FREIGEBEN]. Bis zur Prüfung dürfen keine personenbezogenen Inhalte an nicht freigegebene KI-Dienste übertragen werden. Es wird keine ausschließlich automatisierte Entscheidung mit rechtlicher oder ähnlich erheblicher Wirkung für eigene Zwecke vorgesehen; tatsächlichen Ablauf vor Freigabe bestätigen.
+
+### 10. Empfänger, Transfers und Aufbewahrung
+
+Die Dienstleisterliste unterscheidet eigene Empfänger und Unterauftragsverarbeiter. Eine internationale Marke belegt weder den tatsächlichen Verarbeitungsort noch eine Transfergrundlage. Drittlandtransfers sind vor Einsatz anhand der konkreten Gesellschaft und Leistung nach Art. 44 ff. DSGVO zu prüfen. Informationen und Kopien geeigneter Garantien sind über den Datenschutzkontakt erhältlich, sobald die Nachweise feststehen. Backupzyklen und Schutzmaßnahmen: [BACKUPZYKLUS_EINTRAGEN]. Keine allgemeine unbegrenzte Speicherung; offene Fristen sind vor Veröffentlichung auszufüllen.
+
+### 11. Rechte und Beschwerden
+
+Unter den gesetzlichen Voraussetzungen bestehen Auskunft, Berichtigung, Löschung, Einschränkung und Datenübertragbarkeit. Gegen Verarbeitung auf Art. 6 Abs. 1 lit. f kann aus Gründen der besonderen Situation widersprochen werden; gegen Direktwerbung jederzeit. Einwilligungen können für die Zukunft widerrufen werden, ohne die Rechtmäßigkeit vorheriger Verarbeitung zu berühren. Anfragen an [DATENSCHUTZKONTAKT_EINTRAGEN]. Bei Studioinhalten ist primär das betreffende Studio zuständig.
+
+Beschwerden sind bei einer Datenschutzaufsichtsbehörde möglich, insbesondere am Aufenthaltsort, Arbeitsplatz oder Ort des mutmaßlichen Verstoßes. Für den bestätigten Anbietersitz zuständige Behörde und Kontakt: [AUFSICHTSBEHÖRDE_EINTRAGEN]. Die Zuständigkeit ist nicht auf diese eine Behörde beschränkt.
+
+## Vertrag zur Auftragsverarbeitung
+
+Website: /auftragsverarbeitung
+
+### 1. Parteien und Einbeziehung
+
+Auftraggeber: [STUDIO_NAME_ANSCHRIFT_EINTRAGEN]. Auftragsverarbeiter: [ANBIETERNAME_EINTRAGEN], [ANSCHRIFT_EINTRAGEN]. Diese Vereinbarung konkretisiert Art. 28 DSGVO und gilt ab dokumentierter Annahme vor der ersten Auftragsverarbeitung, auch im kostenlosen Test. Bei Widersprüchen gehen ihre Datenschutzregelungen dem Hauptvertrag vor. Version, Parteien und Annahmezeit werden nachvollziehbar festgehalten.
+
+### 2. Gegenstand, Dauer, Art und Zweck
+
+Gegenstand ist der Betrieb von GentleBook zur Termin-, Kunden- und Mitarbeiterverwaltung einschließlich Buchungsseiten, Kommunikation und bestellter Zusatzfunktionen. Verarbeitet wird durch Erheben, Erfassen, Speichern, Ordnen, Abrufen, Übermitteln im autorisierten Umfang, Exportieren und Löschen. Dauer: Hauptvertrag einschließlich Test und vereinbarter Rückgabe-/Löschphase; verbleibende Schutzpflichten bestehen fort.
+
+### 3. Daten und betroffene Personen
+
+Betroffene: Kunden/Interessenten des Studios, Mitarbeiter, Administratoren und sonstige vom Studio rechtmäßig erfasste Kontakte. Daten: Namen, Kontaktdaten, Termine, Leistungen, Mitarbeitereinsatz, Rollen, Kommunikationsinhalte, erforderliche technische Kennungen sowie optional freigegebene Formular-, Bewertungs-, Gutschein- und Treuedaten. Besondere Datenkategorien einschließlich Gesundheitsdaten sind nicht pauschal umfasst; dafür sind zuvor Rechtsgrundlage, Umfang, TOM und gegebenenfalls DSFA gesondert festzulegen.
+
+### 4. Verantwortlichkeit und Weisungen
+
+Der Auftraggeber verantwortet Rechtmäßigkeit, Datenminimierung, Informationspflichten und Weisungen. Der Auftragsverarbeiter verarbeitet Daten nur auf dokumentierte Weisung, auch bei Drittlandübermittlungen, sofern nicht Unions- oder Mitgliedstaatenrecht verpflichtet. In diesem Fall informiert er vorab, soweit das Recht dies zulässt. Weisungsberechtigte und Empfangskontakt: [WEISUNGSKONTAKTE_EINTRAGEN]. Vermutet er eine rechtswidrige Weisung, informiert er unverzüglich und klärt die betroffene Verarbeitung vor ihrer Fortsetzung.
+
+### 5. Vertraulichkeit und Berechtigungen
+
+Zugriff erhalten nur entsprechend verpflichtete oder gesetzlich zur Verschwiegenheit verpflichtete Personen, soweit ihre Aufgabe ihn erfordert. Berechtigungen werden rollenbezogen vergeben, regelmäßig überprüft und bei Wegfall entzogen. Supportzugriffe müssen auf dokumentierten Anlass und notwendigen Umfang beschränkt werden.
+
+### 6. Technische und organisatorische Maßnahmen
+
+Die freizugebende TOM-Anlage ist Vertragsbestandteil und beschreibt Maßnahmen nach Art. 32 DSGVO. Vor Verarbeitung muss der Auftraggeber Gelegenheit zur Prüfung der Nachweise haben. Anpassungen sind zulässig, wenn das vereinbarte Schutzniveau nicht unterschritten wird; wesentliche Änderungen werden dokumentiert und mitgeteilt. Die vorliegende Soll-Anlage ist keine Behauptung bereits umgesetzter Maßnahmen.
+
+### 7. Betroffenenrechte
+
+Der Auftragsverarbeiter unterstützt mit geeigneten technischen und organisatorischen Maßnahmen bei Auskunft, Berichtigung, Löschung, Einschränkung und Übertragbarkeit. Direkt eingehende Anfragen zu Auftragsdaten leitet er unverzüglich an den Auftraggeber weiter und beantwortet sie nicht eigenständig inhaltlich ohne Weisung oder gesetzliche Verpflichtung. Identitätsprüfung und Fristüberwachung werden abgestimmt.
+
+### 8. Datenschutzverletzungen und Unterstützung
+
+Bekannt gewordene Verletzungen des Schutzes von Auftragsdaten werden dem Auftraggeber unverzüglich gemeldet. Die Mitteilung umfasst nach Kenntnis Art des Vorfalls, Kategorien und ungefähre Zahl Betroffener/Datensätze, Kontakt, wahrscheinliche Folgen und Maßnahmen; fehlende Informationen werden nachgereicht. Er unterstützt unter Berücksichtigung der Verarbeitungsart und verfügbarer Informationen bei Art. 32 bis 36 DSGVO, insbesondere Behörden-/Betroffenenmeldungen, DSFA und vorheriger Konsultation. Für den Auftragsverarbeiter ist keine eigene pauschale 72-Stunden-Wartefrist vorgesehen.
+
+### 9. Unterauftragsverarbeiter
+
+Die allgemeine Genehmigung umfasst nur die bei Vertragsschluss konkret freigegebene Anlage. Vor beabsichtigter Hinzuziehung oder Ersetzung informiert der Auftragsverarbeiter in Textform mit Aufgabe, Daten, Ort und Schutzmaßnahmen. Vorschlag zur anwaltlichen Prüfung: mindestens 30 Tage vor Einsatz, damit der Auftraggeber aus nachvollziehbaren Datenschutzgründen widersprechen kann. Dieser Zeitraum ist eine vorgeschlagene Vertragsregel, keine behauptete gesetzliche Frist.
+
+Bei Widerspruch suchen die Parteien eine geeignete Alternative. Bis zur Klärung erfolgt die betroffene neue Übermittlung nicht. Ist keine vertretbare Lösung möglich, wird eine Beendigung des betroffenen Leistungsteils mit Rückgabe/Löschung vereinbart; gesetzliche Rechte bleiben erhalten. Subprozessoren werden zu denselben einschlägigen Datenschutzpflichten verpflichtet; der Auftragsverarbeiter bleibt gegenüber dem Auftraggeber für ihre Pflichten verantwortlich.
+
+### 10. Verarbeitung außerhalb des EWR
+
+Drittlandverarbeitung erfolgt nur auf dokumentierter Weisung und mit nachgewiesener Grundlage nach Art. 44 ff. DSGVO. Konkrete Länder, Empfänger, Garantien, erforderliche Transferprüfung und zusätzliche Maßnahmen gehören in die Anlage. Ein bloßer Hinweis auf mögliche Standardvertragsklauseln oder Zertifizierungen genügt nicht.
+
+### 11. Nachweise und Kontrolle
+
+Der Auftragsverarbeiter stellt alle erforderlichen Informationen zum Nachweis der Pflichten bereit und ermöglicht Überprüfungen einschließlich Inspektionen durch den Auftraggeber oder einen beauftragten Prüfer. Ablauf, Vertraulichkeit und Rücksicht auf andere Mandanten werden angemessen abgestimmt, ohne die gesetzlichen Kontrollrechte auszuschließen. Akute Vorfälle und behördliche Anforderungen können kurzfristige Prüfung erfordern.
+
+### 12. Rückgabe, Löschung und Aufbewahrung
+
+Nach Abschluss der Leistungen werden Auftragsdaten nach Wahl des Auftraggebers zurückgegeben oder gelöscht und vorhandene Kopien gelöscht, soweit keine gesetzliche Speicherungspflicht besteht. Weisung, Exportverfahren und Abschlussnachweis werden dokumentiert. Die technische 30-Tage-Übergangsphase ist mit dieser Wahl und erforderlichen Fristen abzustimmen. Eigene gesetzlich erforderliche Abrechnungsunterlagen werden getrennt und zweckbeschränkt behandelt. Backup-Auslaufen und erneute Löschung nach Restore sind vor Freigabe verbindlich festzulegen.
+
+### 13. Anlagen und Abschluss
+
+Bestandteile: TOM, freigegebene Unterauftragsverarbeiterliste, Lösch-/Rückgabekonzept und Verarbeitungskategorien. Offene Maßnahmen oder Empfänger müssen vor Annahme konkretisiert werden. Auftraggeber/vertretungsberechtigte Person: [AVV_KUNDE_UNTERZEICHNER_EINTRAGEN]. Anbietervertretung: [VERTRETUNGSBERECHTIGTER_EINTRAGEN]. Dokumentversion und Annahmezeit: [AVV_ABSCHLUSSNACHWEIS_EINTRAGEN]. Veröffentlichung allein schließt diesen Vertrag nicht.
+
+## Dienstleister und Unterauftragsverarbeiter
+
+Website: /unterauftragsverarbeiter
+
+### Status der Liste
+
+Dies ist ein Inventar zur Freigabe, keine bereits genehmigte vollständige Vertragsanlage. Für jeden eingesetzten Dienst sind genaue Vertragsgesellschaft, Region einschließlich Backups/Support, AVV, Unterdienstleister, Drittlandzugriffe und Garantien zu belegen: [DIENSTLEISTER_NACHWEISE_EINTRAGEN]. Eigene Verantwortliche sind nicht automatisch Unterauftragsverarbeiter.
+
+### MonsterASP
+
+Laut Projekt vorgesehen: API-/Datenbankhosting. Mögliche Daten: sämtliche gespeicherten Studio- und Kontodaten, technische Logs, Sicherungen. Rolle bei Studioinhalten: Unterauftragsverarbeiter; bei eigenen Daten: Auftragsverarbeiter des Anbieters. Konkrete Gesellschaft, gebuchter Standort, Backups und Transfers: zu klären; keine belegte Aussage „nur Deutschland/EU“.
+
+### Vercel
+
+Laut Projekt: Marketingwebsite; App-Frontend-Konfiguration ebenfalls prüfen. Daten: Verbindungsdaten und je nach Routing Formulare bzw. Anwendungsdaten. Rolle hängt vom tatsächlichen Dienst ab. Vertragsgesellschaft, Regionen, CDN-/Supportzugriffe und Transfergarantien: zu klären. Reines Marketinghosting ist nicht ohne Weiteres Unterauftragsverarbeitung für Studios.
+
+### netcup
+
+Laut Projekt: E-Mail. Daten: Adressen, Namen, Transaktions-, Buchungs- und Supportinhalte. Bei Buchungsmails regelmäßig Unterauftragsverarbeitung; bei eigener Geschäftskorrespondenz Auftragsverarbeitung für den Anbieter. Tatsächlicher SMTP-Dienst, AVV, Regionen, Mailarchive und Löschfristen: zu klären.
+
+### Mollie
+
+Codeintegration für SaaS-Abonnements. Daten: Kunden-/Rechnungsangaben, Zahlungen, Mandats-/Transaktionsreferenzen. Eigene Verantwortlichkeit kann für Zahlungs-/Prüfpflichten bestehen; etwaige Auftragsverarbeitungsanteile sind anhand der Vertragsbedingungen abzugrenzen. Keine pauschale Einstufung als Studio-Unterauftragsverarbeiter. Gesellschaft, Empfänger, Aufbewahrung und Transfers: zu klären.
+
+### OpenAI / KI
+
+Technische Integration im Backend abhängig von Konfiguration vorhanden. Mögliche Daten: Prompts, Konversationen und erforderlicher Studiokontext. Produktiver Einsatz ist nicht verifiziert. Vor Nutzung mit personenbezogenen Daten sind Gesellschaft, Auftragsvertrag, Einstellungen, Retention, Regionen, Transfergrundlage und Umfang verbindlich freizugeben.
+
+### Google Analytics, Microsoft Clarity, eigene Analyse
+
+Integrationen im App-Code vorhanden; aktive Konfiguration und Consent-Sperre prüfen. Daten können Kennungen, IP-/Geräteinformationen und Nutzungsinteraktionen umfassen. Rollen und Übermittlungsgrundlagen je Dienst klären; sensible Bereiche von Aufzeichnung ausschließen. Website-Analyticsadapter allein belegt keinen aktiven externen Dienst.
+
+### Weitere Empfänger und Dienste
+
+Im Code zusätzlich erkennbar: jsDelivr für das Klaro-Skript, Google-Calendar-Links zur Gesprächsbuchung und WhatsApp-Support. Bereits ein externer Skriptabruf kann technische Verbindungsdaten übermitteln; Einwilligungsverwaltung ist nicht automatisch frei von Drittanbieterzugriffen. Domain/DNS, Monitoring, Logspeicher, Backupdienst, eingebundene Schriften/Medien sowie GentleSuite-CRM und dessen Infrastruktur vollständig aufnehmen, soweit eingesetzt. [WEITERE_DIENSTLEISTER_EINTRAGEN]. Für Änderungen gilt das erst nach Prüfung vereinbarte Informations-/Widerspruchsverfahren des AVV.
+
+## B2B-Hinweis
+
+Website: /b2b
+
+### Geschäftskundenangebot
+
+GentleBook-Abonnements und Testzugänge richten sich an Unternehmer, die für ihren Geschäftsbetrieb handeln. Die Unternehmereigenschaft wird vor Freigabe geprüft und vor Bestellung bestätigt. Eine Checkbox allein ersetzt keine Prüfung des tatsächlichen Vertragszwecks.
+
+Privatpersonen können Termine bei Studios buchen. Ihr Vertrag über die Studioleistung besteht mit dem Studio, nicht dadurch mit GentleBook. Gesetzliche Verbraucherrechte in diesem gesonderten Verhältnis werden nicht durch die B2B-AGB ausgeschlossen. Falls GentleBook tatsächlich Verbraucherverträge anbietet, müssen Vertragsstrecke und Verbraucherinformationen zuvor separat geprüft werden.
+
+## Nutzungsrichtlinien
+
+Website: /nutzungsrichtlinien
+
+### Sorgfältige und zulässige Verwendung
+
+Nutze GentleBook nur mit erforderlichen Rechten und rechtmäßigen Daten. Prüfe Leistungsangebote, Preise, Buchungsregeln und importierte Inhalte vor Veröffentlichung. Versende keine unerlaubte Werbung, verbreite keine Schadsoftware und greife nicht auf fremde Konten oder Mandanten zu.
+
+### Besondere Daten und Freitext
+
+Trage ohne gesondert freigegebenes Verfahren keine Allergien, Diagnosen, Schwangerschaftsangaben, medizinischen Behandlungen oder sonstigen Gesundheitsdaten ein. Das gilt auch für Notizen, Formulare, Support und KI-Prompts. Vermeide unnötige personenbezogene Angaben und beschränke Mitarbeiterzugriffe auf erforderliche Daten.
+
+### KI und Websiteimport
+
+Verwende nur berechtigt nutzbare Quellen. Automatische Vorschläge können Fehler enthalten und müssen geprüft werden. Nutze Ausgaben nicht als medizinische oder rechtliche Beratung. Gib personenbezogene Inhalte nur in freigegebene Funktionen ein. Eine Importfunktion verschafft keine Urheber- oder Markenrechte.
+
+### Meldung und Maßnahmen
+
+Melde Sicherheitsvorfälle oder rechtswidrige Inhalte an [E_MAIL_EINTRAGEN], ohne unnötige Kundendaten mitzuschicken. Beschränkungen werden nach den AGB verhältnismäßig auf den betroffenen Sachverhalt begrenzt. Dieser Entwurf führt keine pauschalen Vertragsstrafen ein.
+
+## Cookies und Browserspeicher
+
+Website: /cookies
+
+### Notwendige und optionale Technik
+
+Notwendige Speicherung dient beispielsweise einer angeforderten Sitzung oder der Speicherung einer Datenschutzauswahl. Ob eine konkrete Speicherung unbedingt erforderlich ist, ist gesondert zu prüfen. Optionale Analyse und Marketing dürfen erst nach Einwilligung starten. Cookies, localStorage und andere Endgerätezugriffe sind gemeinsam zu betrachten.
+
+### Im Quellcode erkennbar
+
+Website: cookie-consent und zugehörige Präferenzspeicherung aus src/lib/cookieConsent.ts; Experiment-/Darstellungspräferenzen zusätzlich inventarisieren. App: Authdaten unter access_token, auth_user, employee, superadmin_token, superadmin_user sowie Klaro-/Trackingpräferenzen. Authdaten sind browserlesbar; eine sichere Sitzungsgestaltung ist noch zu prüfen. Vollständige Schlüssel, Zwecke und tatsächliche Laufzeiten: [STORAGE_INVENTAR_FREIGEBEN].
+
+App-Code enthält Google Analytics und Microsoft Clarity. Namen/Laufzeiten ihrer Cookies, Netzwerkanfragen und Empfänger hängen von der Aktivierung ab und müssen im produktiven Build gemessen werden: [TRACKING_KONFIGURATION_PRÜFEN]. Es wird nicht behauptet, dass diese Integrationen bereits aktiv oder vollständig blockiert sind.
+
+### Auswahl und Widerruf
+
+Die Cookie-Einstellungen im Footer öffnen die Auswahl erneut. Ablehnen muss ebenso einfach möglich sein wie Akzeptieren. Widerruf gilt für die Zukunft; optionale Verarbeitung muss danach stoppen und vorhandene optionale Kennungen müssen soweit technisch möglich entfernt werden. Website und App verwenden getrennte Consent-Komponenten; Auswahlübernahme zwischen Domains wird nicht zugesagt.
+
+### Freigabeprüfung
+
+Vor Veröffentlichung tatsächliche Requests vor Auswahl, nach Ablehnung, nach Zustimmung und nach Widerruf auf allen Domains prüfen. Für jeden Eintrag Zweck, Anbieter, Kategorie, Laufzeit, Transfer und Consent-Version dokumentieren. Keine stillschweigende Aktivierung neuer Anbieter.
+
+## TOM-Anlage
+
+Website: /tom
+
+### Status und Nachweise
+
+Diese Anlage beschreibt zu konkretisierende Soll-Maßnahmen, keine Zertifizierung oder Behauptung ihrer Umsetzung. Verantwortlicher für Nachweise: [TOM_VERANTWORTLICHER_EINTRAGEN]. Stand und Prüfung: [TOM_NACHWEISE_EINTRAGEN]. Vor AVV-Abschluss tatsächliche Maßnahmen mit Umfang und Belegen eintragen.
+
+### Vertraulichkeit und Zugriff
+
+Hosting-Zutrittskontrolle vertraglich belegen. Personenbezogene Adminzugänge, geringste notwendige Rechte, regelmäßige Rechteprüfung und unverzüglicher Entzug bei Austritt vorsehen. MFA insbesondere für privilegierte Konten verifizieren. Auth-Tokens liegen derzeit im localStorage; Migration auf sichere Sitzungstechnik einschließlich CSRF-Konzept ist offen. Keine gegenteilige Zusicherung.
+
+### Mandantentrennung und Integrität
+
+Mandanten- und Rollenprüfungen serverseitig für Lesen, Schreiben, Export, Dateien und Hintergrundjobs erzwingen. Im Repository existieren dazu Tests; produktive Konfiguration und sämtliche Zugriffswege zusätzlich prüfen. Änderungen nachvollziehbar mit minimalen Auditdaten erfassen; Vertragsnachweise unveränderlich sichern.
+
+### Transport, Speicherung und Schlüssel
+
+TLS für alle Übertragungswege und angemessene Verschlüsselung gespeicherter Daten und Sicherungen nachweisen. Schlüssel getrennt und zugriffsbeschränkt verwalten, Rotation planen. Produktions-Secrets nicht in Repository oder Logs ablegen. Signing-/Data-Protection-Persistenz und Recovery tatsächlich prüfen.
+
+### Verfügbarkeit und Wiederherstellung
+
+Backupintervall, Aufbewahrung, getrennte Speicherung, RPO/RTO, Restore-Test und zuständige Person festlegen: [BACKUPZYKLUS_EINTRAGEN], [RESTOREZIELE_EINTRAGEN]. Wiederherstellung darf wirksame Löschungen nicht dauerhaft rückgängig machen. Ausfall- und Zahlungsreconciliation müssen alarmieren und überprüfbar sein.
+
+### Betrieb und Auftragskontrolle
+
+Patch-/Schwachstellenmanagement, Rate Limiting, Malwareabwehr bei Uploads, Supportfreigaben, Schulungen, Verpflichtungen, Lieferantenprüfung und Datenschutzvorfallprozess dokumentieren. Logs auf notwendige Daten begrenzen. Maßnahmen regelmäßig und nach wesentlichen Änderungen auf Wirksamkeit testen; Befund und Abhilfe nachhalten.
+
+## Lösch- und Aufbewahrungskonzept
+
+Website: /loeschkonzept
+
+### Trennung der Vorgänge
+
+Abonnement kündigen stoppt künftige Vertragsperioden. Konto-/Datenlöschung ist eine gesonderte Anfrage mit Identitäts-/Berechtigungsprüfung. Vor Löschung Export und Folgen erklären. Keine pauschale Zusage „alles sofort gelöscht“, solange gesetzliche Nachweise oder Backups fortbestehen.
+
+### Operative Studio- und Kontodaten
+
+Der Code sieht nach Ablauf/Kündigung eine 30-Tage-Übergangsphase und anschließend eine operative Bereinigung vor. Das ist ein technischer Bestand, keine nachgewiesene gesetzliche Frist. Löschwahl aus dem AVV, frühere zulässige Weisungen, abhängige Tabellen, Uploads, AI-Daten, Mail-/Auditlogs und CRM-Kopien müssen berücksichtigt werden. Irreversible Anonymisierung darf keine verbleibende Rückbeziehbarkeit behaupten, wenn Identifikatoren noch zugeordnet werden können.
+
+### Abrechnung und Rechtsansprüche
+
+Rechnungen, Buchungsbelege, Geschäftsbriefe und Bestell-/Mandatsnachweise getrennt nach Dokumenttyp bewerten. Rechtsnorm, Frist, Fristbeginn und Zugriff dokumentieren: [ABRECHNUNG_AUFBEWAHRUNG_FESTLEGEN]. Nur erforderliche Inhalte zurückbehalten, Zugriffe auf berechtigte Buchhaltung/Rechtsbearbeitung begrenzen. Begründete Aufbewahrungssperren benötigen Anlass, Umfang, Prüftermin und Freigabeverantwortlichen; keine unbegrenzte Vorratsspeicherung.
+
+### Sonstige Kategorien
+
+Interessenten, Support, Sicherheitslogs, Consent-Nachweise und Marketing-Sperrlisten brauchen eigene zweckbezogene Fristen. Offene Fristen sind im Verarbeitungsverzeichnis zu ergänzen, nicht aus der 30-Tage-Produktregel abzuleiten. Dienstleisterlöschung und E-Mail-Archive einbeziehen.
+
+### Backups und Nachweis
+
+Sicherungszyklen und tatsächliches Auslaufen: [BACKUPZYKLUS_EINTRAGEN]. Gelöschte Daten in Sicherungen sperren und ausschließlich für erforderliche Wiederherstellung nutzen; nach Restore Löschaufträge erneut anwenden, bevor produktiver Zugriff erfolgt. Abschlussprotokoll nur mit Auftragsreferenz, Scope, Zeitpunkt, Ergebnis und begründeten Restkategorien, ohne gelöschte Inhalte zu kopieren. Kunde erhält verständliche Auskunft über gelöschte und noch erforderliche Daten.
