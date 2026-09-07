@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ContactForm from "@/components/forms/ContactForm";
 import { isLocale, type Locale } from "@/lib/locales";
 import { getDictionary } from "@/lib/dictionaries";
@@ -41,7 +42,9 @@ export default async function ContactPage({
         </div>
 
         <div className="mx-auto mt-10 max-w-lg rounded-3xl border border-ink/10 bg-white p-6 shadow-soft sm:p-8">
-          <ContactForm dict={t.form} locale={locale} />
+          <Suspense fallback={null}>
+            <ContactForm dict={t.form} locale={locale} />
+          </Suspense>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { localizedPath, type Locale } from "@/lib/locales";
@@ -27,6 +28,11 @@ const inputClass =
 export default function ContactForm({ dict, locale }: { dict: Copy; locale: Locale }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const searchParams = useSearchParams();
+  const isAgencyRequest = searchParams.get("plan") === "agency";
+  const agencyPrefill = locale === "de"
+    ? "Ich interessiere mich für den Agency-Plan und möchte ein persönliches Angebot erhalten."
+    : "I'm interested in the Agency plan and would like to receive a personal offer.";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,7 +57,14 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, locale, privacyAcknowledged }),
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          locale,
+          privacyAcknowledged,
+          topic: isAgencyRequest ? "agency" : undefined,
+        }),
       });
       if (!res.ok) throw new Error("request_failed");
       setStatus("success");
@@ -72,6 +85,14 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {isAgencyRequest && (
+        <div className="rounded-2xl border border-violet/20 bg-brand-gradient-soft/40 p-4 text-sm text-ink">
+          {locale === "de"
+            ? "Deine Anfrage zum Agency-Plan: Wir melden uns mit einem persönlichen Angebot (Monats- und Jahrespreis)."
+            : "Your Agency plan request: we'll get back to you with a personal offer (monthly and annual pricing)."}
+        </div>
+      )}
+
       <div>
         <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-ink">
           {dict.nameLabel}
@@ -120,6 +141,7 @@ export default function ContactForm({ dict, locale }: { dict: Copy; locale: Loca
           id="contact-message"
           name="message"
           rows={5}
+          defaultValue={isAgencyRequest ? agencyPrefill : undefined}
           className={cn(inputClass, "resize-none")}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "contact-message-error" : undefined}

@@ -133,7 +133,13 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
                         ? `${t.billedYearly} · ${priceFormatter.format(annualPrice)} €/${locale === "de" ? "Jahr" : "year"}`
                         : locale === "de" ? "Monatlich im Voraus" : "Billed monthly in advance"}
                 </p>
-                {plan.id !== "trial" && (
+                {plan.id === "business" ? (
+                  <p className={cn("mt-2 text-xs leading-relaxed", highlighted ? "text-white/60" : "text-mist")}>
+                    {locale === "de"
+                      ? "Nach deiner Anfrage: persönliches Angebot mit Monats- und Jahrespreis, danach jederzeit zum Periodenende kündbar."
+                      : "After your request: a personal offer with monthly and annual pricing, then cancellable at the end of any billing period."}
+                  </p>
+                ) : plan.id !== "trial" && (
                   <p className={cn("mt-2 text-xs leading-relaxed", highlighted ? "text-white/60" : "text-mist")}>
                     {locale === "de"
                       ? `${yearly ? "Jährlich" : "Monatlich"} zum Periodenende kündbar · Keine Einrichtungsgebühr · Keine Provision pro Buchung · Gemäß § 19 UStG kein Umsatzsteuerausweis`
@@ -158,10 +164,11 @@ export default function Pricing({ dict, locale }: { dict: Dictionary; locale: Lo
                 </ul>
 
                 <Button
-                  href={localizedPath(
-                    locale,
-                    plan.id === "business" ? siteConfig.routes.contact : siteConfig.routes.register
-                  )}
+                  href={
+                    plan.id === "business"
+                      ? `${localizedPath(locale, siteConfig.routes.contact)}?plan=agency`
+                      : localizedPath(locale, siteConfig.routes.register)
+                  }
                   size="lg"
                   variant={highlighted ? "primary" : "outline"}
                   className="mt-8 w-full"
