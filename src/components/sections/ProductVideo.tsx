@@ -9,14 +9,14 @@ import type { Dictionary } from "@/lib/dictionaries";
  * Video-Sektion für einen ersten Einblick in die Anwendung.
  *
  * So aktivierst du das echte Video: Lege die Datei unter
- *   public/videos/produkt-einblick.mp4
+ *   public/gentlebook-produktvideo.mp4
  * ab (optional zusätzlich ein Vorschaubild unter
  *   public/videos/produkt-einblick-poster.jpg
  * ). Die Sektion erkennt die Datei automatisch beim nächsten Build/Request
  * und zeigt dann den echten Player statt des Platzhalters — keine
  * Code-Änderung nötig.
  */
-const VIDEO_PATH = "/videos/produkt-einblick.mp4";
+const VIDEO_PATH = "/gentlebook-produktvideo.mp4";
 const POSTER_PATH = "/videos/produkt-einblick-poster.jpg";
 
 function publicFileExists(relativePath: string) {
@@ -44,7 +44,7 @@ export default function ProductVideo({ dict, index }: { dict: Dictionary; index?
           <div className="relative aspect-video overflow-hidden rounded-[1.75rem] border border-white/10 bg-ink shadow-glow">
             {hasVideo ? (
               // eslint-disable-next-line jsx-a11y/media-has-caption
-              <video controls preload="none" poster={hasPoster ? POSTER_PATH : undefined} className="h-full w-full">
+              <video controls playsInline preload="metadata" poster={hasPoster ? POSTER_PATH : undefined} className="h-full w-full">
                 <source src={VIDEO_PATH} type="video/mp4" />
               </video>
             ) : (
