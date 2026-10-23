@@ -55,6 +55,15 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
   // Menü schließen bei Routenwechsel
   useEffect(() => setOpen(false), [pathname]);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   // Hintergrund-Scroll sperren, solange das Vollbild-Menü offen ist
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -107,7 +116,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             <Logo tone={onDark ? "dark" : "light"} />
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+          <nav className="hidden items-center gap-1 xl:flex" aria-label="Hauptnavigation">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -129,7 +138,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-2 xl:flex">
             <Link
               href={switchHref}
               className={cn(
@@ -160,7 +169,7 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             type="button"
             onClick={() => setOpen((v) => !v)}
             className={cn(
-              "flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden",
+              "flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors xl:hidden",
               onDark ? "bg-white/10 text-white" : "bg-ink text-white"
             )}
             aria-expanded={open}
@@ -177,14 +186,15 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
         id={mobileMenuId}
         aria-hidden={!open}
         inert={!open}
+        data-lenis-prevent
         className={cn(
-          "fixed inset-0 bg-night text-white transition-[clip-path] duration-700 ease-out-expo lg:hidden",
+          "fixed inset-x-0 top-0 h-dvh overflow-y-auto overscroll-contain bg-night text-white transition-[clip-path] duration-700 ease-out-expo xl:hidden",
           open ? "[clip-path:inset(0_0_0_0)]" : "[clip-path:inset(0_0_100%_0)]"
         )}
       >
         <div aria-hidden="true" className="absolute -right-24 top-10 h-80 w-80 rounded-full bg-violet/40 blur-3xl" />
         <div aria-hidden="true" className="absolute -left-24 bottom-24 h-72 w-72 rounded-full bg-teal/25 blur-3xl" />
-        <div className="u-container relative flex h-full flex-col pb-10 pt-28">
+        <div className="u-container relative flex min-h-full flex-col gap-8 pb-[max(2rem,env(safe-area-inset-bottom))] pt-28">
           <nav className="flex flex-col" aria-label="Mobile Navigation">
             {nav.map((item, i) => (
               <span key={item.href} className="overflow-hidden border-b border-white/10">
@@ -193,12 +203,12 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
                   onClick={() => setOpen(false)}
                   style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
                   className={cn(
-                    "flex items-center justify-between py-4 font-display text-4xl font-medium transition-transform duration-700 ease-out-expo",
+                    "flex items-center justify-between gap-4 py-3 font-display text-2xl font-medium transition-transform duration-700 ease-out-expo sm:py-4 sm:text-4xl",
                     open ? "translate-y-0" : "translate-y-full"
                   )}
                 >
                   {item.label}
-                  <ArrowUpRight className="h-6 w-6 text-white/40" aria-hidden="true" />
+                  <ArrowUpRight className="h-6 w-6 shrink-0 text-white/40" aria-hidden="true" />
                 </Link>
               </span>
             ))}

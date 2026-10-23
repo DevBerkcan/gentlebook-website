@@ -62,7 +62,7 @@ export default function ContactModal({ locale, dict }: { locale: Locale; dict: D
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label={t.triggerLabel}
-        className="fixed bottom-24 right-4 z-[9990] flex h-14 w-14 items-center justify-center rounded-full bg-brand-gradient text-white shadow-cta transition-all hover:-translate-y-0.5 hover:shadow-lifted lg:bottom-6 lg:right-6"
+        className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] right-4 z-[9980] flex h-14 w-14 items-center justify-center rounded-full bg-brand-gradient text-white shadow-cta transition-all hover:-translate-y-0.5 hover:shadow-lifted lg:bottom-6 lg:right-6"
       >
         <MessageCircle className="h-6 w-6" aria-hidden="true" />
       </button>
@@ -85,8 +85,8 @@ export default function ContactModal({ locale, dict }: { locale: Locale; dict: D
               className="fixed inset-0 z-[9996] flex items-center justify-center p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full max-w-md rounded-2xl border border-ink/10 bg-white shadow-2xl">
-                <div className="flex items-center justify-between border-b border-ink/10 px-6 py-4">
+              <div role="dialog" aria-modal="true" aria-labelledby="contact-dialog-title" data-lenis-prevent className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl border border-ink/10 bg-white shadow-2xl">
+                <div className="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-ink/10 bg-white px-4 py-3 sm:px-6 sm:py-4">
                   <div className="flex items-center gap-3">
                     {step !== "choice" && (
                       <button
@@ -98,7 +98,7 @@ export default function ContactModal({ locale, dict }: { locale: Locale; dict: D
                         <ArrowLeft className="h-5 w-5" />
                       </button>
                     )}
-                    <h2 className="text-lg font-semibold text-ink">
+                    <h2 id="contact-dialog-title" className="text-lg font-semibold text-ink">
                       {step === "choice" && t.choice.title}
                       {step === "team" && t.team.title}
                       {step === "confirm" && selectedEmployee?.name}
@@ -108,13 +108,13 @@ export default function ContactModal({ locale, dict }: { locale: Locale; dict: D
                     type="button"
                     onClick={close}
                     aria-label={t.closeLabel}
-                    className="text-mist transition-colors hover:text-violet"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center text-mist transition-colors hover:text-violet"
                   >
                     <X className="h-6 w-6" />
                   </button>
                 </div>
 
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   {step === "choice" && (
                     <div className="space-y-3">
                       <button

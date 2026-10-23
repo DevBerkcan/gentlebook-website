@@ -16,10 +16,25 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-porcelain font-sans text-ink;
+  }
+
+  /* Long titles, addresses and grid children must fit narrow viewports. */
+  :where(h1, h2, h3, p, li, a, button, label) {
+    overflow-wrap: anywhere;
+  }
+
+  :where(.grid, .flex) > * {
+    min-width: 0;
+  }
+
+  :where(input, select, textarea) {
+    max-width: 100%;
   }
 
   ::selection {
@@ -38,7 +53,7 @@
   .accessibility-toggle {
     position: fixed;
     left: 1rem;
-    bottom: 5.5rem;
+    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
     z-index: 9980;
     display: inline-flex;
     align-items: center;
@@ -69,11 +84,12 @@
   .accessibility-panel {
     position: fixed;
     left: 1rem;
-    bottom: 9.75rem;
+    bottom: calc(9.75rem + env(safe-area-inset-bottom, 0px));
     z-index: 9985;
-    width: min(92vw, 24rem);
-    max-height: min(78vh, 40rem);
+    width: min(calc(100vw - 2rem), 24rem);
+    max-height: min(calc(100dvh - 11rem - env(safe-area-inset-bottom, 0px)), 40rem);
     overflow: auto;
+    overscroll-behavior: contain;
     border-radius: 1.25rem;
     border: 1px solid rgba(20, 22, 43, 0.12);
     background: rgba(255, 255, 255, 0.98);
@@ -300,7 +316,7 @@
   }
 
   .u-container {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+    @apply mx-auto w-full min-w-0 max-w-content px-4 sm:px-8;
   }
 
   /* Feines Raster als redaktionelles Bühnen-Detail */

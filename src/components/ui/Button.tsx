@@ -48,7 +48,7 @@ export default function Button({
       id={id}
       onClick={onClick}
       className={cn(
-        "group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-[color,box-shadow,border-color,background-color] duration-500 ease-out-expo",
+        "group relative isolate inline-flex min-h-11 max-w-full items-center justify-center gap-2 overflow-hidden rounded-full text-center font-semibold transition-[color,box-shadow,border-color,background-color] duration-500 ease-out-expo [&>svg]:shrink-0",
         size === "lg" ? "px-7 py-4 text-[0.95rem]" : "px-5 py-2.5 text-sm",
         variant === "primary" && "bg-ink text-white shadow-[0_14px_40px_-12px_rgba(20,22,43,0.55)] hover:shadow-cta",
         variant === "light" && "bg-white text-ink hover:text-white",

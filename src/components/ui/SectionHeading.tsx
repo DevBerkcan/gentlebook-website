@@ -103,7 +103,7 @@ export default function SectionHeading({
         id={id}
         data-heading-title
         className={cn(
-          "mt-6 font-display text-[clamp(2.1rem,4.6vw,3.9rem)] font-medium leading-[1.04] tracking-[-0.02em]",
+          "mt-6 font-display text-[clamp(1.85rem,4.6vw,3.9rem)] font-medium leading-[1.1] tracking-[-0.02em]",
           dark ? "text-white" : "text-ink"
         )}
       >
@@ -113,7 +113,7 @@ export default function SectionHeading({
         <p
           data-heading-fade
           className={cn(
-            "mt-6 text-lg leading-relaxed",
+            "mt-4 text-base leading-relaxed sm:mt-6 sm:text-lg",
             align === "center" && "mx-auto",
             "max-w-2xl",
             dark ? "text-white/65" : "text-mist"
