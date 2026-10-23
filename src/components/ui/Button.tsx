@@ -5,7 +5,14 @@ import type { ReactNode } from "react";
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "ghost" | "outline";
+  /**
+   * primary  – Ink-Fläche, Marken-Verlauf steigt beim Hover auf
+   * light    – Weiße Fläche für dunkle Sektionen
+   * outline  – Kontur auf hellem Grund
+   * glass    – Kontur auf dunklem Grund
+   * ghost    – reiner Textlink
+   */
+  variant?: "primary" | "light" | "outline" | "glass" | "ghost";
   size?: "md" | "lg";
   className?: string;
   ariaLabel?: string;
@@ -16,10 +23,6 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-/**
- * CTA-Button. "primary" trägt den Marken-Gradient —
- * bewusst sparsam eingesetzt (1–2 pro Viewport).
- */
 export default function Button({
   href,
   children,
@@ -33,6 +36,8 @@ export default function Button({
   id,
   onClick,
 }: ButtonProps) {
+  const filled = variant === "primary" || variant === "light";
+
   return (
     <Link
       href={href}
@@ -43,16 +48,22 @@ export default function Button({
       id={id}
       onClick={onClick}
       className={cn(
-        "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
-        size === "lg" ? "px-8 py-4 text-base" : "px-6 py-3 text-sm",
-        variant === "primary" &&
-          "bg-brand-gradient text-white shadow-cta hover:-translate-y-0.5 hover:shadow-lifted",
-        variant === "outline" &&
-          "border border-ink/15 bg-white/70 text-ink backdrop-blur hover:border-ink/30 hover:bg-white",
+        "group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-[color,box-shadow,border-color,background-color] duration-500 ease-out-expo",
+        size === "lg" ? "px-7 py-4 text-[0.95rem]" : "px-5 py-2.5 text-sm",
+        variant === "primary" && "bg-ink text-white shadow-[0_14px_40px_-12px_rgba(20,22,43,0.55)] hover:shadow-cta",
+        variant === "light" && "bg-white text-ink hover:text-white",
+        variant === "outline" && "border border-ink/15 bg-white/60 text-ink backdrop-blur hover:border-ink/40",
+        variant === "glass" && "border border-white/20 bg-white/[0.04] text-white backdrop-blur hover:border-white/50 hover:bg-white/10",
         variant === "ghost" && "text-ink hover:text-violet",
         className
       )}
     >
+      {filled && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 translate-y-[101%] rounded-full bg-brand-gradient transition-transform duration-500 ease-out-expo group-hover:translate-y-0"
+        />
+      )}
       {children}
     </Link>
   );

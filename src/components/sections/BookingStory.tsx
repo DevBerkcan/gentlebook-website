@@ -12,7 +12,6 @@ const copy = {
     label: "Eine Buchung. Alles verbunden.",
     hint: "Beim Scrollen entdecken oder einen Schritt auswählen.",
     preview: "Beispielvorschau",
-    try: "Jetzt selbst ausprobieren",
     steps: [
       ["Leistung auswählen", "Deine Kundin sieht Leistungen, Dauer und Preise auf einen Blick."],
       ["Lieblingsmenschen wählen", "Sie entscheidet, bei wem sie ihren nächsten Termin buchen möchte."],
@@ -26,7 +25,6 @@ const copy = {
     label: "One booking. Everything connected.",
     hint: "Explore as you scroll or select a step.",
     preview: "Example preview",
-    try: "Try it yourself",
     steps: [
       ["Choose a service", "Your client sees services, duration and prices at a glance."],
       ["Choose a team member", "They decide who they would like to book their next appointment with."],
@@ -58,6 +56,11 @@ export default function BookingStory({ dict, locale }: { dict: Dictionary; local
           onEnterBack: () => setActive(index),
         });
       });
+      gsap.fromTo(
+        "[data-story-progress]",
+        { scaleY: 0 },
+        { scaleY: 1, ease: "none", scrollTrigger: { trigger: "[data-story-list]", start: "top 55%", end: "bottom 55%", scrub: true } }
+      );
     }, root);
     return () => mm.revert();
   }, []);
@@ -65,51 +68,92 @@ export default function BookingStory({ dict, locale }: { dict: Dictionary; local
   useEffect(() => {
     const mm = gsap.matchMedia();
     mm.add(MOTION_OK, () => {
-      gsap.fromTo("[data-story-panel]", { y: 8, opacity: 0.65 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" });
+      gsap.fromTo("[data-story-panel]", { x: -8, opacity: 0.6 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" });
     }, root);
     return () => mm.revert();
   }, [active]);
 
   return (
-    <div ref={root} className="booking-story mt-12">
-      <div className="mb-8 text-center">
-        <h3 className="font-display text-2xl font-semibold text-ink">{t.label}</h3>
-        <p className="mt-2 text-sm text-mist">{t.hint}</p>
+    <div ref={root} className="booking-story mt-20">
+      <div className="mb-12 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <h3 className="font-display text-3xl font-medium tracking-tight text-ink">{t.label}</h3>
+        <p className="text-sm text-mist">{t.hint}</p>
       </div>
-      <div className="booking-story-grid grid items-start gap-8 lg:grid-cols-2 lg:gap-16">
-        <ol className="grid gap-3">
+      <div className="booking-story-grid grid items-start gap-10 lg:grid-cols-2 lg:gap-20">
+        <ol data-story-list className="relative grid gap-3">
+          <span aria-hidden="true" className="absolute bottom-0 left-0 top-0 hidden w-px bg-ink/10 lg:block" />
+          <span aria-hidden="true" data-story-progress className="absolute bottom-0 left-0 top-0 hidden w-px origin-top bg-brand-gradient lg:block" />
           {t.steps.map(([title, description], index) => (
-            <li key={title} data-story-step className="booking-story-step flex items-center">
-              <button type="button" aria-pressed={active === index} aria-controls="booking-story-preview" onClick={() => setActive(index)}
-                className={cn("w-full rounded-2xl border p-5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet", active === index ? "border-violet/30 bg-lavender/70" : "border-ink/5 bg-white hover:bg-lavender/30")}>
-                <span className="text-xs font-semibold tracking-widest text-violet">0{index + 1}</span>
-                <span className="mt-2 block text-lg font-semibold text-ink">{title}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-mist">{description}</span>
+            <li key={title} data-story-step className="booking-story-step flex items-center lg:pl-8">
+              <button
+                type="button"
+                aria-pressed={active === index}
+                aria-controls="booking-story-preview"
+                onClick={() => setActive(index)}
+                className={cn(
+                  "w-full rounded-[1.5rem] border p-6 text-left transition-all duration-500 ease-out-expo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet",
+                  active === index ? "border-ink/10 bg-white shadow-lifted" : "border-transparent hover:bg-white/60"
+                )}
+              >
+                <span className={cn("font-display text-sm italic transition-colors", active === index ? "text-violet" : "text-ink/35")}>
+                  0{index + 1}
+                </span>
+                <span className={cn("mt-2 block text-xl font-semibold transition-colors", active === index ? "text-ink" : "text-ink/45")}>
+                  {title}
+                </span>
+                <span className="mt-2 block leading-relaxed text-mist">{description}</span>
               </button>
             </li>
           ))}
         </ol>
-        <div id="booking-story-preview" className="booking-story-preview overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-lifted">
-          <div className="flex items-center justify-between gap-3 border-b border-ink/5 bg-lavender/60 px-6 py-4">
+        <div
+          id="booking-story-preview"
+          className="booking-story-preview overflow-hidden rounded-[1.75rem] border border-ink/[0.07] bg-white shadow-lifted"
+        >
+          <div className="flex items-center justify-between gap-3 border-b border-ink/[0.06] bg-porcelain/80 px-6 py-4">
             <span className="text-sm font-semibold text-ink">Studio Mila</span>
-            <span className="text-xs text-mist">{t.preview}</span>
+            <span className="rounded-full bg-white px-3 py-1 text-xs text-mist ring-1 ring-ink/[0.06]">{t.preview}</span>
           </div>
-          <div className="space-y-3 p-5 sm:p-7">
+          <div className="space-y-2.5 p-5 sm:p-7">
             {t.steps.map(([title], index) => {
               const Icon = icons[index];
-              const detail = [demo.services[0].title + " · " + demo.services[0].meta, demo.employees[0].name + " · " + demo.employees[0].role, demo.dates[1] + " · " + demo.times[1], demo.confirmedTitle, t.reminder][index];
+              const detail = [
+                demo.services[0].title + " · " + demo.services[0].meta,
+                demo.employees[0].name + " · " + demo.employees[0].role,
+                demo.dates[1] + " · " + demo.times[1],
+                demo.confirmedTitle,
+                t.reminder,
+              ][index];
+              const isActive = active === index;
+              const done = index < active;
               return (
-                <div key={title} data-story-panel={active === index ? "" : undefined}
-                  className={cn("flex gap-3 rounded-2xl border p-4 transition-colors", active === index ? "border-violet/40 bg-brand-gradient-soft" : "border-ink/5 bg-white")}>
-                  <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-xl", active === index ? "bg-violet text-white" : "bg-lavender text-violet")}><Icon className="h-4 w-4" aria-hidden="true" /></span>
-                  <div><p className="text-xs font-medium text-mist">{title}</p><p className="mt-1 text-sm font-semibold text-ink">{detail}</p></div>
+                <div
+                  key={title}
+                  data-story-panel={isActive ? "" : undefined}
+                  className={cn(
+                    "flex gap-3.5 rounded-2xl border p-4 transition-all duration-500 ease-out-expo",
+                    isActive ? "border-violet/30 bg-brand-gradient-soft" : "border-ink/[0.05] bg-white",
+                    !isActive && !done && "opacity-50"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-500",
+                      isActive ? "bg-ink text-white" : done ? "bg-teal/15 text-teal" : "bg-porcelain text-violet"
+                    )}
+                  >
+                    {done ? <Check className="h-4 w-4" aria-hidden="true" /> : <Icon className="h-4 w-4" aria-hidden="true" />}
+                  </span>
+                  <div>
+                    <p className="text-xs font-medium text-mist">{title}</p>
+                    <p className="mt-1 text-sm font-semibold text-ink">{detail}</p>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
-      <p className="mt-12 text-center font-display text-xl font-semibold text-ink">{t.try}</p>
     </div>
   );
 }

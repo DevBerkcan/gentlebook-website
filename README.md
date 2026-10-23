@@ -8,7 +8,8 @@ Zielgruppe: Geschäftsinhaber:innen (B2B) → Trial-Registrierung.
 - **Next.js 14** (App Router) · TypeScript · TailwindCSS
 - **Lenis** — Smooth Scrolling (deaktiviert bei `prefers-reduced-motion`)
 - **GSAP + ScrollTrigger** — Section-Reveals, Parallax, Counter, Text-Masken (via `gsap.matchMedia`, respektiert Reduced Motion automatisch)
-- **react-three-fiber + drei** — 3D-Hero (schwebende Termin-Kacheln um organischen Gradient-Körper), lazy geladen mit `ssr: false` und statischem SVG-Fallback (kein WebGL / Low-End / Reduced Motion)
+- **WebGL-Polarlicht** — eigener Fragment-Shader (`src/components/effects/AuroraCanvas.tsx`, ohne three.js), halbe Auflösung, pausiert außerhalb des Viewports, CSS-Verlauf als Fallback
+- **Gepinnte Hero-Bühne** — der Wochenkalender richtet sich beim Scrollen auf und füllt sich Termin für Termin (`src/components/sections/Hero.tsx` + `hero/HeroCalendar.tsx`); mobil & bei Reduced Motion normaler Fluss
 - Zweisprachig **DE (Standard, ohne URL-Präfix) / EN (`/en`)** — Middleware-basiert, mit hreflang-Alternates
 
 ## Starten
@@ -36,11 +37,12 @@ Production.
 | Domain (Metadata/Sitemap/Robots) | `src/app/[locale]/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts` (`gentlebook.app` als Platzhalter) |
 | Rechtstexte | `src/components/layout/LegalPage.tsx` — Routen `/impressum`, `/datenschutz`, `/agb` sind leere Gerüste, Inhalte kommen vom Betreiber |
 | Brand-Farben/Schatten | `tailwind.config.ts` |
-| 3D-Szene | `src/components/three/HeroScene.tsx`, Fallback: `public/hero-fallback.svg` |
+| Hero-Bühne & Kalender-Mockup | `src/components/sections/Hero.tsx`, `src/components/sections/hero/HeroCalendar.tsx` |
+| Gemeinsame Bausteine (Section-Kopf, Magnet-Button, Spotlight) | `src/components/ui/` · Effekte: `src/components/effects/` |
 
 ## Performance-Notizen
 
-- 3D-Bundle wird per `next/dynamic` erst client-seitig geladen (kein SSR, kein Blocking von LCP)
+- Shader-Hintergrund rendert in halber Auflösung und nur sichtbar; Reduced Motion zeigt ein Standbild
 - Nur `transform`/`opacity` animiert, GSAP-Startzustände via CSS (`motion-safe`) → kein FOUC, kein CLS
 - `dpr` gedeckelt auf 1.75, keine Environment-HDRs, low-poly Geometrie
 - Fonts über `next/font` (Fraunces + Figtree), `display: swap`

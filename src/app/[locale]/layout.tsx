@@ -5,6 +5,7 @@ import { fontBody, fontDisplay } from "@/lib/fonts";
 import { locales, isLocale, type Locale } from "@/lib/locales";
 import { getDictionary } from "@/lib/dictionaries";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import ScrollProgress from "@/components/layout/ScrollProgress";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileStickyCta from "@/components/layout/MobileStickyCta";
@@ -114,6 +115,7 @@ export default async function LocaleLayout({
         >
           {locale === "de" ? "Zum Inhalt springen" : "Skip to content"}
         </a>
+        <ScrollProgress />
         <SmoothScroll>
           <Header locale={locale} dict={dict} />
           <main id="main-content" tabIndex={-1} className="pb-20 lg:pb-0">

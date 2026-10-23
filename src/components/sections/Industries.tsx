@@ -1,88 +1,77 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import {
-  Scissors,
-  Brush,
-  Hand,
-  Flower2,
-  HeartPulse,
-  PenTool,
-  Activity,
-} from "lucide-react";
-import Eyebrow from "@/components/ui/Eyebrow";
-import Reveal from "@/components/ui/Reveal";
-import { gsap, MOTION_OK } from "@/lib/gsap";
+import { Scissors, Brush, Hand, Flower2, HeartPulse, PenTool, Activity } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { gsap, DESKTOP_MOTION } from "@/lib/gsap";
 import type { Dictionary } from "@/lib/dictionaries";
 
 const icons = [Scissors, Brush, Flower2, Hand, HeartPulse, PenTool, Activity];
 
 /**
- * Branchen als horizontal scrollende Card-Reihe:
- * ─ nativ per Touch/Trackpad scrollbar (überall bedienbar)
- * ─ zusätzlich driftet die Reihe scroll-gesteuert leicht nach links (GSAP)
+ * Branchen als horizontale Fahrt:
+ * ─ Desktop: Sektion pinnt, vertikales Scrollen schiebt die Karten seitlich
+ * ─ Mobil / Reduced Motion: native Wisch-Reihe mit Scroll-Snap
  */
-export default function Industries({ dict }: { dict: Dictionary }) {
+export default function Industries({ dict, index }: { dict: Dictionary; index?: string }) {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const counter = useRef<HTMLSpanElement>(null);
+  const total = dict.industries.items.length;
 
   useEffect(() => {
     const mm = gsap.matchMedia();
-    mm.add(`${MOTION_OK} and (min-width: 1024px)`, () => {
+    mm.add(DESKTOP_MOTION, () => {
       const el = track.current;
       if (!el) return;
-      const overflow = el.scrollWidth - el.clientWidth;
-      if (overflow <= 0) return;
-      gsap.fromTo(
-        el,
-        { x: 0 },
-        {
-          x: -Math.min(overflow, 320),
-          ease: "none",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 0.6,
+      const distance = () => Math.max(0, el.scrollWidth - window.innerWidth);
+      gsap.to(el, {
+        x: () => -distance(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: root.current,
+          start: "top top",
+          end: () => `+=${distance()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          onUpdate(self) {
+            const current = Math.min(total, Math.floor(self.progress * (total - 1)) + 1);
+            if (counter.current) counter.current.textContent = String(current).padStart(2, "0");
+            gsap.set("[data-ind-progress]", { scaleX: self.progress });
           },
-        }
-      );
-    }, root);
+        },
+      });
+    });
     return () => mm.revert();
-  }, []);
+  }, [total]);
 
   return (
-    <section
-      ref={root}
-      id="industries"
-      className="overflow-hidden py-20 sm:py-28"
-      aria-labelledby="industries-title"
-    >
-      <div className="u-container">
-        <div className="max-w-2xl">
-          <Reveal>
-            <Eyebrow>{dict.industries.eyebrow}</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2
-              id="industries-title"
-              className="mt-5 font-display text-[clamp(1.9rem,4.5vw,3rem)] font-semibold leading-tight text-ink"
-            >
-              {dict.industries.title}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mt-5 text-lg text-mist">{dict.industries.text}</p>
-          </Reveal>
+    <section ref={root} id="industries" className="relative overflow-hidden" aria-labelledby="industries-title">
+      <div className="py-24 sm:py-32 lg:flex lg:min-h-screen lg:flex-col lg:justify-center lg:py-10">
+        <div className="u-container flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeading
+            id="industries-title"
+            index={index}
+            eyebrow={dict.industries.eyebrow}
+            title={dict.industries.title}
+            text={dict.industries.text}
+            emphasize={3}
+          />
+          <div className="hidden w-56 shrink-0 lg:block" aria-hidden="true">
+            <p className="font-display text-sm text-mist">
+              <span ref={counter} className="text-2xl font-medium text-ink">01</span> / {String(total).padStart(2, "0")}
+            </p>
+            <div className="mt-3 h-px w-full bg-ink/10">
+              <div data-ind-progress className="h-full origin-left scale-x-0 bg-ink" />
+            </div>
+          </div>
         </div>
-      </div>
 
-      <Reveal className="mt-12" delay={0.1}>
         <div
           ref={track}
-          className="flex gap-5 overflow-x-auto px-5 pb-4 sm:px-8 lg:overflow-visible lg:px-[max(2rem,calc((100vw-72rem)/2))]"
-          style={{ scrollbarWidth: "none" }}
           role="list"
+          className="industries-track no-scrollbar mt-14 lg:mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:px-8 lg:gap-5 lg:px-[max(2rem,calc((100vw-76rem)/2+2rem))]"
         >
           {dict.industries.items.map((item, i) => {
             const Icon = icons[i % icons.length];
@@ -90,18 +79,35 @@ export default function Industries({ dict }: { dict: Dictionary }) {
               <article
                 key={item.title}
                 role="listitem"
-                className="w-64 shrink-0 rounded-3xl border border-ink/5 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lifted"
+                className="group relative flex h-[23rem] w-[78vw] max-w-[20rem] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-ink/[0.07] bg-white p-7 transition-colors duration-700 ease-out-expo hover:border-transparent hover:bg-night lg:h-[min(26rem,44vh)] lg:w-[23rem] lg:max-w-none"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-gradient text-white">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="mt-5 text-base font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mist">{item.text}</p>
+                <div
+                  aria-hidden="true"
+                  className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-violet/0 blur-3xl transition-colors duration-700 group-hover:bg-violet/50"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-teal/0 blur-3xl transition-colors duration-700 group-hover:bg-teal/30"
+                />
+                <div className="relative flex items-start justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-porcelain text-violet transition-all duration-700 ease-out-expo group-hover:rotate-[-12deg] group-hover:bg-white/10 group-hover:text-lavender">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="font-display text-sm italic text-ink/30 transition-colors duration-700 group-hover:text-white/40">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="relative mt-auto font-display text-[1.85rem] font-medium leading-tight tracking-tight text-ink transition-colors duration-700 group-hover:text-white">
+                  {item.title}
+                </h3>
+                <p className="relative mt-3 leading-relaxed text-mist transition-colors duration-700 group-hover:text-white/65">
+                  {item.text}
+                </p>
               </article>
             );
           })}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

@@ -8,6 +8,8 @@
   --gb-violet: #6355e4;
   --gb-teal: #17a398;
   --gb-mist: #64748b;
+  --gb-night: #0b0c1a;
+  --gb-porcelain: #f7f5f0;
 }
 
 @layer base {
@@ -17,7 +19,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-ink;
+    @apply bg-porcelain font-sans text-ink;
   }
 
   ::selection {
@@ -281,8 +283,75 @@
     color: transparent;
   }
 
+  /* Lichtverlauf für Akzentwörter auf dunklem Grund */
+  .text-aurora {
+    background: linear-gradient(100deg, #c9c3ff 0%, #8b7ff0 30%, #3fd1c2 60%, #c9c3ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 8s linear infinite;
+  }
+
+  /* Konturschrift für Marquee & Footer-Wortmarke */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke, rgba(255, 255, 255, 0.5));
+  }
+
   .u-container {
     @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  /* Feines Raster als redaktionelles Bühnen-Detail */
+  .stage-grid {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: calc(100% / 6) 100%;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+  }
+
+  /* Spotlight-Karte: Cursor-Position kommt als CSS-Variable vom Pointer */
+  .spotlight {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    background: radial-gradient(420px circle at var(--spot-x) var(--spot-y), rgba(99, 85, 228, 0.14), transparent 60%);
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Rotierender Verlaufsrand (empfohlener Preisplan) */
+  .conic-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .conic-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle, 0deg), #6355e4, #17a398, #c9c3ff, #6355e4);
+    animation: border-spin 6s linear infinite;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   /* Maskierte Zeilen für Text-Reveals (GSAP) */
@@ -326,6 +395,74 @@
   .booking-story-preview { position: sticky; top: 7rem; }
 }
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  to { --angle: 360deg; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Failsafe: Hero-Headline wird spätestens nach 2,5 s sichtbar,
+   auch wenn JavaScript nicht lädt. */
+@keyframes hero-failsafe {
+  to { visibility: visible; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title {
+    visibility: hidden;
+    animation: hero-failsafe 0s 2.5s forwards;
+  }
+  [data-hero-fade] {
+    opacity: 0;
+  }
+}
+
+/* Gepinnte Hero-Bühne: der Kalender steigt beim Scrollen auf und füllt sich.
+   Startzustände hier in CSS, damit vor dem GSAP-Init nichts springt. */
+@media (min-width: 1024px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .hero-stage { height: 280vh; }
+  .hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .hero-calendar-wrap {
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    width: min(1120px, 88vw);
+    transform: translate(-50%, -50%);
+    perspective: 1800px;
+    margin-top: 0;
+  }
+  .hero-calendar {
+    transform: translate3d(0, 66vh, 0) rotateX(42deg) scale(0.84);
+    transform-origin: 50% 0%;
+  }
+  .hero-calendar .cal-body { height: min(62vh, 600px); }
+  .hero-calendar [data-appt],
+  .hero-calendar [data-toast] { opacity: 0; }
+}
+
+/* Industries: horizontaler Pin nur auf großen Screens */
+@media (min-width: 1024px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .industries-track {
+    overflow: visible;
+    width: max-content;
+    scroll-snap-type: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -337,4 +474,8 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@keyframes hue {
+  to { filter: hue-rotate(360deg); }
 }

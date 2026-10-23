@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ArrowUpRight } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -11,27 +11,60 @@ import { localizedPath, type Locale } from "@/lib/locales";
 import type { Dictionary } from "@/lib/dictionaries";
 import { siteConfig } from "@/lib/siteConfig";
 
+/** Liegt unter der Header-Mitte gerade eine dunkle Sektion ([data-nav-theme="dark"])? */
+function isOverDarkSection() {
+  const probe = 36;
+  return Array.from(document.querySelectorAll<HTMLElement>("[data-nav-theme='dark']")).some((el) => {
+    const r = el.getBoundingClientRect();
+    return r.top <= probe && r.bottom >= probe;
+  });
+}
+
 export default function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dark, setDark] = useState(false);
   const lastY = useRef(0);
   const pathname = usePathname();
 
-  // Hide-on-scroll (runter = ausblenden, hoch = einblenden)
+  // Hide-on-scroll + Farbschema passend zur Sektion darunter
   useEffect(() => {
-    const onScroll = () => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       const y = window.scrollY;
       setScrolled(y > 24);
-      setHidden(y > 160 && y > lastY.current && !open);
+      setHidden(y > 200 && y > lastY.current && !open);
+      setDark(isOverDarkSection());
       lastY.current = y;
     };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [open]);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [open, pathname]);
 
   // Menü schließen bei Routenwechsel
   useEffect(() => setOpen(false), [pathname]);
+
+  // Hintergrund-Scroll sperren, solange das Vollbild-Menü offen ist
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.documentElement.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   const home = localizedPath(locale, "/");
   const otherLocale: Locale = locale === "de" ? "en" : "de";
@@ -50,42 +83,59 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
     { href: localizedPath(locale, siteConfig.routes.faq), label: dict.nav.faq },
   ];
 
+  const onDark = dark || open;
+
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-transform duration-500",
-        hidden && "-translate-y-full"
+        "fixed inset-x-0 top-0 z-50 transition-transform duration-700 ease-out-expo",
+        hidden && "-translate-y-[120%]"
       )}
     >
-      <div className="u-container">
+      <div className="u-container relative z-10">
         <div
           className={cn(
-            "mt-3 flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-5",
-            scrolled
-              ? "border border-white/60 bg-white/80 shadow-soft backdrop-blur-xl"
-              : "bg-transparent"
+            "mt-3 flex items-center justify-between rounded-full py-2.5 pl-4 pr-2.5 transition-all duration-500 ease-out-expo sm:pl-5",
+            scrolled && !open
+              ? onDark
+                ? "border border-white/10 bg-night/55 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+                : "border border-ink/[0.07] bg-white/70 shadow-soft backdrop-blur-xl"
+              : "border border-transparent"
           )}
         >
           <Link href={home} aria-label="GentleBook — Startseite" className="shrink-0">
-            <Logo />
+            <Logo tone={onDark ? "dark" : "light"} />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Hauptnavigation">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+                className={cn(
+                  "group relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300",
+                  onDark ? "text-white/70 hover:text-white" : "text-ink/65 hover:text-ink"
+                )}
               >
                 {item.label}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute inset-x-3.5 bottom-1 h-px origin-left scale-x-0 transition-transform duration-500 ease-out-expo group-hover:scale-x-100",
+                    onDark ? "bg-white/70" : "bg-ink/60"
+                  )}
+                />
               </Link>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <Link
               href={switchHref}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-ink/60 transition-colors hover:text-ink"
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium transition-colors",
+                onDark ? "text-white/60 hover:text-white" : "text-ink/55 hover:text-ink"
+              )}
               aria-label={dict.nav.languageLabel}
             >
               <Globe className="h-4 w-4" aria-hidden="true" />
@@ -94,73 +144,81 @@ export default function Header({ locale, dict }: { locale: Locale; dict: Diction
             <a
               href={siteConfig.externalLoginUrl}
               rel="noopener noreferrer"
-              className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+              className={cn(
+                "rounded-full px-3 py-2 text-sm font-medium transition-colors",
+                onDark ? "text-white/70 hover:text-white" : "text-ink/65 hover:text-ink"
+              )}
             >
               {dict.nav.login}
             </a>
-            <Button href={localizedPath(locale, siteConfig.routes.register)}>{dict.nav.cta}</Button>
+            <Button href={localizedPath(locale, siteConfig.routes.register)} variant={onDark ? "light" : "primary"}>
+              {dict.nav.cta}
+            </Button>
           </div>
 
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-11 w-11 items-center justify-center rounded-xl text-ink lg:hidden"
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden",
+              onDark ? "bg-white/10 text-white" : "bg-ink text-white"
+            )}
             aria-expanded={open}
             aria-controls={mobileMenuId}
             aria-label={dict.nav.menuLabel}
           >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile-Menü */}
+      {/* Mobile-Menü: Vollbild, Links steigen gestaffelt auf */}
       <div
+        id={mobileMenuId}
+        aria-hidden={!open}
+        inert={!open}
         className={cn(
-          "u-container lg:hidden",
-          open ? "pointer-events-auto" : "pointer-events-none"
+          "fixed inset-0 bg-night text-white transition-[clip-path] duration-700 ease-out-expo lg:hidden",
+          open ? "[clip-path:inset(0_0_0_0)]" : "[clip-path:inset(0_0_100%_0)]"
         )}
       >
-        <div
-          id={mobileMenuId}
-          aria-hidden={!open}
-          className={cn(
-            "mt-2 origin-top rounded-2xl border border-white/60 bg-white/95 p-5 shadow-lifted backdrop-blur-xl transition-all duration-300",
-            open ? "scale-100 opacity-100" : "scale-95 opacity-0"
-          )}
-        >
-          <nav className="flex flex-col gap-1" aria-label="Mobile Navigation">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-base font-medium text-ink/80 transition-colors hover:bg-lavender/60 hover:text-ink"
-              >
-                {item.label}
-              </Link>
+        <div aria-hidden="true" className="absolute -right-24 top-10 h-80 w-80 rounded-full bg-violet/40 blur-3xl" />
+        <div aria-hidden="true" className="absolute -left-24 bottom-24 h-72 w-72 rounded-full bg-teal/25 blur-3xl" />
+        <div className="u-container relative flex h-full flex-col pb-10 pt-28">
+          <nav className="flex flex-col" aria-label="Mobile Navigation">
+            {nav.map((item, i) => (
+              <span key={item.href} className="overflow-hidden border-b border-white/10">
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
+                  className={cn(
+                    "flex items-center justify-between py-4 font-display text-4xl font-medium transition-transform duration-700 ease-out-expo",
+                    open ? "translate-y-0" : "translate-y-full"
+                  )}
+                >
+                  {item.label}
+                  <ArrowUpRight className="h-6 w-6 text-white/40" aria-hidden="true" />
+                </Link>
+              </span>
             ))}
-            <a
-              href={siteConfig.externalLoginUrl}
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-ink/80 transition-colors hover:bg-lavender/60 hover:text-ink"
-            >
-              {dict.nav.login}
-            </a>
           </nav>
-          <div className="mt-4 flex items-center justify-between gap-3 border-t border-ink/10 pt-4">
-            <Link
-              href={switchHref}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-ink/60"
-            >
-              <Globe className="h-4 w-4" aria-hidden="true" />
-              {otherLocale === "de" ? "Deutsch" : "English"}
-            </Link>
-            <Button
-              href={localizedPath(locale, siteConfig.routes.register)}
-              className="flex-1 text-center"
-            >
+          <div
+            className={cn(
+              "mt-auto flex flex-col gap-4 transition-opacity delay-300 duration-700",
+              open ? "opacity-100" : "opacity-0"
+            )}
+          >
+            <div className="flex items-center justify-between text-sm">
+              <a href={siteConfig.externalLoginUrl} rel="noopener noreferrer" onClick={() => setOpen(false)} className="font-medium text-white/70">
+                {dict.nav.login}
+              </a>
+              <Link href={switchHref} className="inline-flex items-center gap-1.5 font-medium text-white/70">
+                <Globe className="h-4 w-4" aria-hidden="true" />
+                {otherLocale === "de" ? "Deutsch" : "English"}
+              </Link>
+            </div>
+            <Button href={localizedPath(locale, siteConfig.routes.register)} variant="light" size="lg" className="w-full">
               {dict.nav.cta}
             </Button>
           </div>

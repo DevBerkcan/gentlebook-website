@@ -4,9 +4,11 @@ import { cn } from "@/lib/utils";
 export default function Logo({
   className,
   tileClassName,
+  tone = "light",
 }: {
   className?: string;
   tileClassName?: string;
+  tone?: "light" | "dark";
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
@@ -27,7 +29,12 @@ export default function Logo({
           />
         </svg>
       </span>
-      <span className="font-display text-xl font-semibold tracking-tight text-ink">
+      <span
+        className={cn(
+          "font-display text-xl font-semibold tracking-tight transition-colors duration-500",
+          tone === "dark" ? "text-white" : "text-ink"
+        )}
+      >
         GentleBook
       </span>
     </span>

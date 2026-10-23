@@ -2,7 +2,9 @@ import { isLocale, type Locale } from "@/lib/locales";
 import { getDictionary } from "@/lib/dictionaries";
 import { pricing } from "@/lib/pricing";
 import { JsonLd } from "@/components/seo/JsonLd";
+import SheetReveal from "@/components/effects/SheetReveal";
 import Hero from "@/components/sections/Hero";
+import IndustryMarquee from "@/components/sections/IndustryMarquee";
 import Pain from "@/components/sections/Pain";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Showcase from "@/components/sections/Showcase";
@@ -56,20 +58,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       />
 
       <Hero dict={dict} locale={locale} />
-      <Pain dict={dict} />
-      <HowItWorks dict={dict} locale={locale} />
-      <Showcase dict={dict} />
-      <ProductVideo dict={dict} />
-      <BeforeAfter dict={dict} />
-      <Features dict={dict} />
-      <Industries dict={dict} />
-      <ProductDemo dict={dict} locale={locale} />
-      <ObjectionSection dict={dict} />
-      <ComparisonTable dict={dict} />
-      <SocialProof dict={dict} />
-      <Pricing dict={dict} locale={locale} />
-      <Faq dict={dict} />
-      <FinalCta dict={dict} locale={locale} />
+      <IndustryMarquee dict={dict} />
+      <Pain dict={dict} index="01" />
+
+      <SheetReveal>
+        <Showcase dict={dict} index="02" />
+        <HowItWorks dict={dict} locale={locale} index="03" />
+        <Features dict={dict} index="04" />
+        <ProductDemo dict={dict} locale={locale} index="05" />
+        <BeforeAfter dict={dict} index="06" />
+        <Industries dict={dict} index="07" />
+        <ProductVideo dict={dict} index="08" />
+        <ComparisonTable dict={dict} locale={locale} index="09" />
+        <SocialProof dict={dict} index="10" />
+        <Pricing dict={dict} locale={locale} index="11" />
+        <ObjectionSection dict={dict} index="12" />
+        <Faq dict={dict} locale={locale} index="13" />
+        <FinalCta dict={dict} locale={locale} />
+      </SheetReveal>
     </>
   );
 }

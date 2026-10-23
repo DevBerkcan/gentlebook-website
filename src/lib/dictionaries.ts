@@ -88,6 +88,7 @@ const de = {
       bookings: "Buchungen",
       noShows: "No-Shows",
       team: "Team heute",
+      trend: "+23 % vs. letzte Woche",
     },
   },
   productVideo: {
@@ -770,6 +771,7 @@ const en: typeof de = {
       bookings: "Bookings",
       noShows: "No-shows",
       team: "Team today",
+      trend: "+23 % vs. last week",
     },
   },
   productVideo: {

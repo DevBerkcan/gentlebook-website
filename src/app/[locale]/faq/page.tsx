@@ -49,7 +49,7 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: st
           {dict.nav.faq}
         </h1>
       </div>
-      <Faq dict={dict} />
+      <Faq dict={dict} locale={locale} />
       <FinalCta dict={dict} locale={locale} />
     </div>
   );
