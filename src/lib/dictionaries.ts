@@ -206,7 +206,7 @@ const de = {
       },
       {
         q: "Ich habe nur wenige Mitarbeiter — lohnt sich das?",
-        a: "Ja. Schon der Trial und der Starter-Plan sind auf kleine Teams zugeschnitten (2 Mitarbeiter-Konten) und wachsen bei Bedarf mit.",
+        a: "Ja. Der Starter-Plan bietet 2 Mitarbeiter-Konten. Im Trial testest du alle Funktionen außer KI-Funktionen mit unbegrenzt vielen Mitarbeiter-Konten.",
       },
       {
         q: "Ich arbeite allein.",
@@ -333,7 +333,7 @@ const de = {
     conditions: [
       {
         title: "14 Tage Trial",
-        text: "Kostenlos mit 2 Konten, 10 Services und 100 Buchungen testen. Ohne aktiven Plan wird die Admin-Oberfläche danach gesperrt.",
+        text: "Kostenlos mit allen Funktionen außer KI-Funktionen sowie unbegrenzten Mitarbeitern, Services und Buchungen testen. Ohne aktiven Plan wird die Admin-Oberfläche danach gesperrt.",
       },
       {
         title: "Aktivierung",
@@ -354,10 +354,12 @@ const de = {
         name: "Trial",
         description: "Teste GentleBook 14 Tage kostenlos und unverbindlich.",
         features: [
-          "2 Mitarbeiter-Konten",
-          "Bis zu 10 Services",
-          "Bis zu 100 Buchungen / Monat",
-          "Online-Buchungssystem inklusive",
+          "Alle Funktionen außer KI-Funktionen",
+          "Unbegrenzte Mitarbeiter, Services & Buchungen",
+          "Analytics, API-Zugang & alle Designvorlagen",
+          "Gutscheine, Treuepunkte & Kundenbewertungen",
+          "Mehrstandort-Verwaltung & eigene Domain",
+          "Digitale Anamnesebögen (branchenabhängig)",
         ],
       },
       {
@@ -467,7 +469,7 @@ const de = {
       },
       {
         q: "Was passiert nach der 14-tägigen Testphase?",
-        a: "Im Trial kannst du GentleBook 14 Tage kostenlos mit 2 Konten, 10 Services und 100 Buchungen ausprobieren. Ohne aktiven Plan wird die Admin-Oberfläche danach gesperrt — deine Daten gehen dabei nicht verloren. TODO (Produktentscheidung vor Launch): Ob für den Trial eine Kreditkarte nötig ist, endgültig bestätigen.",
+        a: "Im Trial kannst du GentleBook 14 Tage kostenlos mit allen Funktionen außer KI-Funktionen sowie unbegrenzten Mitarbeitern, Services und Buchungen ausprobieren. Ohne aktiven Plan wird die Admin-Oberfläche danach gesperrt — deine Daten gehen dabei nicht verloren. Eine Kreditkarte ist nicht erforderlich. Es entsteht kein automatisches kostenpflichtiges Abonnement.",
       },
       {
         q: "Funktioniert GentleBook auch mit Walk-ins?",
@@ -577,7 +579,7 @@ const de = {
       "Für Smartphone, Tablet & Desktop",
     ],
     sideNote:
-      "Trial-Umfang: 2 Mitarbeiter-Konten, bis zu 10 Leistungen und bis zu 100 Buchungen pro Monat.",
+      "Trial-Umfang: Alle Funktionen außer KI-Funktionen. Unbegrenzte Mitarbeiter, Leistungen und Buchungen.",
     form: {
       nameLabel: "Name",
       emailLabel: "E-Mail-Adresse",
@@ -889,7 +891,7 @@ const en: typeof de = {
       },
       {
         q: "I only have a few staff members — is it worth it?",
-        a: "Yes. Both the trial and the Starter plan are sized for small teams (2 staff accounts) and grow with you as needed.",
+        a: "Yes. The Starter plan includes 2 staff accounts. The trial includes all features except AI features, with unlimited staff accounts.",
       },
       {
         q: "I work alone.",
@@ -1011,7 +1013,7 @@ const en: typeof de = {
     conditions: [
       {
         title: "14-day trial",
-        text: "Try it free with 2 accounts, 10 services and 100 bookings. Without an active plan, admin access is locked afterwards.",
+        text: "Try it free with all features except AI features and unlimited staff, services and bookings. Without an active plan, admin access is locked afterwards.",
       },
       {
         title: "Activation",
@@ -1032,10 +1034,12 @@ const en: typeof de = {
         name: "Trial",
         description: "Try GentleBook free for 14 days with no commitment.",
         features: [
-          "2 team member accounts",
-          "Up to 10 services",
-          "Up to 100 bookings / month",
-          "Online booking system included",
+          "All features except AI features",
+          "Unlimited staff, services & bookings",
+          "Analytics, API access & all design templates",
+          "Vouchers, loyalty points & customer reviews",
+          "Multiple locations & custom domain",
+          "Digital intake forms (industry-dependent)",
         ],
       },
       {
@@ -1145,7 +1149,7 @@ const en: typeof de = {
       },
       {
         q: "What happens after the 14-day trial?",
-        a: "During the trial you can try GentleBook free with 2 accounts, 10 services and 100 bookings. Without an active plan, admin access is locked afterwards — your data isn't lost. TODO (product decision before launch): finalize whether a credit card is required for the trial.",
+        a: "During the trial you can try GentleBook free with all features except AI features and unlimited staff, services and bookings. Without an active plan, admin access is locked afterwards — your data isn't lost. No credit card is required. The trial does not automatically convert to a paid subscription.",
       },
       {
         q: "Does GentleBook work with walk-ins?",
@@ -1254,7 +1258,7 @@ const en: typeof de = {
       "Personal support if you have questions",
       "Works on phone, tablet & desktop",
     ],
-    sideNote: "Trial scope: 2 team accounts, up to 10 services and up to 100 bookings per month.",
+    sideNote: "Trial scope: All features except AI features. Unlimited staff, services and bookings.",
     form: {
       nameLabel: "Name",
       emailLabel: "Email address",
